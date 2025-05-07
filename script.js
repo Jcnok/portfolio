@@ -5,103 +5,116 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav-links');
   const navLinks = document.querySelectorAll('.nav-links li');
 
-  burger.addEventListener('click', () => {
-    // Toggle Nav
-    nav.classList.toggle('nav-active');
+  if (burger) {
+    burger.addEventListener('click', () => {
+      // Toggle Nav
+      nav.classList.toggle('nav-active');
 
-    // Toggle Burger Animation
-    burger.classList.toggle('toggle');
+      // Toggle Burger Animation
+      burger.classList.toggle('toggle');
 
-    // Animate Links
-    navLinks.forEach((link, index) => {
-      if (link.style.animation) {
-        link.style.animation = '';
-      } else {
-        link.style.animation = `navLinkFade 0.5s ease forwards ${
-          index / 7 + 0.3
-        }s`;
-      }
+      // Animate Links
+      navLinks.forEach((link, index) => {
+        if (link.style.animation) {
+          link.style.animation = '';
+        } else {
+          link.style.animation = `navLinkFade 0.5s ease forwards ${
+            index / 7 + 0.3
+          }s`;
+        }
+      });
     });
-  });
+  }
 
   // Skills Chart
-  const ctx = document.getElementById('skillsChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: [
-        'Python',
-        'Data Analysis',
-        'Machine Learning',
-        'Cloud Computing',
-        'SQL',
-        'Statistics',
-      ],
-      datasets: [
-        {
-          label: 'Skill Level',
-          data: [90, 85, 80, 85, 75, 80],
-          backgroundColor: 'rgba(0, 119, 182, 0.2)',
-          borderColor: 'rgba(0, 119, 182, 1)',
-          pointBackgroundColor: 'rgba(0, 119, 182, 1)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(0, 119, 182, 1)',
-          pointRadius: 4,
-          pointHitRadius: 10,
+  const ctx = document.getElementById('skillsChart');
+  if (ctx) {
+    // Verificar se Chart.js está disponível
+    if (typeof Chart !== 'undefined') {
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            'Python',
+            'Data Analysis',
+            'Machine Learning',
+            'Cloud Computing',
+            'SQL',
+            'Statistics',
+          ],
+          datasets: [
+            {
+              label: 'Skill Level',
+              data: [90, 85, 80, 85, 75, 80],
+              backgroundColor: 'rgba(0, 119, 182, 0.2)',
+              borderColor: 'rgba(0, 119, 182, 1)',
+              pointBackgroundColor: 'rgba(0, 119, 182, 1)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(0, 119, 182, 1)',
+              pointRadius: 4,
+              pointHitRadius: 10,
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      scales: {
-        r: {
-          angleLines: {
-            display: true,
+        options: {
+          scales: {
+            r: {
+              angleLines: {
+                display: true,
+              },
+              suggestedMin: 0,
+              suggestedMax: 100,
+            },
           },
-          suggestedMin: 0,
-          suggestedMax: 100,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
         },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    },
-  });
+      });
+    } else {
+      console.error(
+        'Chart.js não está disponível. Verifique se o script foi carregado corretamente.'
+      );
+    }
+  }
 
   // Project Filter
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectsGrid = document.querySelector('.projects-grid');
 
-  // Fetch GitHub Repositories
-  fetchGitHubRepos();
+  if (filterButtons.length > 0 && projectsGrid) {
+    // Fetch GitHub Repositories
+    fetchGitHubRepos();
 
-  // Filter Projects
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
+    // Filter Projects
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
 
-      // Add active class to clicked button
-      button.classList.add('active');
+        // Add active class to clicked button
+        button.classList.add('active');
 
-      // Get filter value
-      const filter = button.getAttribute('data-filter');
+        // Get filter value
+        const filter = button.getAttribute('data-filter');
 
-      // Filter projects
-      const projects = document.querySelectorAll('.project-card');
-      projects.forEach(project => {
-        if (filter === 'all') {
-          project.style.display = 'block';
-        } else if (project.classList.contains(filter)) {
-          project.style.display = 'block';
-        } else {
-          project.style.display = 'none';
-        }
+        // Filter projects
+        const projects = document.querySelectorAll('.project-card');
+        projects.forEach(project => {
+          if (filter === 'all') {
+            project.style.display = 'block';
+          } else if (project.classList.contains(filter)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        });
       });
     });
-  });
+  }
 
   // Contact Form
   const contactForm = document.getElementById('contactForm');
@@ -128,65 +141,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fetch GitHub Repositories
   async function fetchGitHubRepos() {
+    if (!projectsGrid) return;
+
+    // Mostrar indicador de carregamento
+    projectsGrid.innerHTML =
+      '<div class="loading">Carregando projetos...</div>';
+
     try {
+      // Usar a API pública do GitHub com parâmetros para obter mais informações
       const response = await fetch(
-        'https://api.github.com/users/Jcnok/repos?sort=updated&per_page=6'
+        'https://api.github.com/users/Jcnok/repos?sort=updated&per_page=10&type=owner'
       );
 
       if (!response.ok) {
-        throw new Error(`GitHub API responded with status: ${response.status}`);
+        throw new Error(`GitHub API respondeu com status: ${response.status}`);
       }
 
       const repos = await response.json();
 
-      // Clear projects grid
+      // Verificar se temos repositórios
+      if (!repos || repos.length === 0) {
+        projectsGrid.innerHTML =
+          '<p class="no-projects">Nenhum repositório encontrado.</p>';
+        return;
+      }
+
+      // Limpar grid de projetos
       projectsGrid.innerHTML = '';
 
-      // Add repos to projects grid
-      repos.forEach(repo => {
-        // Skip forked repositories if you want
-        if (repo.fork) return;
+      // Filtrar repositórios que não são forks e têm descrição
+      const filteredRepos = repos.filter(repo => !repo.fork).slice(0, 6); // Limitar a 6 projetos
 
-        // Determine project category based on topics or language
-        let category = 'data-analysis';
+      if (filteredRepos.length === 0) {
+        projectsGrid.innerHTML =
+          '<p class="no-projects">Nenhum repositório não-fork encontrado.</p>';
+        return;
+      }
 
-        if (repo.topics && repo.topics.length > 0) {
-          if (repo.topics.includes('machine-learning')) {
-            category = 'machine-learning';
-          } else if (repo.topics.includes('cloud')) {
-            category = 'cloud';
-          }
-        } else if (repo.language) {
-          // Fallback to language-based categorization
-          const lang = repo.language.toLowerCase();
-          if (lang === 'python' || lang === 'jupyter notebook') {
-            category = 'data-analysis';
-          } else if (lang === 'javascript' || lang === 'html') {
-            category = 'web';
-          }
-        }
+      // Adicionar repositórios ao grid de projetos
+      filteredRepos.forEach(repo => {
+        // Determinar categoria do projeto
+        const category = determineCategory(repo);
 
-        // Create project card
+        // Criar card do projeto
         const projectCard = document.createElement('div');
         projectCard.className = `project-card ${category}`;
 
-        // Generate image for project (using repo name as part of the query)
-        const imageUrl = `https://source.unsplash.com/300x200/?data,${encodeURIComponent(
-          repo.name.replace(/-/g, ',')
-        )}`;
+        // Gerar URL da imagem baseada no nome e descrição do repositório
+        const imageQuery = encodeURIComponent(
+          (repo.name + ' ' + (repo.description || ''))
+            .replace(/[^\w\s]/gi, ' ')
+            .substring(0, 30)
+        );
+        const imageUrl = `https://source.unsplash.com/300x200/?${imageQuery}`;
 
+        // Formatar nome do repositório para exibição
+        const displayName = repo.name
+          .replace(/-/g, ' ')
+          .replace(/_/g, ' ')
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+
+        // Criar HTML do card
         projectCard.innerHTML = `
           <div class="project-image">
-            <img src="${imageUrl}" alt="${repo.name}">
+            <img src="${imageUrl}" alt="${displayName}" onerror="this.src='https://source.unsplash.com/300x200/?data,code'">
           </div>
           <div class="project-info">
-            <h3>${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
+            <h3>${displayName}</h3>
             <p>${
               repo.description ||
               'Projeto de análise de dados e ciência de dados.'
             }</p>
             <div class="project-tags">
-              <span class="project-tag">${category.replace('-', ' ')}</span>
+              <span class="project-tag">${formatCategory(category)}</span>
               <span class="project-tag">${repo.language || 'Python'}</span>
             </div>
             <div class="project-links">
@@ -202,14 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         projectsGrid.appendChild(projectCard);
       });
-
-      // If no projects were added (all were forks or filtered out)
-      if (projectsGrid.children.length === 0) {
-        projectsGrid.innerHTML =
-          '<p class="no-projects">Nenhum projeto encontrado. Adicione repositórios não-fork ao seu GitHub.</p>';
-      }
     } catch (error) {
-      console.error('Error fetching GitHub repos:', error);
+      console.error('Erro ao buscar repositórios do GitHub:', error);
       projectsGrid.innerHTML = `
         <p class="error-message">
           Erro ao carregar projetos: ${error.message}. <br>
@@ -218,24 +241,120 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Load certification images
+  // Função para determinar a categoria do projeto
+  function determineCategory(repo) {
+    // Verificar tópicos do repositório
+    if (repo.topics && repo.topics.length > 0) {
+      if (
+        repo.topics.includes('machine-learning') ||
+        repo.topics.includes('ml') ||
+        repo.topics.includes('deep-learning') ||
+        repo.topics.includes('neural-network')
+      ) {
+        return 'machine-learning';
+      }
+
+      if (
+        repo.topics.includes('cloud') ||
+        repo.topics.includes('aws') ||
+        repo.topics.includes('azure') ||
+        repo.topics.includes('gcp')
+      ) {
+        return 'cloud';
+      }
+
+      if (
+        repo.topics.includes('data-analysis') ||
+        repo.topics.includes('data-science') ||
+        repo.topics.includes('analytics')
+      ) {
+        return 'data-analysis';
+      }
+    }
+
+    // Verificar linguagem do repositório
+    if (repo.language) {
+      const lang = repo.language.toLowerCase();
+
+      if (lang === 'jupyter notebook' || lang === 'python') {
+        // Verificar nome e descrição para determinar categoria
+        const nameAndDesc = (
+          repo.name +
+          ' ' +
+          (repo.description || '')
+        ).toLowerCase();
+
+        if (
+          nameAndDesc.includes('machine') ||
+          nameAndDesc.includes('ml') ||
+          nameAndDesc.includes('predict') ||
+          nameAndDesc.includes('model') ||
+          nameAndDesc.includes('neural') ||
+          nameAndDesc.includes('deep learning')
+        ) {
+          return 'machine-learning';
+        }
+
+        if (
+          nameAndDesc.includes('cloud') ||
+          nameAndDesc.includes('aws') ||
+          nameAndDesc.includes('azure') ||
+          nameAndDesc.includes('gcp')
+        ) {
+          return 'cloud';
+        }
+
+        return 'data-analysis';
+      }
+
+      if (lang === 'javascript' || lang === 'typescript' || lang === 'html') {
+        return 'web';
+      }
+    }
+
+    // Categoria padrão
+    return 'data-analysis';
+  }
+
+  // Função para formatar nome da categoria
+  function formatCategory(category) {
+    const categoryMap = {
+      'data-analysis': 'Análise de Dados',
+      'machine-learning': 'Machine Learning',
+      cloud: 'Cloud Computing',
+      web: 'Web Development',
+    };
+
+    return categoryMap[category] || category.replace('-', ' ');
+  }
+
+  // Carregar imagens das certificações
   loadCertificationImages();
 
   function loadCertificationImages() {
-    // Microsoft Associate
-    document.getElementById('microsoft-associate').src =
-      'https://raw.githubusercontent.com/Jcnok/Jcnok/91719c566799dc36e7dc3ca476b81b4dac2f16e8/badges/microsoft-certified-associate.svg';
+    const microsoftAssociate = document.getElementById('microsoft-associate');
+    const azureAI = document.getElementById('azure-ai');
+    const azureData = document.getElementById('azure-data');
+    const awsPractitioner = document.getElementById('aws-practitioner');
 
-    // Azure AI Fundamentals
-    document.getElementById('azure-ai').src =
-      'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg';
+    if (microsoftAssociate) {
+      microsoftAssociate.src =
+        'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg';
+    }
 
-    // Azure Data Fundamentals
-    document.getElementById('azure-data').src =
-      'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg';
+    if (azureAI) {
+      azureAI.src =
+        'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg';
+    }
 
-    // AWS Cloud Practitioner
-    document.getElementById('aws-practitioner').src =
-      'https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Cloud-Practitioner_badge.634f8a21af2e0e956ed8905a72366146ba22b74c.png';
+    if (azureData) {
+      azureData.src =
+        'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg';
+    }
+
+    if (awsPractitioner) {
+      awsPractitioner.src =
+        'https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Cloud-Practitioner_badge.634f8a21af2e0e956ed8905a72366146ba22b74c.png';
+    }
   }
 });

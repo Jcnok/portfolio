@@ -1,216 +1,332 @@
-<!-- Substitua a seção de projetos existente pelo código abaixo -->
-
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projetos em Destaque</h2>
-    <div class="projects-filter">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="data-analysis">
-        Análise de Dados
-      </button>
-      <button class="filter-btn" data-filter="machine-learning">
-        Machine Learning
-      </button>
-      <button class="filter-btn" data-filter="cloud">Cloud Computing</button>
-    </div>
-    <div class="projects-grid">
-      <!-- Projeto 1 -->
-      <div class="project-card data-analysis">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?data,analysis"
-            alt="Análise de Dados COVID-19"
-          />
-        </div>
-        <div class="project-info">
-          <h3>Análise de Dados COVID-19</h3>
-          <p>
-            Análise exploratória de dados sobre a pandemia de COVID-19
-            utilizando Python, Pandas e Matplotlib.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">análise de dados</span>
-            <span class="project-tag">Python</span>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Julio Cesar Okuda | Data Science Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">JCO</div>
+          <ul class="nav-links">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#certifications">Certificações</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+          <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/Jcnok/covid19-analysis" target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a href="https://github.com/Jcnok/covid19-analysis" target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Julio Cesar Okuda</h1>
+            <h2>Data Scientist & Cloud Computing Specialist</h2>
+            <p>Transformando dados em soluções de valor</p>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn primary-btn">Ver Projetos</a>
+              <a href="#contact" class="btn secondary-btn">Contato</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://sjc.microlink.io/JT8NPdT3IocCn7mnVe--xcDtsJI6_DQv3V4mjubxibGfg2qcXGNiiTG6XPV0aP5k0BMpAcdLWfHPWk3rsyQmEg.jpeg"
+              alt="Julio Cesar Okuda"
+              class="profile-image"
+            />
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projeto 2 -->
-      <div class="project-card machine-learning">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?machine,learning"
-            alt="Previsão de Preços de Imóveis"
-          />
-        </div>
-        <div class="project-info">
-          <h3>Previsão de Preços de Imóveis</h3>
-          <p>
-            Modelo de machine learning para prever preços de imóveis com base em
-            características como localização, tamanho e amenidades.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">machine learning</span>
-            <span class="project-tag">Python</span>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Sou formado em Adm. de redes, com MBAs em Ciência de Dados,
+              Projetos em Cloud Computing e Matemática Financeira e Estatística.
+            </p>
+            <p>
+              Fascinado em tudo que envolva dados e entregue alguma solução.
+              Apaixonado por aprendizado contínuo e análise de dados.
+            </p>
+            <p>
+              Atualmente baseado em São Paulo, Brasil, trabalho com projetos que
+              envolvem análise de dados, machine learning e cloud computing.
+            </p>
+            <div class="social-links">
+              <a href="https://github.com/Jcnok" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://linkedin.com/in/juliookuda" target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="https://dio.me/users/juliookuda" target="_blank"
+                ><i class="fas fa-globe"></i
+              ></a>
+            </div>
           </div>
-          <div class="project-links">
-            <a
-              href="https://github.com/Jcnok/house-price-prediction"
-              target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a
-              href="https://github.com/Jcnok/house-price-prediction"
-              target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
+          <div class="stats-container">
+            <div class="github-stats">
+              <h3>GitHub Stats</h3>
+              <div class="stat-item">
+                <span class="stat-value">53</span>
+                <span class="stat-label">Repositórios</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">33</span>
+                <span class="stat-label">Stars</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">63+</span>
+                <span class="stat-label">Contribuições</span>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="skillsChart"></canvas>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projeto 3 -->
-      <div class="project-card cloud">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?cloud,computing"
-            alt="Aplicação Serverless AWS"
-          />
-        </div>
-        <div class="project-info">
-          <h3>Aplicação Serverless AWS</h3>
-          <p>
-            Implementação de uma aplicação serverless utilizando AWS Lambda, API
-            Gateway e DynamoDB.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">cloud</span>
-            <span class="project-tag">AWS</span>
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Habilidades & Tecnologias</h2>
+        <div class="skills-content">
+          <div class="skill-category">
+            <h3>Cloud & DevOps</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fab fa-aws"></i>
+                <span>AWS</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-microsoft"></i>
+                <span>Azure</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-linux"></i>
+                <span>Linux</span>
+              </div>
+            </div>
           </div>
-          <div class="project-links">
-            <a
-              href="https://github.com/Jcnok/aws-serverless-app"
-              target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a
-              href="https://github.com/Jcnok/aws-serverless-app"
-              target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
+          <div class="skill-category">
+            <h3>Linguagens de Programação</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <span>SQL</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-r-project"></i>
+                <span>R</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Data Science & ML</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fas fa-brain"></i>
+                <span>Machine Learning</span>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Data Visualization</span>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-table"></i>
+                <span>Pandas</span>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-calculator"></i>
+                <span>NumPy</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projeto 4 -->
-      <div class="project-card data-analysis">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?dashboard,data"
-            alt="Dashboard de Vendas"
-          />
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projetos em Destaque</h2>
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="data-analysis">
+            Análise de Dados
+          </button>
+          <button class="filter-btn" data-filter="machine-learning">
+            Machine Learning
+          </button>
+          <button class="filter-btn" data-filter="cloud">
+            Cloud Computing
+          </button>
         </div>
-        <div class="project-info">
-          <h3>Dashboard de Vendas</h3>
-          <p>
-            Dashboard interativo para análise de dados de vendas utilizando
-            Power BI e SQL Server.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">análise de dados</span>
-            <span class="project-tag">Power BI</span>
+        <div class="projects-grid">
+          <!-- Project cards will be dynamically loaded from GitHub -->
+        </div>
+        <div class="projects-more">
+          <a
+            href="https://github.com/Jcnok?tab=repositories"
+            class="btn primary-btn"
+            target="_blank"
+            >Ver Todos os Projetos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <h2 class="section-title">Certificações</h2>
+        <div class="certifications-grid">
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img
+                src="images/microsoft-certified.png"
+                alt="Microsoft Certified"
+                id="microsoft-associate"
+              />
+            </div>
+            <div class="certification-info">
+              <h3>Microsoft Certified: Associate</h3>
+              <p>Microsoft</p>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/Jcnok/sales-dashboard" target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a href="https://github.com/Jcnok/sales-dashboard" target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img
+                src="images/azure-ai-fundamentals.png"
+                alt="Azure AI Fundamentals"
+                id="azure-ai"
+              />
+            </div>
+            <div class="certification-info">
+              <h3>Azure AI Fundamentals</h3>
+              <p>Microsoft</p>
+            </div>
+          </div>
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img
+                src="images/azure-data-fundamentals.png"
+                alt="Azure Data Fundamentals"
+                id="azure-data"
+              />
+            </div>
+            <div class="certification-info">
+              <h3>Azure Data Fundamentals</h3>
+              <p>Microsoft</p>
+            </div>
+          </div>
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img
+                src="images/aws-cloud-practitioner.png"
+                alt="AWS Cloud Practitioner"
+                id="aws-practitioner"
+              />
+            </div>
+            <div class="certification-info">
+              <h3>AWS Cloud Practitioner</h3>
+              <p>Amazon Web Services</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projeto 5 -->
-      <div class="project-card machine-learning">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?neural,network"
-            alt="Classificação de Imagens"
-          />
-        </div>
-        <div class="project-info">
-          <h3>Classificação de Imagens</h3>
-          <p>
-            Sistema de classificação de imagens utilizando redes neurais
-            convolucionais com TensorFlow e Keras.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">machine learning</span>
-            <span class="project-tag">Deep Learning</span>
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>São Paulo, SP, Brasil</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>juliookuda@email.com</p>
+            </div>
+            <div class="social-links">
+              <a href="https://github.com/Jcnok" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://linkedin.com/in/juliookuda" target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="https://dio.me/users/juliookuda" target="_blank"
+                ><i class="fas fa-globe"></i
+              ></a>
+            </div>
           </div>
-          <div class="project-links">
-            <a
-              href="https://github.com/Jcnok/image-classification"
-              target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a
-              href="https://github.com/Jcnok/image-classification"
-              target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn primary-btn">
+                Enviar Mensagem
+              </button>
+            </form>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projeto 6 -->
-      <div class="project-card cloud">
-        <div class="project-image">
-          <img
-            src="https://source.unsplash.com/300x200/?azure,cloud"
-            alt="Pipeline de Dados Azure"
-          />
-        </div>
-        <div class="project-info">
-          <h3>Pipeline de Dados Azure</h3>
-          <p>
-            Implementação de um pipeline de dados utilizando Azure Data Factory,
-            Azure Databricks e Azure SQL Database.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">cloud</span>
-            <span class="project-tag">Azure</span>
-          </div>
-          <div class="project-links">
-            <a
-              href="https://github.com/Jcnok/azure-data-pipeline"
-              target="_blank"
-              >Ver Código <i class="fas fa-code"></i
-            ></a>
-            <a
-              href="https://github.com/Jcnok/azure-data-pipeline"
-              target="_blank"
-              >Demo <i class="fas fa-external-link-alt"></i
-            ></a>
-          </div>
-        </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 Julio Cesar Okuda. Todos os direitos reservados.</p>
       </div>
-    </div>
-    <div class="projects-more">
-      <a
-        href="https://github.com/Jcnok?tab=repositories"
-        class="btn primary-btn"
-        target="_blank"
-        >Ver Todos os Projetos</a
-      >
-    </div>
-  </div>
-</section>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
