@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 # Dá permissão explícita para o GITHUB_TOKEN modificar o conteúdo do repositório
@@ -15,10 +15,26 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      
+      - name: Install Dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+          fi
+      
+      - name: Build
+        run: |
+          if [ -f package.json ]; then
+            npm run build
+          fi
+      
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: . # A pasta que você deseja implantar
-          branch: gh-pages # A branch onde o site será implantado
-          # Não é necessário especificar o token, o GITHUB_TOKEN será usado automaticamente
+          folder: .  # A pasta que você deseja implantar
+          branch: gh-pages  # A branch onde o site será implantado
