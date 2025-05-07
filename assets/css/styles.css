@@ -8,8 +8,12 @@
   --card-bg: #ffffff;
   --hover-color: #caf0f8;
   --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --box-shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Reset e Estilos Básicos */
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -25,6 +30,7 @@ body {
   line-height: 1.6;
   color: var(--dark-color);
   background-color: var(--light-color);
+  overflow-x: hidden;
 }
 
 .container {
@@ -32,6 +38,27 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Tipografia */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--dark-color);
 }
 
 /* Header & Navigation */
@@ -70,7 +97,7 @@ nav {
   text-decoration: none;
   color: var(--dark-color);
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color var(--transition-speed);
 }
 
 .nav-links a:hover {
@@ -87,7 +114,7 @@ nav {
   height: 3px;
   background-color: var(--dark-color);
   margin: 5px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease;
 }
 
 /* Hero Section */
@@ -141,7 +168,12 @@ nav {
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed);
+}
+
+.profile-image:hover {
+  transform: scale(1.02);
 }
 
 /* Buttons */
@@ -151,8 +183,10 @@ nav {
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s;
+  transition: all var(--transition-speed);
   text-align: center;
+  cursor: pointer;
+  border: none;
 }
 
 .primary-btn {
@@ -161,9 +195,9 @@ nav {
 }
 
 .primary-btn:hover {
-  background-color: #1d4ed8;
+  background-color: var(--dark-color);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 10px 20px rgba(3, 4, 94, 0.2);
 }
 
 .secondary-btn {
@@ -235,7 +269,7 @@ section {
   background-color: var(--light-color);
   color: var(--primary-color);
   font-size: 1.2rem;
-  transition: all 0.3s;
+  transition: all var(--transition-speed);
   border: 1px solid var(--border-color);
 }
 
@@ -253,11 +287,17 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  transition: transform var(--transition-speed);
+}
+
+.github-stats:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .github-stats h3 {
@@ -288,8 +328,14 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   height: 300px;
+  transition: transform var(--transition-speed);
+}
+
+.chart-container:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 /* Skills Section */
@@ -303,7 +349,13 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed);
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .skill-category h3 {
@@ -327,6 +379,11 @@ section {
 .skill-item i {
   font-size: 1.5rem;
   color: var(--primary-color);
+  transition: transform var(--transition-speed);
+}
+
+.skill-item:hover i {
+  transform: scale(1.2);
 }
 
 .skill-item span {
@@ -350,7 +407,7 @@ section {
   color: var(--gray-color);
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--transition-speed);
   font-weight: 500;
 }
 
@@ -371,12 +428,13 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .project-card:hover {
   transform: translateY(-10px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .project-image {
@@ -403,6 +461,11 @@ section {
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: var(--dark-color);
+  transition: color var(--transition-speed);
+}
+
+.project-card:hover .project-info h3 {
+  color: var(--primary-color);
 }
 
 .project-info p {
@@ -426,6 +489,12 @@ section {
   color: var(--primary-color);
   border-radius: 50px;
   font-size: 0.8rem;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.project-card:hover .project-tag {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .project-links {
@@ -438,11 +507,11 @@ section {
   color: var(--primary-color);
   font-weight: 500;
   font-size: 0.9rem;
-  transition: color 0.3s;
+  transition: color var(--transition-speed);
 }
 
 .project-links a:hover {
-  color: #1d4ed8;
+  color: var(--dark-color);
 }
 
 .projects-more {
@@ -460,16 +529,17 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform var(--transition-speed);
 }
 
 .certification-card:hover {
   transform: translateY(-10px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .certification-logo {
@@ -484,6 +554,11 @@ section {
 .certification-logo img {
   max-width: 100%;
   max-height: 100%;
+  transition: transform var(--transition-speed);
+}
+
+.certification-card:hover .certification-logo img {
+  transform: scale(1.05);
 }
 
 .certification-info h3 {
@@ -508,7 +583,13 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed);
+}
+
+.contact-info:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .contact-item {
@@ -527,7 +608,13 @@ section {
   background-color: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed);
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .form-group {
@@ -548,7 +635,7 @@ section {
   border-radius: 5px;
   font-family: var(--font-main);
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color var(--transition-speed);
 }
 
 .form-group input:focus,
@@ -563,6 +650,54 @@ footer {
   color: white;
   padding: 30px 0;
   text-align: center;
+}
+
+/* Loading & Error States */
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: var(--gray-color);
+}
+
+.error-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #e53e3e;
+  background-color: #fff5f5;
+  border-radius: 10px;
+  border: 1px solid #fed7d7;
+}
+
+.no-projects {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: var(--gray-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive Design */
@@ -651,79 +786,4 @@ footer {
     width: 250px;
     height: 250px;
   }
-}
-
-/* Adicione estes estilos ao final do seu arquivo styles.css */
-
-/* Estilos para indicador de carregamento */
-.loading {
-  text-align: center;
-  padding: 40px;
-  font-size: 1.2rem;
-  color: var(--gray-color);
-}
-
-/* Estilos para mensagem de erro */
-.error-message {
-  text-align: center;
-  padding: 40px;
-  font-size: 1.1rem;
-  color: #e53e3e;
-  background-color: #fff5f5;
-  border-radius: 10px;
-  border: 1px solid #fed7d7;
-}
-
-/* Estilos para mensagem de nenhum projeto */
-.no-projects {
-  text-align: center;
-  padding: 40px;
-  font-size: 1.1rem;
-  color: var(--gray-color);
-}
-
-/* Melhorias nos cards de projeto */
-.project-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.project-image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
-.project-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: var(--dark-color);
-  transition: color 0.3s;
-}
-
-.project-card:hover .project-info h3 {
-  color: var(--primary-color);
-}
-
-.project-tag {
-  padding: 5px 10px;
-  background-color: var(--hover-color);
-  color: var(--primary-color);
-  border-radius: 50px;
-  font-size: 0.8rem;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.project-card:hover .project-tag {
-  background-color: var(--primary-color);
-  color: white;
 }

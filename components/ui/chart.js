@@ -1,3 +1,4 @@
+export class Chart {}
 export class ChartContainer {}
 export class ChartTooltip {}
 export class ChartTooltipContent {}
