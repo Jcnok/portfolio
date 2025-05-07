@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadCertificationImages() {
     // Microsoft Associate
     document.getElementById('microsoft-associate').src =
-      'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg';
+      'https://raw.githubusercontent.com/Jcnok/Jcnok/91719c566799dc36e7dc3ca476b81b4dac2f16e8/badges/microsoft-certified-associate.svg';
 
     // Azure AI Fundamentals
     document.getElementById('azure-ai').src =
