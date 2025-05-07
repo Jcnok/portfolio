@@ -28,4 +28,3 @@ Este portfólio está disponível em: https://jcnok.github.io/portfolio/
 
 - GitHub: [Jcnok](https://github.com/Jcnok)
 - LinkedIn: [juliookuda](https://linkedin.com/in/juliookuda)
--add v2
