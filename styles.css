@@ -7,7 +7,7 @@
   --border-color: #dee2e6;
   --card-bg: #ffffff;
   --hover-color: #caf0f8;
-  --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -191,7 +191,7 @@ section {
 }
 
 .section-title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -651,4 +651,79 @@ footer {
     width: 250px;
     height: 250px;
   }
+}
+
+/* Adicione estes estilos ao final do seu arquivo styles.css */
+
+/* Estilos para indicador de carregamento */
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: var(--gray-color);
+}
+
+/* Estilos para mensagem de erro */
+.error-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #e53e3e;
+  background-color: #fff5f5;
+  border-radius: 10px;
+  border: 1px solid #fed7d7;
+}
+
+/* Estilos para mensagem de nenhum projeto */
+.no-projects {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: var(--gray-color);
+}
+
+/* Melhorias nos cards de projeto */
+.project-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+  transition: color 0.3s;
+}
+
+.project-card:hover .project-info h3 {
+  color: var(--primary-color);
+}
+
+.project-tag {
+  padding: 5px 10px;
+  background-color: var(--hover-color);
+  color: var(--primary-color);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.project-card:hover .project-tag {
+  background-color: var(--primary-color);
+  color: white;
 }
