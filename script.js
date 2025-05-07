@@ -28,57 +28,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Skills Chart
   const ctx = document.getElementById('skillsChart');
-  if (ctx) {
-    // Verificar se Chart.js está disponível
-    if (typeof Chart !== 'undefined') {
-      new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: [
-            'Python',
-            'Data Analysis',
-            'Machine Learning',
-            'Cloud Computing',
-            'SQL',
-            'Statistics',
-          ],
-          datasets: [
-            {
-              label: 'Skill Level',
-              data: [90, 85, 80, 85, 75, 80],
-              backgroundColor: 'rgba(0, 119, 182, 0.2)',
-              borderColor: 'rgba(0, 119, 182, 1)',
-              pointBackgroundColor: 'rgba(0, 119, 182, 1)',
-              pointBorderColor: '#fff',
-              pointHoverBackgroundColor: '#fff',
-              pointHoverBorderColor: 'rgba(0, 119, 182, 1)',
-              pointRadius: 4,
-              pointHitRadius: 10,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            r: {
-              angleLines: {
-                display: true,
-              },
-              suggestedMin: 0,
-              suggestedMax: 100,
-            },
+  if (ctx && typeof Chart !== 'undefined') {
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: [
+          'Python',
+          'Data Analysis',
+          'Machine Learning',
+          'Cloud Computing',
+          'SQL',
+          'Statistics',
+        ],
+        datasets: [
+          {
+            label: 'Skill Level',
+            data: [90, 85, 80, 85, 75, 80],
+            backgroundColor: 'rgba(0, 119, 182, 0.2)',
+            borderColor: 'rgba(0, 119, 182, 1)',
+            pointBackgroundColor: 'rgba(0, 119, 182, 1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(0, 119, 182, 1)',
+            pointRadius: 4,
+            pointHitRadius: 10,
           },
-          plugins: {
-            legend: {
-              display: false,
+        ],
+      },
+      options: {
+        scales: {
+          r: {
+            angleLines: {
+              display: true,
             },
+            suggestedMin: 0,
+            suggestedMax: 100,
           },
         },
-      });
-    } else {
-      console.error(
-        'Chart.js não está disponível. Verifique se o script foi carregado corretamente.'
-      );
-    }
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      },
+    });
+  } else {
+    console.error(
+      'Chart.js não está disponível ou o elemento canvas não foi encontrado'
+    );
   }
 
   // Project Filter
@@ -148,9 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
       '<div class="loading">Carregando projetos...</div>';
 
     try {
+      console.log('Iniciando busca de repositórios...');
+
       // Usar a API pública do GitHub com parâmetros para obter mais informações
       const response = await fetch(
-        'https://api.github.com/users/Jcnok/repos?sort=updated&per_page=10&type=owner'
+        'https://api.github.com/users/Jcnok/repos?sort=updated&per_page=10'
       );
 
       if (!response.ok) {
@@ -158,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const repos = await response.json();
+      console.log('Repositórios obtidos:', repos.length);
 
       // Verificar se temos repositórios
       if (!repos || repos.length === 0) {
@@ -177,6 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
           '<p class="no-projects">Nenhum repositório não-fork encontrado.</p>';
         return;
       }
+
+      console.log('Repositórios filtrados:', filteredRepos.length);
 
       // Adicionar repositórios ao grid de projetos
       filteredRepos.forEach(repo => {
@@ -230,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         projectsGrid.appendChild(projectCard);
+        console.log('Adicionado projeto:', displayName);
       });
     } catch (error) {
       console.error('Erro ao buscar repositórios do GitHub:', error);

@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Importar Chart.js diretamente -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -195,7 +196,8 @@
           </button>
         </div>
         <div class="projects-grid">
-          <!-- Project cards will be dynamically loaded from GitHub -->
+          <!-- Os projetos serão carregados dinamicamente via JavaScript -->
+          <div class="loading">Carregando projetos...</div>
         </div>
         <div class="projects-more">
           <a
@@ -215,8 +217,8 @@
           <div class="certification-card">
             <div class="certification-logo">
               <img
-                src="images/microsoft-certified.png"
-                alt="Microsoft Certified"
+                src="/placeholder.svg"
+                alt="Microsoft Certified: Associate"
                 id="microsoft-associate"
               />
             </div>
@@ -228,7 +230,7 @@
           <div class="certification-card">
             <div class="certification-logo">
               <img
-                src="images/azure-ai-fundamentals.png"
+                src="/placeholder.svg"
                 alt="Azure AI Fundamentals"
                 id="azure-ai"
               />
@@ -241,7 +243,7 @@
           <div class="certification-card">
             <div class="certification-logo">
               <img
-                src="images/azure-data-fundamentals.png"
+                src="/placeholder.svg"
                 alt="Azure Data Fundamentals"
                 id="azure-data"
               />
@@ -254,7 +256,7 @@
           <div class="certification-card">
             <div class="certification-logo">
               <img
-                src="images/aws-cloud-practitioner.png"
+                src="/placeholder.svg"
                 alt="AWS Cloud Practitioner"
                 id="aws-practitioner"
               />
@@ -327,6 +329,7 @@
       </div>
     </footer>
 
+    <!-- Remova a importação do componente Chart.js e use o script direto -->
     <script src="script.js"></script>
   </body>
 </html>
