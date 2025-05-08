@@ -1,115 +1,66 @@
-import { Chart } from "@/components/ui/chart"
 /**
- * Theme Toggle Module
+ * Theme Toggle Module - Versão simplificada
  * Gerencia a alternância entre temas claro e escuro
  * @author Julio Cesar Okuda
- * @version 1.0.0
+ * @version 1.1.0
  */
 
-// IIFE para evitar poluição do escopo global
-;(() => {
-  /**
-   * Classe ThemeManager para gerenciar o tema da aplicação
-   */
-  class ThemeManager {
-    constructor() {
-      this.themeToggle = document.getElementById("theme-toggle")
-      this.icon = this.themeToggle ? this.themeToggle.querySelector("i") : null
-      this.currentTheme = document.documentElement.getAttribute("data-theme") || "light"
-
-      this.init()
+// Função imediatamente invocada para evitar poluição do escopo global
+(() => {
+  // Função para inicializar o tema quando o DOM estiver carregado
+  function initTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) {
+      console.error('Botão de alternância de tema não encontrado');
+      return;
     }
 
-    /**
-     * Inicializa o gerenciador de tema
-     */
-    init() {
-      if (!this.themeToggle || !this.icon) {
-        console.error("Elementos de tema não encontrados")
-        return
-      }
-
-      // Configurar ícone inicial
-      this.updateIcon()
-
-      // Adicionar evento de clique
-      this.themeToggle.addEventListener("click", () => this.toggleTheme())
-
-      // Registrar para mudanças de preferência do sistema
-      this.setupSystemPreferenceListener()
+    const icon = themeToggle.querySelector('i');
+    if (!icon) {
+      console.error('Ícone do tema não encontrado');
+      return;
     }
 
-    /**
-     * Alterna entre os temas claro e escuro
-     */
-    toggleTheme() {
-      // Alternar tema
-      this.currentTheme = this.currentTheme === "light" ? "dark" : "light"
+    // Verificar o tema atual
+    const currentTheme =
+      document.documentElement.getAttribute('data-theme') || 'light';
 
-      // Aplicar tema
-      document.documentElement.setAttribute("data-theme", this.currentTheme)
-      localStorage.setItem("theme", this.currentTheme)
+    // Definir o ícone correto com base no tema atual
+    updateIcon(icon, currentTheme);
 
-      // Atualizar ícone
-      this.updateIcon()
+    // Adicionar evento de clique para alternar o tema
+    themeToggle.addEventListener('click', () => {
+      // Obter o tema atual
+      const theme =
+        document.documentElement.getAttribute('data-theme') || 'light';
 
-      // Atualizar gráficos se existirem
-      this.updateCharts()
+      // Alternar o tema
+      const newTheme = theme === 'light' ? 'dark' : 'light';
 
-      console.log(`Tema alternado para: ${this.currentTheme}`)
-    }
+      // Aplicar o novo tema
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
 
-    /**
-     * Atualiza o ícone com base no tema atual
-     */
-    updateIcon() {
-      if (this.currentTheme === "dark") {
-        this.icon.className = "fas fa-sun"
-      } else {
-        this.icon.className = "fas fa-moon"
-      }
-    }
+      // Atualizar o ícone
+      updateIcon(icon, newTheme);
 
-    /**
-     * Configura listener para mudanças na preferência de tema do sistema
-     */
-    setupSystemPreferenceListener() {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+      console.log('Tema alternado para:', newTheme);
+    });
+  }
 
-      // Apenas reagir se não houver preferência salva
-      mediaQuery.addEventListener("change", (e) => {
-        if (!localStorage.getItem("theme")) {
-          this.currentTheme = e.matches ? "dark" : "light"
-          document.documentElement.setAttribute("data-theme", this.currentTheme)
-          this.updateIcon()
-        }
-      })
-    }
-
-    /**
-     * Atualiza os gráficos quando o tema muda
-     */
-    updateCharts() {
-      // Verificar se Chart.js está disponível
-      if (typeof Chart === "undefined") return
-
-      // Atualizar gráfico de habilidades
-      const skillsChart = Chart.getChart("skillsChart")
-      if (skillsChart) {
-        const isDark = this.currentTheme === "dark"
-
-        // Atualizar cores do gráfico
-        skillsChart.options.scales.r.grid.color = isDark ? "rgba(203, 213, 225, 0.2)" : "rgba(71, 85, 105, 0.2)"
-
-        skillsChart.options.scales.r.pointLabels.color = isDark ? "#cbd5e1" : "#475569"
-
-        skillsChart.update()
-      }
+  // Função para atualizar o ícone com base no tema
+  function updateIcon(icon, theme) {
+    if (theme === 'dark') {
+      icon.className = 'fas fa-sun';
+    } else {
+      icon.className = 'fas fa-moon';
     }
   }
 
   // Inicializar quando o DOM estiver carregado
-  document.addEventListener("DOMContentLoaded", () => {
-    new ThemeManager()
-  })
-})()
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+  } else {
+    initTheme();
+  }
+})();
