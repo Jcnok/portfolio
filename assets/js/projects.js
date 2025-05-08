@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para carregar projetos de fallback
   function loadFallbackProjects(container) {
     container.innerHTML = `
-      &lt;!-- Projeto 1 -->
+      <!-- Projeto 1 -->
       <div class="project-card data-analysis">
         <div class="project-image">
           <img src="assets/images/projects/data-analysis.png" alt="Análise de Dados COVID-19">
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       
-      &lt;!-- Projeto 2 -->
+      <!-- Projeto 2 -->
       <div class="project-card machine-learning">
         <div class="project-image">
           <img src="assets/images/projects/machine-learning.png" alt="Previsão de Preços de Imóveis">
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       
-      &lt;!-- Projeto 3 -->
+      <!-- Projeto 3 -->
       <div class="project-card cloud">
         <div class="project-image">
           <img src="assets/images/projects/cloud-computing.png" alt="Aplicação Serverless AWS">
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       
-      &lt;!-- Projeto 4 -->
+      <!-- Projeto 4 -->
       <div class="project-card data-analysis">
         <div class="project-image">
           <img src="assets/images/projects/dashboard.png" alt="Dashboard de Vendas">
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       
-      &lt;!-- Projeto 5 -->
+      <!-- Projeto 5 -->
       <div class="project-card machine-learning">
         <div class="project-image">
           <img src="assets/images/projects/deep-learning.png" alt="Classificação de Imagens">
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       
-      &lt;!-- Projeto 6 -->
+      <!-- Projeto 6 -->
       <div class="project-card cloud">
         <div class="project-image">
           <img src="assets/images/projects/azure.png" alt="Pipeline de Dados Azure">
