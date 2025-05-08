@@ -28,7 +28,7 @@ Portfólio profissional destacando minha experiência e projetos em Ciência de 
 
 ## 🛠️ Estrutura do Projeto
 
-```
+\`\`\`
 portfolio/
 ├── assets/
 │   ├── css/
@@ -44,7 +44,7 @@ portfolio/
 ├── index.html
 ├── 404.html
 └── README.md
-```
+\`\`\`
 
 ## 📋 Pré-requisitos
 
@@ -54,14 +54,14 @@ portfolio/
 ## 🚀 Como Executar Localmente
 
 1. Clone este repositório:
-   ```bash
+   \`\`\`bash
    git clone https://github.com/Jcnok/portfolio.git
-   ```
+   \`\`\`
 
 2. Navegue até o diretório do projeto:
-   ```bash
+   \`\`\`bash
    cd portfolio
-   ```
+   \`\`\`
 
 3. Abra o arquivo `index.html` em seu navegador
 
@@ -80,7 +80,7 @@ Este projeto utiliza GitHub Actions para implementação contínua no GitHub Pag
 
 - **GitHub**: [Jcnok](https://github.com/Jcnok)
 - **LinkedIn**: [juliookuda](https://linkedin.com/in/juliookuda)
-- **Email**: julio.okuda@gmail.com
+- **Email**: juliookuda@email.com
 
 ## 📄 Licença
 
