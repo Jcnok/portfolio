@@ -19,8 +19,7 @@
   --warning-color: #f59e0b;
 
   /* Variáveis de design */
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    sans-serif;
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --border-radius-sm: 0.375rem;
   --border-radius-md: 0.5rem;
   --border-radius-lg: 1rem;
@@ -30,7 +29,7 @@
 }
 
 /* Modo escuro */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
   --bg-tertiary: #334155;
@@ -117,7 +116,7 @@ header {
   -webkit-backdrop-filter: blur(10px);
 }
 
-[data-theme='dark'] header {
+[data-theme="dark"] header {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   background-color: rgba(15, 23, 42, 0.8);
 }
@@ -165,7 +164,7 @@ nav {
 }
 
 .nav-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -224,7 +223,7 @@ nav {
 }
 
 #hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -377,7 +376,7 @@ section {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -444,8 +443,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .github-stats:hover {
@@ -488,8 +486,7 @@ section {
   padding: 30px;
   box-shadow: var(--card-shadow);
   height: 300px;
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .chart-container:hover {
@@ -509,8 +506,7 @@ section {
   border-radius: var(--border-radius-lg);
   padding: 30px;
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .skill-category:hover {
@@ -590,8 +586,7 @@ section {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -656,8 +651,7 @@ section {
   color: var(--text-secondary);
   border-radius: var(--border-radius-full);
   font-size: 0.8rem;
-  transition: background-color var(--transition-speed),
-    color var(--transition-speed);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .project-card:hover .project-tag {
@@ -706,8 +700,7 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .certification-card:hover {
@@ -757,8 +750,7 @@ section {
   border-radius: var(--border-radius-lg);
   padding: 30px;
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .contact-info:hover {
@@ -783,8 +775,7 @@ section {
   border-radius: var(--border-radius-lg);
   padding: 30px;
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .contact-form:hover {
@@ -811,8 +802,7 @@ section {
   border-radius: var(--border-radius-md);
   font-family: var(--font-main);
   font-size: 1rem;
-  transition: border-color var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
@@ -835,7 +825,7 @@ footer {
 }
 
 footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -941,7 +931,7 @@ footer .container {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  [data-theme='dark'] .nav-links {
+  [data-theme="dark"] .nav-links {
     background-color: var(--bg-secondary);
   }
 
