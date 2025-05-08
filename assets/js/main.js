@@ -2,35 +2,40 @@ import { Chart } from '@/components/ui/chart';
 document.addEventListener('DOMContentLoaded', () => {
   // Theme Toggle
   const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('i');
-  const htmlElement = document.documentElement;
+  if (themeToggle) {
+    const themeIcon = themeToggle.querySelector('i');
+    const htmlElement = document.documentElement; // Declared here
 
-  // Check for saved theme preference or use system preference
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDarkScheme = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches;
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDarkScheme = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
 
-  if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
-    htmlElement.setAttribute('data-theme', 'dark');
-    themeIcon.classList.replace('fa-moon', 'fa-sun');
-  }
-
-  // Toggle theme when button is clicked
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-
-    // Update icon
-    if (newTheme === 'dark') {
+    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
+      htmlElement.setAttribute('data-theme', 'dark');
       themeIcon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-      themeIcon.classList.replace('fa-sun', 'fa-moon');
     }
-  });
+
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+      console.log('Theme toggle clicked');
+      const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update icon
+      if (newTheme === 'dark') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
+  } else {
+    console.error('Theme toggle button not found');
+  }
 
   // Mobile Navigation
   const burger = document.querySelector('.burger');
@@ -86,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ctx && typeof Chart !== 'undefined') {
     // Set chart colors based on current theme
     const updateChartColors = () => {
-      const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+      const isDark =
+        document.documentElement.getAttribute('data-theme') === 'dark';
       const textColor = isDark ? '#cbd5e1' : '#475569';
 
       return new Chart(ctx, {
