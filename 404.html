@@ -1,88 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página não encontrada - Portfólio de Ciência de Dados de Julio Cesar Okuda">
-  
-  <title>Página não encontrada | Julio Cesar Okuda</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" href="assets/images/icons/favicon.ico" type="image/x-icon">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    .error-container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    
-    .error-code {
-      font-size: 8rem;
-      font-weight: 700;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      margin-bottom: 20px;
-    }
-    
-    .error-message {
-      font-size: 1.5rem;
-      color: var(--text-primary);
-      margin-bottom: 30px;
-    }
-    
-    .error-container p {
-      color: var(--text-secondary);
-      margin-bottom: 30px;
-    }
-    
-    .error-container .btn {
-      margin-top: 20px;
-    }
-  </style>
-  
-  <script>
-    // Check for saved theme preference
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      
-      if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme)) {
-        document.documentElement.setAttribute("data-theme", "dark");
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página não encontrada - Portfólio de Ciência de Dados de Julio Cesar Okuda"
+    />
+
+    <title>Página não encontrada | Julio Cesar Okuda</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="assets/images/icons/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .error-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
-    });
-  </script>
-</head>
-<body>
-  <div class="error-container">
-    <div class="error-code">404</div>
-    <div class="error-message">Página não encontrada</div>
-    <p>A página que você está procurando não existe ou foi movida.</p>
-    <a href="index.html" class="btn primary-btn">
-      <i class="fas fa-home"></i>
-      Voltar para a página inicial
-    </a>
-  </div>
-</body>
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-emphasis-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      .error-message {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 30px;
+      }
+
+      .error-container p {
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+      }
+
+      .error-container .btn {
+        margin-top: 20px;
+      }
+    </style>
+
+    <script>
+      // Check for saved theme preference
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <div class="error-message">Página não encontrada</div>
+      <p>A página que você está procurando não existe ou foi movida.</p>
+      <a href="index.html" class="btn primary-btn">
+        <i class="fas fa-home"></i>
+        Voltar para a página inicial
+      </a>
+    </div>
+  </body>
 </html>
