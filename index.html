@@ -15,6 +15,20 @@
 
     <title>Julio Cesar Okuda | Data Science Portfolio</title>
 
+    <!-- Aplicar tema imediatamente para evitar flash -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
     <!-- Favicon -->
     <link
       rel="icon"
@@ -41,6 +55,9 @@
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Theme Switcher (carregado primeiro) -->
+    <script src="assets/js/theme-switcher.js"></script>
   </head>
   <body>
     <!-- Header & Navigation -->
