@@ -1,4 +1,3 @@
-//import { Chart } from '@/components/ui/chart';
 /**
  * Skills Chart Module
  * Inicializa e gerencia o gráfico de habilidades
