@@ -4,7 +4,6 @@
  * @author Julio Cesar Okuda
  * @version 1.0.0
  */
-
 // IIFE para evitar poluição do escopo global
 ;(() => {
   /**
@@ -14,78 +13,77 @@
     constructor() {
       this.projectsGrid = document.getElementById("projects-grid")
       this.filterButtons = document.querySelectorAll(".filter-btn")
-
-      // Dados dos projetos
+      // Dados dos projetos reais
       this.projects = [
         {
           id: 1,
-          title: "Análise de Dados COVID-19",
+          title: "Sistema CRM Completo",
           description:
-            "Análise exploratória de dados sobre a pandemia de COVID-19 utilizando Python, Pandas e Matplotlib.",
-          image: "assets/images/projects/data-analysis.png",
+            "Pipeline de dados completo para um CRM de vendas, utilizando Python, SQL, dbt, Gemini e Langchain para automação e análise de dados.",
+          image: "assets/images/projects/dashboard.png",
           category: "data-analysis",
-          tags: ["Análise de Dados", "Python"],
-          codeUrl: "https://github.com/Jcnok/covid19-analysis",
-          demoUrl: "https://github.com/Jcnok/covid19-analysis",
+          tags: ["Python", "SQL", "dbt", "Langchain"],
+          codeUrl: "https://github.com/Jcnok/crm-system",
+          demoUrl: "https://github.com/Jcnok/crm-system",
         },
         {
           id: 2,
-          title: "Previsão de Preços de Imóveis",
+          title: "Desafio Langflow - LLM Workflow",
           description:
-            "Modelo de machine learning para prever preços de imóveis com base em características como localização, tamanho e amenidades.",
-          image: "assets/images/projects/machine-learning.png",
+            "Implementação de workflows avançados com Langflow para processamento de linguagem natural e automação de tarefas com LLMs.",
+          image: "assets/images/projects/deep-learning.png",
           category: "machine-learning",
-          tags: ["Machine Learning", "Python"],
-          codeUrl: "https://github.com/Jcnok/house-price-prediction",
-          demoUrl: "https://github.com/Jcnok/house-price-prediction",
+          tags: ["Langflow", "LLM", "NLP", "Python"],
+          codeUrl: "https://github.com/Jcnok/Desafio-Langflow",
+          demoUrl: "https://github.com/Jcnok/Desafio-Langflow",
         },
         {
           id: 3,
-          title: "Aplicação Serverless AWS",
-          description: "Implementação de uma aplicação serverless utilizando AWS Lambda, API Gateway e DynamoDB.",
-          image: "assets/images/projects/cloud-computing.png",
-          category: "cloud",
-          tags: ["Cloud Computing", "AWS"],
-          codeUrl: "https://github.com/Jcnok/aws-serverless-app",
-          demoUrl: "https://github.com/Jcnok/aws-serverless-app",
+          title: "ROI Calculator - Microsoft Innovation Challenge",
+          description:
+            "Calculadora de ROI desenvolvida para o hackathon da Microsoft Innovation Challenge 2025, focando em análise de retorno sobre investimento.",
+          image: "assets/images/projects/data-analysis.png",
+          category: "data-analysis",
+          tags: ["Python", "Analytics", "ROI", "Microsoft"],
+          codeUrl: "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
+          demoUrl: "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
         },
         {
           id: 4,
-          title: "Dashboard de Vendas",
-          description: "Dashboard interativo para análise de dados de vendas utilizando Power BI e SQL Server.",
-          image: "assets/images/projects/dashboard.png",
-          category: "data-analysis",
-          tags: ["Análise de Dados", "Power BI"],
-          codeUrl: "https://github.com/Jcnok/sales-dashboard",
-          demoUrl: "https://github.com/Jcnok/sales-dashboard",
+          title: "Análise de Churn - Stack Labs",
+          description:
+            "Projeto desenvolvido no Stack Labs para análise e predição de churn de clientes utilizando técnicas avançadas de machine learning.",
+          image: "assets/images/projects/machine-learning.png",
+          category: "machine-learning",
+          tags: ["Machine Learning", "Churn Analysis", "HTML", "Stack Labs"],
+          codeUrl: "https://github.com/Jcnok/Stack_Labs_Churn",
+          demoUrl: "https://github.com/Jcnok/Stack_Labs_Churn",
         },
         {
           id: 5,
-          title: "Classificação de Imagens",
+          title: "CRM Skynet Provider - FastAPI",
           description:
-            "Sistema de classificação de imagens utilizando redes neurais convolucionais com TensorFlow e Keras.",
-          image: "assets/images/projects/deep-learning.png",
-          category: "machine-learning",
-          tags: ["Machine Learning", "Deep Learning"],
-          codeUrl: "https://github.com/Jcnok/image-classification",
-          demoUrl: "https://github.com/Jcnok/image-classification",
+            "Sistema CRM completo para provedor de internet usando SQLite, FastAPI e interface moderna para gestão de clientes e serviços.",
+          image: "assets/images/projects/cloud-computing.png",
+          category: "cloud",
+          tags: ["FastAPI", "SQLite", "CRM", "Python"],
+          codeUrl: "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
+          demoUrl: "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
         },
         {
           id: 6,
-          title: "Pipeline de Dados Azure",
+          title: "Portfólio Profissional",
           description:
-            "Implementação de um pipeline de dados utilizando Azure Data Factory, Azure Databricks e Azure SQL Database.",
-          image: "assets/images/projects/azure.png",
-          category: "cloud",
-          tags: ["Cloud Computing", "Azure"],
-          codeUrl: "https://github.com/Jcnok/azure-data-pipeline",
-          demoUrl: "https://github.com/Jcnok/azure-data-pipeline",
+            "Site portfólio responsivo desenvolvido com HTML5, CSS3 e JavaScript vanilla, apresentando projetos e habilidades em data science.",
+          image: "assets/images/projects/default-project.png",
+          category: "web-development",
+          tags: ["HTML", "CSS", "JavaScript", "Portfólio"],
+          codeUrl: "https://github.com/Jcnok/portfolio",
+          demoUrl: "https://jcnok.github.io/portfolio/",
         },
       ]
-
       this.init()
     }
-
     /**
      * Inicializa o gerenciador de projetos
      */
@@ -94,25 +92,21 @@
         console.error("Container de projetos não encontrado")
         return
       }
-
       this.loadProjects()
       this.setupFilters()
     }
-
     /**
      * Carrega os projetos no grid
      */
     loadProjects() {
       // Limpar grid
       this.projectsGrid.innerHTML = ""
-
       // Adicionar projetos
       this.projects.forEach((project, index) => {
         const projectCard = this.createProjectCard(project, index)
         this.projectsGrid.appendChild(projectCard)
       })
     }
-
     /**
      * Cria um card de projeto
      * @param {Object} project - Dados do projeto
@@ -124,10 +118,9 @@
       card.className = `project-card ${project.category} animate-on-scroll`
       card.style.opacity = "0"
       card.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1}s`
-
       card.innerHTML = `
         <div class="project-image">
-          <img src="${project.image}" alt="${project.title}">
+          <img src="${project.image}" alt="${project.title}"/>
         </div>
         <div class="project-info">
           <h3>${project.title}</h3>
@@ -136,15 +129,13 @@
             ${project.tags.map((tag) => `<span class="project-tag">${tag}</span>`).join("")}
           </div>
           <div class="project-links">
-            <a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer">Ver Código <i class="fas fa-code"></i></a>
-            <a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer">Demo <i class="fas fa-external-link-alt"></i></a>
+            <a href="${project.codeUrl}" rel="noopener noreferrer" target="_blank">Ver Código <i class="fas fa-code"></i></a>
+            <a href="${project.demoUrl}" rel="noopener noreferrer" target="_blank">Demo <i class="fas fa-external-link-alt"></i></a>
           </div>
         </div>
       `
-
       return card
     }
-
     /**
      * Configura os filtros de projetos
      */
@@ -153,31 +144,25 @@
         console.error("Botões de filtro não encontrados")
         return
       }
-
       this.filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
           // Remover classe ativa de todos os botões
           this.filterButtons.forEach((btn) => btn.classList.remove("active"))
-
           // Adicionar classe ativa ao botão clicado
           button.classList.add("active")
-
           // Obter valor do filtro
           const filter = button.getAttribute("data-filter")
-
           // Filtrar projetos
           this.filterProjects(filter)
         })
       })
     }
-
     /**
      * Filtra os projetos com base na categoria
      * @param {string} filter - Categoria para filtrar
      */
     filterProjects(filter) {
       const projects = document.querySelectorAll(".project-card")
-
       projects.forEach((project) => {
         if (filter === "all") {
           project.style.display = "block"
@@ -189,7 +174,6 @@
       })
     }
   }
-
   // Inicializar quando o DOM estiver carregado
   document.addEventListener("DOMContentLoaded", () => {
     new ProjectManager()
