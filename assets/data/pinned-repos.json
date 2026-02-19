@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1065119034,
+    "name": "cpf-serverless-python",
+    "description": "Microsserviço serverless para validação de CPF via Azure Functions (Python). Estrutura moderna, dependências gerenciadas por Poetry, testes automatizados.",
+    "html_url": "https://github.com/Jcnok/cpf-serverless-python",
+    "homepage": "",
+    "language": "Python",
+    "topics": ["azure", "serverless", "python", "microservice"]
+  },
+  {
+    "id": 860055970,
+    "name": "crm-system",
+    "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
+    "html_url": "https://github.com/Jcnok/crm-system",
+    "homepage": "https://crm-system.streamlit.app/",
+    "language": "Python",
+    "topics": ["data-analysis", "gemini-ai", "streamlit", "postgresql"]
+  },
+  {
+    "id": 1095406962,
+    "name": "central-atendimento-azure",
+    "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025. Utiliza Azure OpenAI, Redis e FastAPI.",
+    "html_url": "https://github.com/Jcnok/central-atendimento-azure",
+    "homepage": "",
+    "language": "Python",
+    "topics": ["azure-openai", "rag", "fastapi", "react"]
+  },
+  {
+    "id": 853071903,
+    "name": "CRM-Skynet-Provider-SQLite_FastAPI",
+    "description": "Sistema CRM para Skynet Provider usando SQLite e FastAPI.",
+    "html_url": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
+    "homepage": "https://jcnok-skynet.hf.space/docs#/",
+    "language": "Jupyter Notebook",
+    "topics": ["fastapi", "sqlite", "api-rest", "docker"]
+  },
+  {
+    "id": 1063011421,
+    "name": "ai-hr-talent-analyzer",
+    "description": "AI-powered HR tool for job-candidate compatibility analysis using local LLM models and MCP protocol.",
+    "html_url": "https://github.com/Jcnok/ai-hr-talent-analyzer",
+    "homepage": "https://jcnok.github.io/ai-hr-talent-analyzer/",
+    "language": "PowerShell",
+    "topics": ["ai", "llm", "local-ai", "python"]
+  },
+  {
+    "id": 997716620,
+    "name": "Convert-Money",
+    "description": "Conversor de moedas moderno e responsivo com cotações em tempo real via API.",
+    "html_url": "https://github.com/Jcnok/Convert-Money",
+    "homepage": "https://jcnok.github.io/Convert-Money/",
+    "language": "JavaScript",
+    "topics": ["javascript", "css", "api", "frontend"]
+  }
+]
