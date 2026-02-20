@@ -1,9 +1,9 @@
 {
-  "Python (AI/LLM)": 100,
-  "n8n / Workflows": 95,
-  "Azure OpenAI": 90,
-  "SQL / Data": 85,
-  "Docker / DevOps": 80,
-  "Terraform / IaC": 75,
-  "JavaScript / Node": 65
+  "n8n / Workflows": 90,
+  "Python Scripts": 80,
+  "Prompt Engineering": 85,
+  "Azure Fundamentals": 70,
+  "SQL": 65,
+  "Docker (Básico)": 50,
+  "JavaScript": 40
 }
