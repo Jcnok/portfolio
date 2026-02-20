@@ -389,14 +389,23 @@ section {
 }
 
 /* About Section */
-.about-content {
-  display: flex;
-  gap: 50px;
-  align-items: top;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
 }
 
-.about-text {
-  flex: 1;
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .about-text p {
@@ -431,16 +440,11 @@ section {
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
-.stats-container {
-  flex: 1;
-}
-
 .github-stats {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
   padding: 30px;
   box-shadow: var(--card-shadow);
-  margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -451,12 +455,6 @@ section {
 .github-stats:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.github-stats h3 {
-  width: 100%;
-  margin-bottom: 20px;
-  color: var(--text-primary);
 }
 
 .stat-item {
@@ -485,9 +483,13 @@ section {
 .chart-container {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
-  padding: 30px;
+  padding: 20px;
   box-shadow: var(--card-shadow);
-  height: 300px;
+  height: 350px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform var(--transition-speed),
     box-shadow var(--transition-speed);
 }
@@ -495,12 +497,6 @@ section {
 .chart-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.chart-container h3 {
-  margin-bottom: 15px;
-  color: var(--text-primary);
-  text-align: center;
 }
 
 /* Skills Section */
@@ -726,6 +722,13 @@ section {
   gap: 30px;
 }
 
+.certification-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
 .certification-card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
@@ -735,11 +738,16 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid transparent;
   transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
 }
 
 .certification-card:hover {
+  border-color: var(--accent-primary);
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -1048,7 +1056,201 @@ footer .container {
   border-width: 0;
 }
 
+/* Resume Section Buttons */
+.resume-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.resume-buttons .btn {
+  min-width: 200px;
+}
+
+/* Project Card Overlay */
+.project-card {
+  position: relative;
+  display: flex; /* Ensure flex for filter logic */
+  flex-direction: column;
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  text-align: center;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay p {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+/* Chat Widget */
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  font-family: var(--font-main);
+}
+
+.chat-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+.chat-container {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 350px;
+  height: 450px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.chat-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.chat-header {
+  padding: 15px;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-bottom-left-radius: 2px;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: var(--gradient-primary);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+  padding: 10px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.typing-indicator span {
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+  font-size: 1.5rem;
+  line-height: 10px;
+  margin: 0 1px;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@media (max-width: 576px) {
+  .chat-container {
+    width: 300px;
+    right: -10px;
+  }
+}
+
 /* Experiência Profissional */
+.experience-timeline-container {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  height: auto;
+}
+
 .experience-timeline {
   padding: 20px;
   position: relative;
@@ -1104,10 +1306,4 @@ footer .container {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: 0;
-}
-
-/* Para adicionar espaço acima da seção de experiência profissional */
-.experience-timeline-container {
-  margin-top: 30px; /* Ajuste este valor conforme necessário (ex: 20px, 2rem, etc.) */
-  height: auto;
 }

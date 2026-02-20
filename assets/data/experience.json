@@ -1,0 +1,20 @@
+[
+  {
+    "company": "Projetos Pessoais & Freelance",
+    "role": "Desenvolvedor de Automação com IA (Em Transição)",
+    "period": "2023 - Presente",
+    "description": "Foco prático na construção de agentes autônomos e automação de fluxos de trabalho. Desenvolvimento de soluções integrando n8n, OpenAI API e Python para otimização de processos. Criação de projetos de portfólio focados em RAG e Assistentes Virtuais."
+  },
+  {
+    "company": "Estudos & Bootcamps",
+    "role": "Engenharia de Dados e IA",
+    "period": "2023 - Presente",
+    "description": "Dedicação intensiva a cursos e bootcamps (DIO, Microsoft Learn) focados em Azure, Python e Machine Learning. Conquista de certificações fundamentais (AI-900, DP-900) para validar a migração de carreira."
+  },
+  {
+    "company": "Experiência Anterior",
+    "role": "Analista de Suporte / Infraestrutura",
+    "period": "2018 - 2023",
+    "description": "Atuação na sustentação de ambientes de TI, resolução de incidentes e administração de servidores. Base técnica sólida em sistemas operacionais e redes que facilita o aprendizado atual em Cloud e DevOps."
+  }
+]

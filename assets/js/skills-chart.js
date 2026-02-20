@@ -10,7 +10,7 @@
   /**
    * Inicializa o gráfico de habilidades
    */
-  function initSkillsChart() {
+  async function initSkillsChart() {
     const chartElement = document.getElementById('skillsChart');
 
     if (!chartElement) {
@@ -28,20 +28,37 @@
       document.documentElement.getAttribute('data-theme') === 'dark';
     const textColor = isDark ? '#cbd5e1' : '#475569';
 
+    // Fetch Language Data
+    let labels = [];
+    let values = [];
+    
+    try {
+        const response = await fetch('assets/data/languages.json');
+        if (response.ok) {
+            const langData = await response.json();
+            const sortedData = Object.entries(langData)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 6);
+            
+            const maxVal = sortedData[0][1];
+            labels = sortedData.map(([key]) => key);
+            values = sortedData.map(([, val]) => Math.round((val / maxVal) * 100));
+        } else {
+            throw new Error('Failed to load');
+        }
+    } catch (e) {
+        console.warn("Using fallback skills data");
+        labels = ['Python', 'SQL', 'Data Analysis', 'ML', 'Azure', 'Power BI'];
+        values = [90, 80, 85, 75, 70, 85];
+    }
+
     // Configurar dados do gráfico
     const data = {
-      labels: [
-        'Python',
-        'Data Analysis',
-        'Machine Learning',
-        'Cloud Computing',
-        'SQL',
-        'Statistics',
-      ],
+      labels: labels,
       datasets: [
         {
-          label: 'Skill Level',
-          data: [90, 85, 80, 85, 75, 80],
+          label: 'Skill Level (Relative)',
+          data: values,
           backgroundColor: 'rgba(59, 130, 246, 0.2)',
           borderColor: 'rgba(59, 130, 246, 1)',
           pointBackgroundColor: 'rgba(59, 130, 246, 1)',

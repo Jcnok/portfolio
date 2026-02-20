@@ -15,6 +15,41 @@ const Portfolio = {
     this.setupSmoothScrolling()
     this.setupContactForm()
     this.setupScrollAnimation()
+    this.loadExperience()
+  },
+
+  /**
+   * Loads professional experience from JSON
+   */
+  loadExperience: async function() {
+    const timelineContainer = document.querySelector('.experience-timeline');
+    if (!timelineContainer) return;
+
+    try {
+      const response = await fetch('assets/data/experience.json');
+      if (!response.ok) throw new Error('Falha ao carregar experiência');
+      const data = await response.json();
+
+      let html = '';
+      data.forEach(job => {
+        html += `
+          <div class="experience-item animate-on-scroll">
+            <div class="experience-year">${job.period}</div>
+            <div class="experience-content">
+              <h4>${job.role} <span style="font-weight:normal; font-size:0.9em; opacity:0.8">@ ${job.company}</span></h4>
+              <p>${job.description}</p>
+            </div>
+          </div>
+        `;
+      });
+      timelineContainer.innerHTML = html;
+      
+      if (this.setupScrollAnimation) this.setupScrollAnimation();
+      
+    } catch (error) {
+      console.error('Erro ao carregar experiência:', error);
+      timelineContainer.innerHTML = '<p class="error-message">Não foi possível carregar as informações de experiência.</p>';
+    }
   },
 
   /**
