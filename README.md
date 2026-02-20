@@ -1,6 +1,6 @@
-# Portfólio de Ciência de Dados - Julio Cesar Okuda
+# Portfólio de AI Automation Engineer - Julio Cesar Okuda
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Publicado-success)](https://jcnok.github.io/portfolio/)
+[![Vercel Deploy](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)](https://vercel.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-juliookuda-blue)](https://linkedin.com/in/juliookuda)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
@@ -29,43 +29,14 @@
 
 ## 📊 Visão Geral
 
-Portfólio profissional destacando minha experiência e projetos em Ciência de Dados, Machine Learning e Cloud Computing. Este site foi desenvolvido para apresentar meu trabalho de forma interativa e acessível, com design moderno e suporte para modo escuro.
-
-O objetivo principal é demonstrar minhas habilidades técnicas, projetos realizados e certificações obtidas na área de Data Science, proporcionando uma experiência de usuário agradável e informativa.
+Portfólio profissional focado em **Automação com IA Generativa, Agentes Autônomos (MCP) e Engenharia de Dados**.
 
 ## 🚀 Tecnologias Utilizadas
 
-```mermaid title="Tecnologias Utilizadas" type="diagram"
-graph TD;
-    A["Frontend"]-->B["HTML5"]
-    A-->C["CSS3"]
-    A-->D["JavaScript"]
-    D-->E["Chart.js"]
-    D-->F["Módulos JS"]
-    G["Design"]-->H["Responsivo"]
-    G-->I["Tema Claro/Escuro"]
-    G-->J["Animações CSS"]
-    K["Ferramentas"]-->L["Font Awesome"]
-    K-->M["Google Fonts"]
-    K-->N["GitHub Pages"]
-    K-->O["GitHub Actions"]
-```
-
-- **Frontend**:
-  - HTML5 - Estruturação semântica do conteúdo
-  - CSS3 - Estilização avançada com variáveis CSS e animações
-  - JavaScript - Interatividade e manipulação do DOM
-  
-- **Visualização de Dados**:
-  - Chart.js - Criação de gráficos interativos
-
-- **Bibliotecas**:
-  - Font Awesome - Ícones vetoriais
-  - Google Fonts (Inter) - Tipografia
-
-- **Hospedagem e Implantação**:
-  - GitHub Pages - Hospedagem estática
-  - GitHub Actions - Integração contínua
+- **Front-end**: HTML5, CSS3, JavaScript (Vanilla)
+- **Visualização**: Chart.js
+- **IA Integration**: Google Gemini API (via Vercel Serverless Functions)
+- **Hospedagem**: Vercel (CI/CD Automático)
 
 ## 🔍 Funcionalidades
 
@@ -153,26 +124,36 @@ portfolio/
 
 ## 🚀 Como Executar Localmente
 
-1. Clone este repositório:
+### Pré-requisitos
+- Node.js instalado
+- Chave de API do Google Gemini (para o chat)
+
+### Passo a Passo
+
+1. Clone o repositório:
    ```bash
    git clone https://github.com/Jcnok/portfolio.git
-   ```
-
-2. Navegue até o diretório do projeto:
-   ```bash
    cd portfolio
    ```
 
-3. Abra o arquivo `index.html` em seu navegador ou utilize um servidor local:
+2. Instale a Vercel CLI (Opcional, para testar a API localmente):
    ```bash
-   # Usando Python
-   python -m http.server 8000
-   
-   # Usando Node.js
-   npx serve
+   npm i -g vercel
    ```
 
-4. Acesse o site em `http://localhost:8000` (ou a porta indicada pelo servidor)
+3. Configure as Variáveis de Ambiente. Crie um arquivo `.env` na raiz:
+   ```
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+
+4. Execute o projeto:
+   ```bash
+   vercel dev
+   ```
+   Ou apenas o front-end:
+   ```bash
+   npx serve .
+   ```
 
 ## 📱 Responsividade
 
@@ -189,51 +170,14 @@ A responsividade é implementada usando:
 - Flexbox e Grid para layouts adaptáveis
 - Imagens responsivas
 
-## 🔄 Integração Contínua
+## ☁️ Deploy na Vercel (Recomendado)
 
-Este projeto utiliza GitHub Actions para implementação contínua no GitHub Pages:
+Este projeto utiliza Vercel Functions para o proxy da API de Chat.
 
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      
-      - name: Install Dependencies
-        run: |
-          if [ -f package.json ]; then
-            npm ci
-          fi
-      
-      - name: Build
-        run: |
-          if [ -f package.json ]; then
-            npm run build
-          fi
-      
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: .
-          branch: gh-pages
-```
+1. Crie uma conta na [Vercel](https://vercel.com).
+2. Importe este repositório do GitHub.
+3. Configure a variável de ambiente `GEMINI_API_KEY`.
+4. Deploy!
 
 ## 🧩 Padrões de Projeto Aplicados
 

@@ -1,0 +1,20 @@
+[
+  {
+    "company": "Projetos Independentes & Consultoria",
+    "role": "AI Automation Engineer & Cloud Specialist",
+    "period": "2023 - Presente",
+    "description": "Desenvolvimento de agentes autônomos (MCP) e arquiteturas RAG utilizando Azure OpenAI e Anthropic Claude. Orquestração de workflows complexos com n8n e LangChain para automação de processos de negócio. Implementação de soluções de IA Generativa integradas a pipelines de dados em nuvem."
+  },
+  {
+    "company": "Experiência Anterior",
+    "role": "Data Engineer & Cloud Architect",
+    "period": "2021 - 2023",
+    "description": "Engenharia de dados focada em construção de Data Lakes e Warehouses modernos. Migração de infraestrutura on-premise para Azure/AWS. Desenvolvimento de pipelines ETL/ELT com Python e SQL, garantindo qualidade e governança de dados."
+  },
+  {
+    "company": "Experiência Anterior",
+    "role": "Analista de Infraestrutura & Redes",
+    "period": "2018 - 2021",
+    "description": "Gestão de servidores Linux/Windows e redes corporativas. Automação de tarefas administrativas com Shell Script e Python. Implementação de práticas DevOps e monitoramento de infraestrutura crítica."
+  }
+]

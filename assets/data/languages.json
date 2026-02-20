@@ -1,9 +1,9 @@
 {
-  "Python": 450000,
-  "Jupyter Notebook": 320000,
-  "JavaScript": 150000,
-  "HTML": 80000,
-  "CSS": 75000,
-  "SQL": 60000,
-  "PowerShell": 40000
+  "Python (AI/LLM)": 100,
+  "n8n / Workflows": 95,
+  "Azure OpenAI": 90,
+  "SQL / Data": 85,
+  "Docker / DevOps": 80,
+  "Terraform / IaC": 75,
+  "JavaScript / Node": 65
 }

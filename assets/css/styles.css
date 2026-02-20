@@ -389,14 +389,23 @@ section {
 }
 
 /* About Section */
-.about-content {
-  display: flex;
-  gap: 50px;
-  align-items: top;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
 }
 
-.about-text {
-  flex: 1;
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .about-text p {
@@ -431,16 +440,11 @@ section {
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
-.stats-container {
-  flex: 1;
-}
-
 .github-stats {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
   padding: 30px;
   box-shadow: var(--card-shadow);
-  margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -451,12 +455,6 @@ section {
 .github-stats:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.github-stats h3 {
-  width: 100%;
-  margin-bottom: 20px;
-  color: var(--text-primary);
 }
 
 .stat-item {
@@ -485,9 +483,13 @@ section {
 .chart-container {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
-  padding: 30px;
+  padding: 20px;
   box-shadow: var(--card-shadow);
-  height: 300px;
+  height: 350px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform var(--transition-speed),
     box-shadow var(--transition-speed);
 }
@@ -495,12 +497,6 @@ section {
 .chart-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.chart-container h3 {
-  margin-bottom: 15px;
-  color: var(--text-primary);
-  text-align: center;
 }
 
 /* Skills Section */
@@ -726,6 +722,13 @@ section {
   gap: 30px;
 }
 
+.certification-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
 .certification-card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius-lg);
@@ -735,11 +738,16 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid transparent;
   transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
 }
 
 .certification-card:hover {
+  border-color: var(--accent-primary);
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -1235,6 +1243,14 @@ footer .container {
 }
 
 /* Experiência Profissional */
+.experience-timeline-container {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  height: auto;
+}
+
 .experience-timeline {
   padding: 20px;
   position: relative;
@@ -1290,10 +1306,4 @@ footer .container {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: 0;
-}
-
-/* Para adicionar espaço acima da seção de experiência profissional */
-.experience-timeline-container {
-  margin-top: 30px; /* Ajuste este valor conforme necessário (ex: 20px, 2rem, etc.) */
-  height: auto;
 }
