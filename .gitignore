@@ -1,6 +1,4 @@
 node_modules
 .env
 .vscode
-.aider.input.history
-.aider.chat.history.md
-.aider.tags.cache.v4
+.aider*

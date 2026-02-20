@@ -9,7 +9,7 @@
 
 ## 📋 Índice
 
-- [Portfólio de Ciência de Dados - Julio Cesar Okuda](#portfólio-de-ciência-de-dados---julio-cesar-okuda)
+- [Portfólio de AI Automation Engineer - Julio Cesar Okuda](#portfólio-de-ai-automation-engineer---julio-cesar-okuda)
   - [📋 Índice](#-índice)
   - [📊 Visão Geral](#-visão-geral)
   - [🚀 Tecnologias Utilizadas](#-tecnologias-utilizadas)
@@ -18,8 +18,10 @@
   - [🛠️ Estrutura do Projeto](#️-estrutura-do-projeto)
   - [📋 Pré-requisitos](#-pré-requisitos)
   - [🚀 Como Executar Localmente](#-como-executar-localmente)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passo a Passo](#passo-a-passo)
   - [📱 Responsividade](#-responsividade)
-  - [🔄 Integração Contínua](#-integração-contínua)
+  - [☁️ Deploy na Vercel (Recomendado)](#️-deploy-na-vercel-recomendado)
   - [🧩 Padrões de Projeto Aplicados](#-padrões-de-projeto-aplicados)
   - [📝 Boas Práticas Implementadas](#-boas-práticas-implementadas)
   - [🔍 SEO e Acessibilidade](#-seo-e-acessibilidade)
@@ -221,7 +223,7 @@ Este projeto utiliza Vercel Functions para o proxy da API de Chat.
 
 - **GitHub**: [Jcnok](https://github.com/Jcnok)
 - **LinkedIn**: [juliookuda](https://linkedin.com/in/juliookuda)
-- **Email**: juliookuda@email.com
+- **Email**: julio.okuda@gmail.com
 - **Website**: [jcnok.github.io/portfolio](https://jcnok.github.io/portfolio/)
 
 ## 📄 Licença
