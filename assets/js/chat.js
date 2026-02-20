@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingId = addTypingIndicator();
 
         try {
+            // Remove any localhost or github.io prefixes if present
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

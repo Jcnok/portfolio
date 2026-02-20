@@ -1,6 +1,6 @@
 # Portfólio de AI Automation Engineer - Julio Cesar Okuda
 
-[![Vercel Deploy](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)](https://vercel.com)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJcnok%2Fportfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-juliookuda-blue)](https://linkedin.com/in/juliookuda)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
@@ -172,14 +172,15 @@ A responsividade é implementada usando:
 - Flexbox e Grid para layouts adaptáveis
 - Imagens responsivas
 
-## ☁️ Deploy na Vercel (Recomendado)
+## ☁️ Deploy (Vercel)
 
-Este projeto utiliza Vercel Functions para o proxy da API de Chat.
+Este projeto **requer** a Vercel (ou host similar com suporte a Node.js Serverless Functions) para que o Chat com IA funcione. O GitHub Pages suporta apenas sites estáticos e não executará a API.
 
 1. Crie uma conta na [Vercel](https://vercel.com).
-2. Importe este repositório do GitHub.
-3. Configure a variável de ambiente `GEMINI_API_KEY`.
-4. Deploy!
+2. Importe este repositório.
+3. Nas configurações do projeto (Environment Variables), adicione:
+   - `GEMINI_API_KEY`: Sua chave da API do Google Gemini.
+4. O deploy será feito automaticamente.
 
 ## 🧩 Padrões de Projeto Aplicados
 
@@ -224,7 +225,7 @@ Este projeto utiliza Vercel Functions para o proxy da API de Chat.
 - **GitHub**: [Jcnok](https://github.com/Jcnok)
 - **LinkedIn**: [juliookuda](https://linkedin.com/in/juliookuda)
 - **Email**: julio.okuda@gmail.com
-- **Website**: [jcnok.github.io/portfolio](https://jcnok.github.io/portfolio/)
+- **Website**: [seu-app.vercel.app](https://seu-app.vercel.app/)
 
 ## 📄 Licença
 
