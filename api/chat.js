@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   const { message } = req.body;
-  
+
   if (!message) {
     return res.status(400).json({ error: 'Message is required' });
   }
@@ -12,13 +12,13 @@ export default async function handler(req, res) {
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
-    console.error("GEMINI_API_KEY is missing");
+    console.error('GEMINI_API_KEY is missing');
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: {
@@ -27,9 +27,10 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           contents: [
             {
-              role: "user",
-              parts: [{ 
-                text: `You are the virtual assistant for Julio Cesar Okuda.
+              role: 'user',
+              parts: [
+                {
+                  text: `You are the virtual assistant for Julio Cesar Okuda.
                 Context about Julio:
                 - He is transitioning his career from IT Infrastructure to AI Automation & Data Engineering.
                 - Profile: Junior/Mid-level Developer passionate about LLMs.
@@ -39,10 +40,11 @@ export default async function handler(req, res) {
                 
                 Reply in Portuguese. Be helpful, humble, and enthusiastic about technology.
                 
-                User question: ${message}` 
-              }]
-            }
-          ]
+                User question: ${message}`,
+                },
+              ],
+            },
+          ],
         }),
       }
     );
@@ -50,12 +52,13 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.error?.message || 'API Error');
+      throw new Error(data.error?.message || 'API Error');
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não consegui processar sua resposta.";
+    const reply =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
+      'Desculpe, não consegui processar sua resposta.';
     res.status(200).json({ reply });
-
   } catch (error) {
     console.error('Gemini API Error:', error);
     res.status(500).json({ error: 'Failed to fetch response' });
