@@ -1,6 +1,7 @@
 {
     "name": "portfolio",
     "version": "1.0.0",
+    "type": "module",
     "description": "Julio Cesar Okuda - Data Science & AI Automation Portfolio",
     "private": true,
     "scripts": {
