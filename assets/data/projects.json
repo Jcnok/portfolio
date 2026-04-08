@@ -58,7 +58,7 @@
     "title": "CRM Skynet Provider SQLite FastAPI",
     "description": "Sistema CRM para Skynet Provider usando SQLite e FastAPI",
     "resume": "Sistema CRM para Skynet Provider usando SQLite e FastAPI",
-    "image": "assets/images/projects/crm-skynet-provider-sqlite_fastapi.svg",
+    "image": "assets/images/projects/default-project.png",
     "category": "data-analysis",
     "tags": [
       "api-rest",
@@ -75,7 +75,7 @@
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
     "resume": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "image": "assets/images/projects/central-atendimento-azure.svg",
+    "image": "assets/images/projects/default-project.png",
     "category": "data-analysis",
     "tags": [
       "azure-openai",
