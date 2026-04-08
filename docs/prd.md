@@ -11,7 +11,7 @@ Enhance the existing Vanilla JS/Vercel portfolio to act as a more robust, modula
 
 ### Story 1.1: Desacoplar Dados de Projetos para JSON Externo
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como desenvolvedor usando o portfólio,
 Eu quero que os dados dos projetos estejam em um arquivo `assets/data/projects.json`
@@ -28,7 +28,7 @@ Para que novos projetos possam ser adicionados sem alterar a lógica JavaScript.
 
 ### Story 1.2: Corrigir Race Condition no Tema do Chart.js
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como usuário do portfólio,
 Eu quero que o gráfico radar de habilidades atualize suas cores corretamente ao trocar entre modo claro e escuro
@@ -43,7 +43,7 @@ Para que a experiência visual seja consistente e sem bugs.
 
 ### Story 1.3: Melhorar Error Handling e Rate Limiting na API de Chat
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como proprietário do portfólio,
 Eu quero que a Vercel Serverless Function `/api/chat` seja mais robusta
@@ -63,7 +63,7 @@ Para proteger contra abuso e fornecer feedback mais claro ao usuário em caso de
 
 ### Story 2.1: Configurar Ambiente de Testes com Jest
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como equipe de desenvolvimento,
 Eu quero um ambiente de testes unitários configurado com Jest
@@ -80,7 +80,7 @@ Para que a lógica de `projects.js` e `skills-chart.js` possa ser validada autom
 
 ### Story 2.2: Configurar CI/CD com GitHub Actions
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como equipe de desenvolvimento,
 Eu quero que os testes sejam executados automaticamente em cada push via GitHub Actions
