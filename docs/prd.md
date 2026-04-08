@@ -146,7 +146,7 @@ Para garantir que o deploy na Vercel seja precedido de validação de qualidade.
 
 ### Story 3.1: Criar Serverless Function `/api/projects` com GitHub API
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como desenvolvedor do portfólio,
 Eu quero uma Vercel Serverless Function que consulte os repositórios pinados do meu perfil GitHub via GraphQL API,
@@ -205,7 +205,7 @@ Para que o portfólio sempre reflita os projetos que eu escolhi destacar, sem ed
 
 ### Story 3.2: Criar Agente Gemini para Análise Criativa dos Repositórios
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como proprietário do portfólio,
 Eu quero que um agente de IA (Gemini) analise cada repositório pinado e gere conteúdo estratégico,
@@ -233,7 +233,7 @@ Para que as descrições, categorias e resumos dos projetos sejam profissionais 
 
 ### Story 3.3: Refatorar Frontend para Consumir `/api/projects` Dinâmico
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como usuário do portfólio,
 Eu quero que a seção de projetos carregue dados diretamente da API `/api/projects` em vez do arquivo estático `projects.json`,
@@ -262,7 +262,7 @@ Para que os projetos sejam sempre atualizados automaticamente.
 
 ### Story 3.4: Pipeline Automático — GitHub Actions para Regenerar Cache
 
-**Status:** Draft
+**Status:** Done ✅
 
 Como proprietário do portfólio,
 Eu quero que um GitHub Actions workflow atualize o fallback `projects.json` periodicamente,
