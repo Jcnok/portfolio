@@ -1,54 +1,79 @@
-<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title description" role="img">
+  <title id="title">Central Atendimento Azure</title>
+  <desc id="description">Um banner com tema cyberpunk e dark mode para o projeto Central Atendimento Azure, com o título principal e tecnologias relacionadas.</desc>
+
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0C0C1E;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1A0A2A;stop-opacity:1" />
+    <!-- Importa a fonte Roboto do Google Fonts para garantir a estética desejada -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    </style>
+
+    <!-- Gradiente de fundo escuro para o tema Dark Mode/Cyberpunk -->
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A1A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1A0A2A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0A1A;stop-opacity:1" />
     </linearGradient>
 
-    <!-- Overlay Gradient for cyberpunk feel -->
-    <radialGradient id="cyberGradient" cx="50%" cy="50%" r="75%" fx="50%" fy="50%">
-      <stop offset="0%" style="stop-color:#00e7ff;stop-opacity:0.15" />
-      <stop offset="50%" style="stop-color:#ff00e7;stop-opacity:0.05" />
-      <stop offset="100%" style="stop-color:#0C0C1E;stop-opacity:0" />
-    </radialGradient>
+    <!-- Gradiente vibrante para detalhes e brilhos (Azure/Roxo) -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078D4;stop-opacity:1" /> <!-- Azure Blue -->
+      <stop offset="50%" style="stop-color:#8800FF;stop-opacity:1" /> <!-- Vibrant Purple -->
+      <stop offset="100%" style="stop-color:#0078D4;stop-opacity:1" />
+    </linearGradient>
 
-    <!-- Grid Pattern -->
-    <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a4a" stroke-width="0.5"/>
+    <!-- Padrão de malha/grid para o fundo -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222" stroke-width="0.5"/>
     </pattern>
 
-    <!-- Simple Glow Filter (Gaussian Blur) -->
-    <filter id="glowBlurOnly">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+    <!-- Filtro de brilho intenso para o título principal -->
+    <filter id="text-glow-main">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+      <feFlood flood-color="#AEE6FF" flood-opacity="0.9" result="color" /> <!-- Brilho azul claro -->
+      <feComposite in="color" in2="blur" operator="in" result="glow-effect" />
+      <feMerge>
+        <feMergeNode in="glow-effect" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
     </filter>
 
-    <!-- Title Text Gradient -->
-    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00e7ff;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#a000ff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ff00e7;stop-opacity:1" />
-    </linearGradient>
+    <!-- Filtro de brilho sutil para o subtítulo -->
+    <filter id="text-glow-subtle">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+      <feFlood flood-color="#80BFFF" flood-opacity="0.7" result="color" /> <!-- Brilho azul mais suave -->
+      <feComposite in="color" in2="blur" operator="in" result="glow-effect" />
+      <feMerge>
+        <feMergeNode in="glow-effect" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Filtro de desfoque para formas de fundo, criando um efeito de brilho ambiente -->
+    <filter id="bg-glow-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
   </defs>
 
-  <!-- Background Rectangle with Gradient -->
-  <rect x="0" y="0" width="800" height="280" fill="url(#bgGradient)" />
+  <!-- Fundo principal com gradiente escuro e malha/grid -->
+  <rect x="0" y="0" width="800" height="280" fill="url(#backgroundGradient)" />
+  <rect x="0" y="0" width="800" height="280" fill="url(#grid)" opacity="0.2" />
 
-  <!-- Grid Overlay -->
-  <rect x="0" y="0" width="800" height="280" fill="url(#gridPattern)" />
+  <!-- Formas de brilho cyberpunk sutis no fundo -->
+  <circle cx="100" cy="140" r="80" fill="url(#accentGradient)" opacity="0.15" filter="url(#bg-glow-blur)"/>
+  <circle cx="700" cy="140" r="80" fill="url(#accentGradient)" opacity="0.15" filter="url(#bg-glow-blur)"/>
+  <path d="M 0 50 L 800 50 L 750 60 L 50 60 Z" fill="url(#accentGradient)" opacity="0.08" filter="url(#bg-glow-blur)"/>
+  <path d="M 0 230 L 800 230 L 750 220 L 50 220 Z" fill="url(#accentGradient)" opacity="0.08" filter="url(#bg-glow-blur)"/>
 
-  <!-- Cyberpunk Overlay Gradient -->
-  <rect x="0" y="0" width="800" height="280" fill="url(#cyberGradient)" />
+  <!-- Título principal: "Central Atendimento Azure" -->
+  <text x="400" y="120" font-family="'Roboto', sans-serif" font-size="50px" font-weight="bold" fill="#E0F2F7" text-anchor="middle" filter="url(#text-glow-main)">Central Atendimento Azure</text>
 
-  <!-- Main Title - Glow effect (duplicate text, one blurred, one sharp) -->
-  <!-- Glow Layer -->
-  <text x="400" y="110" font-family="Roboto, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#00e7ff" filter="url(#glowBlurOnly)" opacity="0.7">Central Atendimento Azure</text>
-  <!-- Main Text Layer -->
-  <text x="400" y="110" font-family="Roboto, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="url(#titleGradient)">Central Atendimento Azure</text>
+  <!-- Subtítulo / Tags de tecnologias -->
+  <text x="400" y="165" font-family="'Roboto', sans-serif" font-size="22px" fill="#B0D9E8" text-anchor="middle" filter="url(#text-glow-subtle)">Azure OpenAI | Generative AI | Autonomous Agents | RAG | Docker</text>
 
-  <!-- Subtitle/Keywords - with a subtle glow -->
-  <!-- Glow Layer for subtitle -->
-  <text x="400" y="170" font-family="Roboto, sans-serif" font-size="20" text-anchor="middle" fill="#99FFFF" filter="url(#glowBlurOnly)" opacity="0.4">Azure OpenAI | Agentes Autônomos | RAG | FastAPI | Docker</text>
-  <!-- Main Subtitle Layer -->
-  <text x="400" y="170" font-family="Roboto, sans-serif" font-size="20" text-anchor="middle" fill="#99FFFF">Azure OpenAI | Agentes Autônomos | RAG | FastAPI | Docker</text>
 </svg>

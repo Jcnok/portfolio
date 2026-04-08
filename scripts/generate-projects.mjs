@@ -58,8 +58,10 @@ async function generateFallbackImage(repoName, category, tags) {
     const tagsStr = tags && tags.length > 0 ? tags.join(' | ') : category;
 
     const prompt = `Gere APENAS um código SVG válido e extremamente estético (tamanho 800x280) representando o projeto de tecnologia chamado "${title}".
-    O SVG deve usar tema "Dark Mode" (fundos escuros, azul/roxo vibrante, cyberpunk, gradients), efeitos de brilho (glowing effects), malha/grid no fundo, e centralizar o título "${title}" com muito destaque. 
-    Abaixo do título centralizado, inclua os textos em menor escala: "${tagsStr}".
+    O SVG deve usar tema "Dark Mode" (fundos escuros, azul/roxo vibrante, cyberpunk, gradients), efeitos de brilho (glowing effects), malha/grid no fundo.
+    Centralize o título "${title}" com muito destaque (tamanho da fonte máximo 55px, para caber com folga horizontal). 
+    Abaixo do título, inclua os textos: "${tagsStr}" (tamanho da fonte na faixa de 20-25px, texto claro).
+    Garanta que NADA do texto fique cortado nas laterais, utilize "text-anchor='middle'".
     Use uma fonte limpa "sans-serif" ou "Roboto".
     RETORNE APENAS O CÓDIGO DO SVG (pode vir no bloco \`\`\`xml) e NADA MAIS.`;
 
@@ -122,6 +124,7 @@ async function fetchPinnedRepos() {
             repositoryTopics(first: 10) {
               nodes { topic { name } }
             }
+            defaultBranchRef { name }
             openGraphImageUrl
           }
         }
@@ -184,7 +187,8 @@ async function fetchReadme(repoName) {
 // ---------------------------------------------------------------------------
 // 3. Extrair primeira imagem real do README (não badges)
 // ---------------------------------------------------------------------------
-function extractCoverImage(readme, repoName) {
+function extractCoverImage(readme, repoName, defaultBranch) {
+    const branch = defaultBranch || 'main';
     if (!readme) return null;
 
     // Regex para imagens em markdown: ![alt](url)
@@ -194,15 +198,15 @@ function extractCoverImage(readme, repoName) {
     for (const match of matches) {
         const url = match[1];
 
-        // Filtrar badges (shields.io, badgen.net, img.shields.io, etc.)
-        if (/shields\.io|badgen\.net|badge/i.test(url)) continue;
+        // Filtrar badges (shields.io, badgen.net, img.shields.io, andreasbm, etc.)
+        if (/shields\.io|badgen\.net|badge|andreasbm|line/i.test(url)) continue;
 
         // Converter paths relativos para URLs absolutas do raw.githubusercontent
         if (url.startsWith('http')) return url;
 
         // Path relativo: ./img/foo.png ou img/foo.png
         const cleanPath = url.replace(/^\.\//, '');
-        return `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/main/${cleanPath}`;
+        return `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/${cleanPath}`;
     }
 
     // Também checar img tags HTML
@@ -211,11 +215,11 @@ function extractCoverImage(readme, repoName) {
 
     for (const match of htmlMatches) {
         const url = match[1];
-        if (/shields\.io|badgen\.net|badge/i.test(url)) continue;
+        if (/shields\.io|badgen\.net|badge|andreasbm|line/i.test(url)) continue;
 
         if (url.startsWith('http')) return url;
         const cleanPath = url.replace(/^\.\//, '');
-        return `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/main/${cleanPath}`;
+        return `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/${cleanPath}`;
     }
 
     return null;
@@ -340,7 +344,9 @@ async function main() {
 
     for (const repo of pinnedRepos) {
         const readme = await fetchReadme(repo.name);
-        const coverImage = extractCoverImage(readme, repo.name);
+        // default branch ou main fallback
+        const branchName = repo.defaultBranchRef?.name || 'main';
+        const coverImage = extractCoverImage(readme, repo.name, branchName);
         const topics = repo.repositoryTopics.nodes.map((n) => n.topic.name);
 
         // Usar OG image como fallback se não encontrou no README
