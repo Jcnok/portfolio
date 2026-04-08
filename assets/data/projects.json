@@ -5,7 +5,12 @@
     "description": "Aplicação completa desenvolvida durante o bootcamp da Rocketseat, utilizando tecnologias modernas de JavaScript para criação de uma pocket application.",
     "image": "assets/images/projects/nlw-pocket-js.png",
     "category": "web-development",
-    "tags": ["JavaScript", "Node.js", "Rocketseat", "NLW"],
+    "tags": [
+      "JavaScript",
+      "Node.js",
+      "Rocketseat",
+      "NLW"
+    ],
     "codeUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-JS",
     "demoUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-JS"
   },
@@ -15,7 +20,12 @@
     "description": "Projeto desenvolvido no bootcamp da Rocketseat focado em Python, explorando as melhores práticas e ferramentas do ecossistema Python moderno.",
     "image": "assets/images/projects/nlw-pocket-python.png",
     "category": "data-analysis",
-    "tags": ["Python", "Backend", "Rocketseat", "NLW"],
+    "tags": [
+      "Python",
+      "Backend",
+      "Rocketseat",
+      "NLW"
+    ],
     "codeUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-Python",
     "demoUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-Python"
   },
@@ -25,7 +35,12 @@
     "description": "Calculadora de ROI desenvolvida para o Microsoft Innovation Challenge, permitindo análise de retorno sobre investimento com interface intuitiva e cálculos precisos.",
     "image": "assets/images/projects/microsoft-roi.png",
     "category": "data-analysis",
-    "tags": ["Python", "Analytics", "ROI", "Microsoft"],
+    "tags": [
+      "Python",
+      "Analytics",
+      "ROI",
+      "Microsoft"
+    ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
   },
@@ -35,7 +50,12 @@
     "description": "Projeto desenvolvido no Stack Labs para análise e predição de churn de clientes utilizando técnicas avançadas de machine learning.",
     "image": "assets/images/projects/stack-labs-churn.png",
     "category": "machine-learning",
-    "tags": ["Machine Learning", "Churn Analysis", "Python", "Stack Labs"],
+    "tags": [
+      "Machine Learning",
+      "Churn Analysis",
+      "Python",
+      "Stack Labs"
+    ],
     "codeUrl": "https://github.com/Jcnok/Stack_Labs_Churn",
     "demoUrl": "https://github.com/Jcnok/Stack_Labs_Churn"
   },
@@ -45,7 +65,12 @@
     "description": "Sistema CRM completo para provedor de internet usando SQLite, FastAPI e interface moderna para gestão de clientes e serviços.",
     "image": "assets/images/projects/crm-skynet.png",
     "category": "cloud",
-    "tags": ["FastAPI", "SQLite", "CRM", "Python"],
+    "tags": [
+      "FastAPI",
+      "SQLite",
+      "CRM",
+      "Python"
+    ],
     "codeUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
     "demoUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI"
   },
@@ -55,8 +80,13 @@
     "description": "Site portfólio responsivo desenvolvido com HTML5, CSS3 e JavaScript vanilla, apresentando projetos e habilidades em data science.",
     "image": "assets/images/projects/portfolio-professional.png",
     "category": "web-development",
-    "tags": ["HTML", "CSS", "JavaScript", "Portfólio"],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Portfólio"
+    ],
     "codeUrl": "https://github.com/Jcnok/portfolio",
-    "demoUrl": "https://jcnok.github.io/portfolio/"
+    "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
   }
 ]
