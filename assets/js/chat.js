@@ -99,6 +99,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -----------------------------------------------------------------------
+    // Sanitizer — remove tags perigosas, preserva formatação segura
+    // -----------------------------------------------------------------------
+    const ALLOWED_TAGS = ['B', 'I', 'EM', 'STRONG', 'P', 'BR', 'UL', 'OL', 'LI', 'CODE', 'PRE', 'BLOCKQUOTE', 'A', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+    function sanitizeHTML(html) {
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+
+        // Remove scripts, iframes, objects, embeds, forms
+        temp.querySelectorAll('script, iframe, object, embed, form, style, link, meta, base').forEach(el => el.remove());
+
+        // Remove event handlers from all elements
+        temp.querySelectorAll('*').forEach(el => {
+            for (const attr of [...el.attributes]) {
+                if (attr.name.startsWith('on') || attr.name === 'srcdoc' || (attr.name === 'href' && attr.value.trim().toLowerCase().startsWith('javascript:'))) {
+                    el.removeAttribute(attr.name);
+                }
+            }
+        });
+
+        // Ensure links open in new tab safely
+        temp.querySelectorAll('a').forEach(a => {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+        });
+
+        return temp.innerHTML;
+    }
+
+    // -----------------------------------------------------------------------
     // UI Helpers
     // -----------------------------------------------------------------------
     function addMessage(text, className, isMarkdown = false) {
@@ -106,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.className = `message ${className}`;
 
         if (isMarkdown && typeof marked !== 'undefined') {
-            div.innerHTML = marked.parse(text);
+            div.innerHTML = sanitizeHTML(marked.parse(text));
         } else {
             div.innerText = text;
         }

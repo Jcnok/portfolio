@@ -1,405 +1,379 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Portfólio de Ciência de Dados de Julio Cesar Okuda - Especialista em Data Science, Machine Learning e Cloud Computing"
-    />
-    <meta
-      name="keywords"
-      content="ciência de dados, data science, machine learning, portfolio, python, aws, azure"
-    />
-    <meta name="author" content="Julio Cesar Okuda" />
 
-    <title>Julio Cesar Okuda | Data Science Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portfólio de Ciência de Dados de Julio Cesar Okuda - Especialista em Data Science, Machine Learning e Cloud Computing" />
+  <meta name="keywords" content="ciência de dados, data science, machine learning, portfolio, python, aws, azure" />
+  <meta name="author" content="Julio Cesar Okuda" />
 
-    <!-- Aplicar tema imediatamente para evitar flash -->
-    <script>
-      (function () {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDarkScheme = window.matchMedia(
-          '(prefers-color-scheme: dark)'
-        ).matches;
+  <title>Julio Cesar Okuda | Data Science Portfolio</title>
 
-        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      })();
-    </script>
+  <!-- Aplicar tema imediatamente para evitar flash -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDarkScheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="assets/images/icons/favicon.ico"
-      type="image/x-icon"
-    />
+      if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/icons/favicon.ico" type="image/x-icon" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <!-- Header & Navigation -->
-    <header>
-      <div class="container">
-        <nav>
-          <div class="logo">
-            <span class="logo-text">Data Science Portfolio</span>
-          </div>
-          <ul class="nav-links">
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#skills">Habilidades</a></li>
-            <li><a href="#projects">Projetos</a></li>
-            <li><a href="#certifications">Certificações</a></li>
-            <li><a href="#contact">Contato</a></li>
-            <li>
-              <button
-                id="theme-toggle"
-                class="theme-toggle"
-                aria-label="Alternar tema"
-              >
-                <i class="fas fa-moon"></i>
-              </button>
-            </li>
-          </ul>
-          <div class="burger" aria-label="Menu de navegação">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-        </nav>
-      </div>
-    </header>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Hero Section -->
-    <section id="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1>Julio Cesar Okuda</h1>
-            <h2>Desenvolvedor de Automação com IA</h2>
-            <p>Em transição de carreira: Unindo infraestrutura com o poder dos LLMs e Automação.</p>
-            <div class="hero-buttons">
-              <a href="#projects" class="btn primary-btn">
-                <i class="fas fa-project-diagram"></i>
-                Ver Projetos
-              </a>
-              <a href="#contact" class="btn secondary-btn">
-                <i class="fas fa-envelope"></i>
-                Contato
-              </a>
-            </div>
-          </div>
-          <div class="hero-image">
-            <div class="profile-blob"></div>
-            <img
-              src="assets/images/profile/profile.png"
-              alt="Julio Cesar Okuda"
-              class="profile-image"
-            />
-          </div>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Skip to Content (Accessibility) -->
+  <a href="#hero" class="skip-to-content">Pular para o conteúdo</a>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <span class="logo-text">Data Science Portfolio</span>
         </div>
-      </div>
-    </section>
+        <ul class="nav-links">
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#skills">Habilidades</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#certifications">Certificações</a></li>
+          <li><a href="#contact">Contato</a></li>
+          <li>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="burger" aria-label="Menu de navegação">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <!-- About Section -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="about-grid">
-          <div class="about-left">
-            <div class="about-text">
-              <p>
-                Olá! Sou um profissional em <strong>transição de carreira</strong> para a área de Automação com Inteligência Artificial.
-                Minha jornada combina uma base sólida em infraestrutura de TI com novos conhecimentos em <strong>Engenharia de Prompt, n8n e Python</strong>.
-              </p>
-              <p>
-                Atualmente, estou focado em desenvolver <strong>Agentes Autônomos</strong> e workflows de integração que resolvem problemas reais. 
-                Busco oportunidades (Júnior/Pleno) para aplicar minha paixão por tecnologia e minha capacidade de aprendizado contínuo em projetos desafiadores.
-              </p>
-              <div class="resume-buttons">
-                <a href="assets/docs/julio-okuda-ai-engineer.pdf" class="btn secondary-btn" download>
-                  <i class="fas fa-file-pdf"></i> CV AI Engineer
-                </a>
-                <a href="assets/docs/julio-okuda-cloud-data.pdf" class="btn secondary-btn" download>
-                  <i class="fas fa-cloud"></i> CV Cloud e Data
-                </a>
-              </div>
-              <div class="social-links">
-                <a href="https://github.com/Jcnok" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/juliookuda" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:julio.okuda@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <div class="github-stats">
-              <div class="stat-item">
-                <span class="stat-value">15+</span>
-                <span class="stat-label">Projetos de Estudo</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">Migration</span>
-                <span class="stat-label">Foco Atual</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">Python</span>
-                <span class="stat-label">Stack Principal</span>
-              </div>
-            </div>
-          </div>
-          <div class="about-right">
-            <div class="chart-container">
-              <canvas id="skillsChart"></canvas>
-            </div>
-            <div class="experience-timeline-container">
-              <h3>Trajetória Profissional</h3>
-              <div class="experience-timeline">
-                <div class="loading">Carregando experiência...</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Tech Stack e Automação</h2>
-        <div class="skills-content">
-          <div class="skill-category">
-            <h3><i class="fas fa-robot"></i> LLMs e AI Agents</h3>
-            <div class="skill-items">
-              <div class="skill-item"><i class="fas fa-robot"></i><span>Azure OpenAI</span></div>
-              <div class="skill-item"><i class="fas fa-brain"></i><span>Anthropic Claude</span></div>
-              <div class="skill-item"><i class="fas fa-network-wired"></i><span>LangChain</span></div>
-              <div class="skill-item"><i class="fas fa-project-diagram"></i><span>MCP Protocol</span></div>
-              <div class="skill-item"><i class="fas fa-code-branch"></i><span>Aider / Jules</span></div>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-bolt"></i> Workflow e Automação</h3>
-            <div class="skill-items">
-              <div class="skill-item"><i class="fas fa-bolt"></i><span>n8n</span></div>
-              <div class="skill-item"><i class="fas fa-infinity"></i><span>CI/CD Pipelines</span></div>
-              <div class="skill-item"><i class="fab fa-python"></i><span>Python Scripts</span></div>
-              <div class="skill-item"><i class="fas fa-server"></i><span>Serverless</span></div>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-cloud"></i> Cloud e Data Ops</h3>
-            <div class="skill-items">
-              <div class="skill-item"><i class="fab fa-microsoft"></i><span>Azure</span></div>
-              <div class="skill-item"><i class="fab fa-aws"></i><span>AWS</span></div>
-              <div class="skill-item"><i class="fab fa-docker"></i><span>Docker/K8s</span></div>
-              <div class="skill-item"><i class="fas fa-database"></i><span>SQL e NoSQL</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projetos em Destaque</h2>
-        <div class="projects-filter">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="data-analysis">
-            Análise de Dados
-          </button>
-          <button class="filter-btn" data-filter="machine-learning">
-            Machine Learning
-          </button>
-          <button class="filter-btn" data-filter="cloud">
-            Cloud Computing
-          </button>
-        </div>
-        <div class="projects-grid" id="projects-grid">
-          <!-- Os projetos serão carregados via JavaScript -->
-        </div>
-        <div class="projects-more">
-          <a
-            href="https://github.com/Jcnok?tab=repositories"
-            class="btn primary-btn"
-            target="_blank"
-          >
-            <i class="fab fa-github"></i>
-            Ver Todos os Projetos
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications">
-      <div class="container">
-        <h2 class="section-title">Certificações</h2>
-        <div class="certifications-grid">
-          <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank" class="certification-card-link">
-            <div class="certification-card">
-              <div class="certification-logo">
-                <img src="assets/images/badges/microsoft-certified-associate.svg" alt="Microsoft Certified: Associate">
-              </div>
-              <div class="certification-info">
-                <h3>Microsoft Certified: Associate</h3>
-                <p>Data Scientist Associate</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank" class="certification-card-link">
-            <div class="certification-card">
-              <div class="certification-logo">
-                <img src="assets/images/badges/ai-azure.png" alt="Azure AI Fundamentals">
-              </div>
-              <div class="certification-info">
-                <h3>Azure AI Fundamentals</h3>
-                <p>AI-900</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank" class="certification-card-link">
-            <div class="certification-card">
-              <div class="certification-logo">
-                <img src="assets/images/badges/dp-azure.png" alt="Azure Data Fundamentals">
-              </div>
-              <div class="certification-info">
-                <h3>Azure Data Fundamentals</h3>
-                <p>DP-900</p>
-              </div>
-            </div>
-          </a>
-          <a href="https://www.credly.com/users/julio-okuda" target="_blank" class="certification-card-link">
-            <div class="certification-card">
-              <div class="certification-logo">
-                <img src="assets/images/badges/aws-cloud-practitioner.png" alt="AWS Cloud Practitioner">
-              </div>
-              <div class="certification-info">
-                <h3>AWS Cloud Practitioner</h3>
-                <p>Amazon Web Services</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Entre em Contato</h2>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>São Paulo, SP, Brasil</p>
-            </div>
-            <div class="contact-item">
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Julio Cesar Okuda</h1>
+          <h2>Desenvolvedor de Automação com IA</h2>
+          <p>Em transição de carreira: Unindo infraestrutura com o poder dos LLMs e Automação.</p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary-btn">
+              <i class="fas fa-project-diagram"></i>
+              Ver Projetos
+            </a>
+            <a href="#contact" class="btn secondary-btn">
               <i class="fas fa-envelope"></i>
-              <p>julio.okuda@gmail.com</p>
+              Contato
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="profile-blob"></div>
+          <img src="assets/images/profile/profile.png" alt="Julio Cesar Okuda" class="profile-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="about-text">
+            <p>
+              Olá! Sou um profissional em <strong>transição de carreira</strong> para a área de Automação com
+              Inteligência Artificial.
+              Minha jornada combina uma base sólida em infraestrutura de TI com novos conhecimentos em
+              <strong>Engenharia de Prompt, n8n e Python</strong>.
+            </p>
+            <p>
+              Atualmente, estou focado em desenvolver <strong>Agentes Autônomos</strong> e workflows de integração que
+              resolvem problemas reais.
+              Busco oportunidades (Júnior/Pleno) para aplicar minha paixão por tecnologia e minha capacidade de
+              aprendizado contínuo em projetos desafiadores.
+            </p>
+            <div class="resume-buttons">
+              <a href="assets/docs/julio-okuda-ai-engineer.pdf" class="btn secondary-btn" download>
+                <i class="fas fa-file-pdf"></i> CV AI Engineer
+              </a>
+              <a href="assets/docs/julio-okuda-cloud-data.pdf" class="btn secondary-btn" download>
+                <i class="fas fa-cloud"></i> CV Cloud e Data
+              </a>
             </div>
             <div class="social-links">
-              <a
-                href="https://github.com/Jcnok"
-                target="_blank"
-                aria-label="GitHub"
-                ><i class="fab fa-github"></i
-              ></a>
-              <a
-                href="https://linkedin.com/in/juliookuda"
-                target="_blank"
-                aria-label="LinkedIn"
-                ><i class="fab fa-linkedin"></i
-              ></a>
-              <a
-                href="https://dio.me/users/juliookuda"
-                target="_blank"
-                aria-label="DIO"
-                ><i class="fas fa-globe"></i
-              ></a>
+              <a href="https://github.com/Jcnok" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/juliookuda" target="_blank" aria-label="LinkedIn"><i
+                  class="fab fa-linkedin"></i></a>
+              <a href="mailto:julio.okuda@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
           </div>
-          <div class="contact-form">
-            <form id="contactForm">
-              <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="message">Mensagem</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn primary-btn">
-                <i class="fas fa-paper-plane"></i>
-                Enviar Mensagem
-              </button>
-            </form>
+          <div class="github-stats">
+            <div class="stat-item">
+              <span class="stat-value">15+</span>
+              <span class="stat-label">Projetos de Estudo</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Transição IA</span>
+              <span class="stat-label">Foco Atual</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Python</span>
+              <span class="stat-label">Stack Principal</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="chart-container">
+            <canvas id="skillsChart"></canvas>
+          </div>
+          <div class="experience-timeline-container">
+            <h3>Trajetória Profissional</h3>
+            <div class="experience-timeline">
+              <div class="loading">Carregando experiência...</div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>&copy; 2023 Julio Cesar Okuda. Todos os direitos reservados.</p>
-      </div>
-    </footer>
-
-    <!-- Chat Widget -->
-    <div id="chat-widget" class="chat-widget">
-        <button id="chat-toggle" class="chat-toggle" aria-label="Chat com IA">
-            <i class="fas fa-robot"></i>
-        </button>
-        <div class="chat-container hidden">
-            <div class="chat-header">
-                <span><i class="fas fa-robot"></i> Assistant AI</span>
-                <button id="chat-close" style="background:none;border:none;color:white;cursor:pointer;"><i class="fas fa-times"></i></button>
-            </div>
-            <div id="chat-messages" class="chat-messages">
-                <div class="message bot-message">Olá! Sou o assistente virtual do Julio. Pergunte-me sobre projetos, skills ou experiência!</div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
-                <button id="chat-send" style="background:none;border:none;color:var(--accent-primary);cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
     </div>
+  </section>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="assets/js/theme-toggle.js"></script>
-    <script src="assets/js/skills-chart.js"></script>
-    <script src="assets/js/projects.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/chat.js"></script>
-  </body>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Tech Stack e Automação</h2>
+      <div class="skills-content">
+        <div class="skill-category">
+          <h3><i class="fas fa-robot"></i> LLMs e AI Agents</h3>
+          <div class="skill-items">
+            <div class="skill-item"><i class="fas fa-robot"></i><span>Azure OpenAI</span></div>
+            <div class="skill-item"><i class="fas fa-brain"></i><span>Anthropic Claude</span></div>
+            <div class="skill-item"><i class="fas fa-network-wired"></i><span>LangChain</span></div>
+            <div class="skill-item"><i class="fas fa-project-diagram"></i><span>MCP Protocol</span></div>
+            <div class="skill-item"><i class="fas fa-code-branch"></i><span>Aider / Jules</span></div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-bolt"></i> Workflow e Automação</h3>
+          <div class="skill-items">
+            <div class="skill-item"><i class="fas fa-bolt"></i><span>n8n</span></div>
+            <div class="skill-item"><i class="fas fa-infinity"></i><span>CI/CD Pipelines</span></div>
+            <div class="skill-item"><i class="fab fa-python"></i><span>Python Scripts</span></div>
+            <div class="skill-item"><i class="fas fa-server"></i><span>Serverless</span></div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-cloud"></i> Cloud e Data Ops</h3>
+          <div class="skill-items">
+            <div class="skill-item"><i class="fab fa-microsoft"></i><span>Azure</span></div>
+            <div class="skill-item"><i class="fab fa-aws"></i><span>AWS</span></div>
+            <div class="skill-item"><i class="fab fa-docker"></i><span>Docker/K8s</span></div>
+            <div class="skill-item"><i class="fas fa-database"></i><span>SQL e NoSQL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="ai-automation">
+          AI & Automação
+        </button>
+        <button class="filter-btn" data-filter="data-analysis">
+          Análise de Dados
+        </button>
+        <button class="filter-btn" data-filter="machine-learning">
+          Machine Learning
+        </button>
+        <button class="filter-btn" data-filter="web-development">
+          Web Development
+        </button>
+      </div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Os projetos serão carregados via JavaScript -->
+      </div>
+      <div class="projects-more">
+        <a href="https://github.com/Jcnok?tab=repositories" class="btn primary-btn" target="_blank">
+          <i class="fab fa-github"></i>
+          Ver Todos os Projetos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certificações</h2>
+      <div class="certifications-grid">
+        <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank"
+          class="certification-card-link">
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img src="assets/images/badges/microsoft-certified-associate.svg" alt="Microsoft Certified: Associate">
+            </div>
+            <div class="certification-info">
+              <h3>Microsoft Certified: Associate</h3>
+              <p>Data Scientist Associate</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank"
+          class="certification-card-link">
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img src="assets/images/badges/ai-azure.png" alt="Azure AI Fundamentals">
+            </div>
+            <div class="certification-info">
+              <h3>Azure AI Fundamentals</h3>
+              <p>AI-900</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://learn.microsoft.com/users/juliookuda/transcript" target="_blank"
+          class="certification-card-link">
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img src="assets/images/badges/dp-azure.png" alt="Azure Data Fundamentals">
+            </div>
+            <div class="certification-info">
+              <h3>Azure Data Fundamentals</h3>
+              <p>DP-900</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.credly.com/users/julio-okuda" target="_blank" class="certification-card-link">
+          <div class="certification-card">
+            <div class="certification-logo">
+              <img src="assets/images/badges/aws-cloud-practitioner.png" alt="AWS Cloud Practitioner">
+            </div>
+            <div class="certification-info">
+              <h3>AWS Cloud Practitioner</h3>
+              <p>Amazon Web Services</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>São Paulo, SP, Brasil</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>julio.okuda@gmail.com</p>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/Jcnok" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/juliookuda" target="_blank" aria-label="LinkedIn"><i
+                class="fab fa-linkedin"></i></a>
+            <a href="https://dio.me/users/juliookuda" target="_blank" aria-label="DIO"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn primary-btn">
+              <i class="fas fa-paper-plane"></i>
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023–2026 Julio Cesar Okuda. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Chat Widget -->
+  <div id="chat-widget" class="chat-widget">
+    <button id="chat-toggle" class="chat-toggle" aria-label="Chat com IA">
+      <i class="fas fa-robot"></i>
+    </button>
+    <div class="chat-container hidden">
+      <div class="chat-header">
+        <span><i class="fas fa-robot"></i> Assistente IA</span>
+        <button id="chat-close" style="background:none;border:none;color:white;cursor:pointer;"><i
+            class="fas fa-times"></i></button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="message bot-message">Olá! Sou o assistente virtual do Julio. Pergunte-me sobre projetos, skills ou
+          experiência!</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
+        <button id="chat-send" style="background:none;border:none;color:var(--accent-primary);cursor:pointer;"><i
+            class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/skills-chart.js"></script>
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+
 </html>

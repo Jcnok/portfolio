@@ -103,6 +103,25 @@ a:hover {
   color: var(--accent-secondary);
 }
 
+/* Skip to Content — Accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-weight: 600;
+  border-radius: 0 0 var(--border-radius-md) 0;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  color: white;
+}
+
 /* Header & Navigation */
 header {
   background-color: var(--bg-primary);
@@ -142,7 +161,6 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-emphasis-color: transparent;
 }
 
 .nav-links {
@@ -264,7 +282,6 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-emphasis-color: transparent;
 }
 
 .hero-text p {
@@ -412,7 +429,7 @@ section {
 
 .about-text p {
   margin-bottom: 20px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
 }
 
@@ -474,7 +491,6 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-emphasis-color: transparent;
 }
 
 .stat-label {
@@ -702,8 +718,8 @@ section {
 
 .line-clamp-2 {
   display: -webkit-box;
-  line-clamp: 4;
-  -webkit-line-clamp: 4;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1318,8 +1334,9 @@ footer .container {
 
 @media (max-width: 576px) {
   .chat-container {
-    width: 300px;
-    right: -10px;
+    width: calc(100vw - 30px);
+    right: 0;
+    max-width: 350px;
   }
 }
 

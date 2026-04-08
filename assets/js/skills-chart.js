@@ -81,7 +81,7 @@
       labels: labels,
       datasets: [
         {
-          label: 'Skill Level (Relative)',
+          label: 'Nível de Habilidade (Relativo)',
           data: values,
           backgroundColor: 'rgba(59, 130, 246, 0.2)',
           borderColor: 'rgba(59, 130, 246, 1)',
