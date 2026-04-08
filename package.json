@@ -1,0 +1,19 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "Julio Cesar Okuda - Data Science & AI Automation Portfolio",
+    "private": true,
+    "scripts": {
+        "test": "jest --verbose"
+    },
+    "devDependencies": {
+        "jest": "^30.3.0",
+        "jest-environment-jsdom": "^30.3.0"
+    },
+    "jest": {
+        "testEnvironment": "jsdom",
+        "roots": [
+            "<rootDir>/tests"
+        ]
+    }
+}

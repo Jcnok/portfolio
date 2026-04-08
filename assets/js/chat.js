@@ -1,3 +1,8 @@
+/**
+ * Chat Widget Module
+ * UI e lógica do chat widget com tratamento de erros amigável.
+ * @version 2.0.0 (Story 1.3)
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const chatToggle = document.getElementById('chat-toggle');
     const chatContainer = document.querySelector('.chat-container');
@@ -8,7 +13,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!chatToggle) return;
 
+    // -----------------------------------------------------------------------
+    // Mapeamento de errorCode → mensagem amigável em português
+    // -----------------------------------------------------------------------
+    const ERROR_MESSAGES = {
+        RATE_LIMITED: '⏳ Muitas mensagens! Aguarde um momento antes de enviar outra.',
+        QUOTA_EXCEEDED: '🔄 O serviço de IA está sobrecarregado. Tente mais tarde.',
+        MESSAGE_TOO_LONG: '📝 Mensagem muito longa. Tente uma pergunta mais curta (máx. 500 caracteres).',
+        EMPTY_MESSAGE: '💬 Por favor, digite uma mensagem.',
+        INVALID_CONTENT_TYPE: '❌ Erro técnico ao enviar mensagem.',
+        CONFIG_ERROR: '⚙️ O assistente está temporariamente fora do ar.',
+        SERVICE_UNAVAILABLE: '🔄 Serviço de IA temporariamente indisponível. Tente novamente em instantes.',
+        NETWORK_ERROR: '🌐 Erro de conexão. Verifique sua internet e tente novamente.',
+        INVALID_ARGUMENT: '❌ Não foi possível processar sua mensagem.',
+    };
+
+    const DEFAULT_ERROR = '❌ Erro ao conectar com a IA. Tente novamente.';
+
+    /**
+     * Extrai mensagem amigável a partir da resposta de erro da API.
+     * @param {Object} data - Parsed JSON da resposta
+     * @returns {string} Mensagem amigável para exibir no chat
+     */
+    function getFriendlyError(data) {
+        if (data?.errorCode && ERROR_MESSAGES[data.errorCode]) {
+            return ERROR_MESSAGES[data.errorCode];
+        }
+        return data?.error || DEFAULT_ERROR;
+    }
+
+    // -----------------------------------------------------------------------
     // Toggle Chat Visibility
+    // -----------------------------------------------------------------------
     chatToggle.addEventListener('click', () => {
         chatContainer.classList.toggle('hidden');
         if (!chatContainer.classList.contains('hidden')) {
@@ -20,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         chatContainer.classList.add('hidden');
     });
 
+    // -----------------------------------------------------------------------
     // Send Message Logic
+    // -----------------------------------------------------------------------
     async function sendMessage() {
         const text = chatInput.value.trim();
         if (!text) return;
@@ -33,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingId = addTypingIndicator();
 
         try {
-            // Remove any localhost or github.io prefixes if present
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -41,18 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
-            
+
             removeMessage(loadingId);
 
             if (response.ok) {
                 addMessage(data.reply, 'bot-message');
             } else {
-                addMessage('Desculpe, erro ao conectar com a IA.', 'bot-message');
+                addMessage(getFriendlyError(data), 'bot-message');
             }
 
         } catch (error) {
             removeMessage(loadingId);
-            addMessage('Erro de conexão.', 'bot-message');
+            addMessage('🌐 Erro de conexão. Verifique sua internet e tente novamente.', 'bot-message');
         }
     }
 
@@ -61,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
+    // -----------------------------------------------------------------------
+    // UI Helpers
+    // -----------------------------------------------------------------------
     function addMessage(text, className) {
         const div = document.createElement('div');
         div.className = `message ${className}`;
@@ -88,3 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
         if (el) el.remove();
     }
 });
+

@@ -126,3 +126,9 @@ class ProjectManager {
 document.addEventListener('DOMContentLoaded', () => {
   new ProjectManager();
 });
+
+// Exportação condicional para testes (Jest/Node.js).
+// No browser, `module` é undefined, então este bloco é ignorado.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { ProjectManager };
+}
