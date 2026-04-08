@@ -41,7 +41,7 @@ if (existsSync(envPath)) {
 const GITHUB_USER = 'Jcnok';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.1-flash-lite-preview';
 const MAX_README_CHARS = 2000;
 
 // Create images dir if not exists

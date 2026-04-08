@@ -282,6 +282,28 @@ Para que mesmo com a API dinâmica, exista sempre uma snapshot estática atualiz
 
 ---
 
+## Epic 4: Automação Preditiva e Perfil Data-Driven
+
+**Objetivo:** Evoluir os componentes estáticos remanescentes (como gráficos de hard-skills) para painéis orientados a dados extraídos verdadeiramente das atividades globais de desenvolvimento do usuário na nuvem (GitHub), chancelados com insights da I.A.
+
+### Story 4.1: Gráfico de Radar de Habilidades Autônomo (Data-Driven)
+
+**Status:** Done ✅
+
+Como proprietário do portfólio,
+Eu quero que meu Gráfico Radar de habilidades (Chart.js) reflita 100% da minha stack atual real
+Para que a demonstração de conhecimento técnico não dependa de atualizações manuais no frontend e impressione recrutadores por sua veracidade arquitetônica.
+
+**Acceptance Criteria:**
+- AC1: Criar um executável autônomo `scripts/generate-skills.mjs`.
+- AC2: O script deve minerar TODOS os repositórios públicos atrelados ao GitHub do usuário de uma só vez (via API GraphQL).
+- AC3: O script deve consolidar matematicamente o peso de cada linguagem e ferramenta em "Total Size Bytes" e contagem de "Topics" associados a cada micro-serviço da stack.
+- AC4: Todo esse "Big Data" de repositórios extraído da rede deve ser empacotado em Prompt Seguro e despachado pro Agente LLM Gemini 3.1.
+- AC5: O Agente deverá retornar um Output Estrito (`JSON-only`) com categorias normalizadas (0 a 100).
+- AC6: Incluir no workflow primário (`update-projects.yml`) o disparo dessa pipeline diária.
+
+---
+
 ## Verification Plan
 
 ### Automated Tests
