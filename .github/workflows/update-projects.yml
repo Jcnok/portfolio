@@ -40,11 +40,13 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/generate-projects.mjs
 
-      - name: Generate languages.json 📊
+      - name: Generate languages.json 📊 (with Rate Limit Bypass Delay)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/generate-skills.mjs
+        run: |
+          sleep 25
+          node scripts/generate-skills.mjs
 
       - name: Check for changes
         id: changes
