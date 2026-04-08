@@ -82,14 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
             removeMessage(loadingId);
 
             if (response.ok) {
-                addMessage(data.reply, 'bot-message');
+                addMessage(data.reply, 'bot-message', true);
             } else {
-                addMessage(getFriendlyError(data), 'bot-message');
+                addMessage(getFriendlyError(data), 'bot-message', true);
             }
 
         } catch (error) {
             removeMessage(loadingId);
-            addMessage('🌐 Erro de conexão. Verifique sua internet e tente novamente.', 'bot-message');
+            addMessage('🌐 Erro de conexão. Verifique sua internet e tente novamente.', 'bot-message', true);
         }
     }
 
@@ -101,10 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------------------------------------
     // UI Helpers
     // -----------------------------------------------------------------------
-    function addMessage(text, className) {
+    function addMessage(text, className, isMarkdown = false) {
         const div = document.createElement('div');
         div.className = `message ${className}`;
-        div.innerText = text;
+
+        if (isMarkdown && typeof marked !== 'undefined') {
+            div.innerHTML = marked.parse(text);
+        } else {
+            div.innerText = text;
+        }
+
         messagesContainer.appendChild(div);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
         const id = 'msg-' + Date.now();
