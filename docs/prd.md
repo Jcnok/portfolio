@@ -302,6 +302,28 @@ Para que a demonstração de conhecimento técnico não dependa de atualizaçõe
 
 ---
 
+## Epic 5: Delta Analysis & Continuous Improvement
+
+**Objetivo:** Manter a higiene de segurança, UX e acessibilidade no portfólio baseando-se em auditorias sistemáticas do agente.
+
+### Story 5.1: Auditoria e Correções de Segurança, Qualidade e UX (Correct-Course)
+
+**Status:** Done ✅
+
+Como proprietário do portfólio,
+Eu quero aplicar correções recomendadas por análises de delta
+Para garantir que o código seja seguro (prevenção de XSS), acessível, e reflita perfeitamente as regras de negócio de categorias de projetos.
+
+**Acceptance Criteria:**
+- AC1: Sanitizar `marked.parse()` no widget de IA para prevenir Cross-Site Scripting (XSS).
+- AC2: Sincronizar os botões de filtro no frontend com as categorias dinâmicas geradas pelo agente (`ai-automation`, `web-development`).
+- AC3: Atualizar o Copyright dinâmico/estendido do footer.
+- AC4: Ajustar consistência de nomenclature e UI, como a sigla de transição e nome do Chat Widget (PT-BR).
+- AC5: Adicionar suporte para navegação por teclado (`skip-to-content` link).
+- AC6: Limpar arquivos de exemplo (`.env.example`) mantendo apénas as dependências necessárias para a pipeline local.
+
+---
+
 ## Verification Plan
 
 ### Automated Tests
