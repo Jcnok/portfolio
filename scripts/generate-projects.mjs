@@ -300,10 +300,14 @@ async function main() {
         // Encontrar dados do Gemini para este repo
         const gemini = geminiResults?.find((r) => r.name === repo.name) || fallbackEnrich(repo);
 
+        // Limita a descrição natural do github se não existir
+        const nativeDesc = repo.description || `Projeto de código aberto: ${formatTitle(repo.name)}`;
+
         return {
             id: index + 1,
             title: formatTitle(repo.name),
-            description: gemini.summary || repo.description || '',
+            description: nativeDesc,
+            resume: gemini.summary || nativeDesc,
             image: repo.coverImage || 'assets/images/projects/default-project.png',
             category: gemini.category || 'web-development',
             tags: gemini.highlightTags || repo.topics.slice(0, 5),

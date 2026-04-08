@@ -65,7 +65,7 @@ class ProjectManager {
         <div class="ai-tooltip">
           <i class="fas fa-robot"></i>
           <strong>AI Analysis:</strong>
-          <p>${project.description}</p>
+          <p>${project.resume}</p>
         </div>
       </div>
       <div class="project-info">
