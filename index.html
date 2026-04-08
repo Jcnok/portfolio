@@ -61,6 +61,7 @@
           <li><a href="#skills">Habilidades</a></li>
           <li><a href="#projects">Projetos</a></li>
           <li><a href="#certifications">Certificações</a></li>
+          <li><a href="#cv-generator" id="nav-cv-generator">Gerar CV IA</a></li>
           <li><a href="#contact">Contato</a></li>
           <li>
             <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
@@ -123,14 +124,7 @@
               Busco oportunidades (Júnior/Pleno) para aplicar minha paixão por tecnologia e minha capacidade de
               aprendizado contínuo em projetos desafiadores.
             </p>
-            <div class="resume-buttons">
-              <a href="assets/docs/julio-okuda-ai-engineer.pdf" class="btn secondary-btn" download>
-                <i class="fas fa-file-pdf"></i> CV AI Engineer
-              </a>
-              <a href="assets/docs/julio-okuda-cloud-data.pdf" class="btn secondary-btn" download>
-                <i class="fas fa-cloud"></i> CV Cloud e Data
-              </a>
-            </div>
+
             <div class="social-links">
               <a href="https://github.com/Jcnok" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
               <a href="https://linkedin.com/in/juliookuda" target="_blank" aria-label="LinkedIn"><i
@@ -367,11 +361,47 @@
     </div>
   </div>
 
+  <!-- CV Generator Modal -->
+  <div id="cv-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-magic"></i> Gerador de Currículo IA (ATS)</h3>
+        <button id="cv-modal-close" class="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div id="cv-step-1">
+          <p style="margin-bottom: 10px;">Cole a descrição da vaga. A IA analisará a compatibilidade e moldará meu
+            currículo aos seus requisitos.</p>
+          <textarea id="job-description-input" rows="8"
+            placeholder="Ex: Engenheiro de Machine Learning para trabalhar com Python, Modelos LLM e RAG..."></textarea>
+          <button id="cv-generate-btn" class="btn primary-btn" style="width: 100%;"><i class="fas fa-cogs"></i> Analisar
+            Vaga & Gerar CV</button>
+        </div>
+        <div id="cv-loading" class="hidden" style="text-align: center; margin: 40px 0;">
+          <div class="typing-indicator" style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <span style="font-size:3rem">.</span><span style="font-size:3rem">.</span><span
+              style="font-size:3rem">.</span>
+          </div>
+          <p>Processando requisitos e montando currículo ATS (aprox. 15s)...</p>
+        </div>
+        <div id="cv-result" class="hidden">
+          <div class="cv-output-markdown content-formatted" id="cv-output-content"></div>
+          <div class="cv-actions">
+            <button id="cv-download-btn" class="btn primary-btn"><i class="fas fa-download"></i> Baixar Análise e CV
+              (.md)</button>
+            <button id="cv-cancel-btn" class="btn secondary-btn">Nova Vaga</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="assets/js/theme-toggle.js"></script>
   <script src="assets/js/skills-chart.js"></script>
   <script src="assets/js/projects.js"></script>
+  <script src="assets/js/cv-generator.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/chat.js"></script>
 </body>
