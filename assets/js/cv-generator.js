@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Render combined markdown to HTML for visual preview
             let visualPreview = '';
-            visualPreview += '# Relatório de Compatibilidade\n' + relatorioMarkdown + '\n\n';
-            visualPreview += '# Currículo Personalizado\n' + currículoMarkdown + '\n\n';
-            visualPreview += '# Carta de Apresentação\n' + cartaMarkdown + '\n\n';
+            visualPreview += '<h2 style="color:var(--accent-primary); border-bottom:1px solid var(--border-color); padding-bottom:10px;">1. Relatório de Avaliação</h2>\n\n' + relatorioMarkdown + '\n\n';
+            visualPreview += '<h2 style="color:var(--accent-primary); border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-top:20px;">2. Currículo Personalizado</h2>\n\n' + currículoMarkdown + '\n\n';
+            visualPreview += '<h2 style="color:var(--accent-primary); border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-top:20px;">3. Carta de Apresentação</h2>\n\n' + cartaMarkdown + '\n\n';
 
             if (typeof marked !== 'undefined') {
                 outputContent.innerHTML = marked.parse(visualPreview);

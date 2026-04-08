@@ -325,6 +325,37 @@ Para garantir que o código seja seguro (prevenção de XSS), acessível, e refl
 
 ---
 
+## Epic 6: Gerador Inteligente de Currículo (ATS) com I.A. 
+
+**Objetivo:** Transformar as opções estáticas de download de CV em um "Agente de Currículo" dinâmico que lê vagas providenciadas pelo usuário e retorna formato sob medida cruzando dados reias (sem alucinações).
+
+### Story 6.1: UX e Endpoint Gerador de Curriculos
+**Status:** Done ✅
+
+Como visitante,
+Eu quero ter a opção "Gerar CV IA" via menu lateral abrindo um Modal focado,
+Para fornecer a URL/descrição da vaga e receber um currículo sob medida para os CRitérios ATS.
+
+**Acceptance Criteria:**
+- AC1: Remover os 2 botões fixos de download da tela principal e criar o menu `Gerar CV IA`.
+- AC2: Exibir Modal com instrução, textarea para a vaga, botão de submit e barra de loader discreta.
+- AC3: Criar um Vercel Serverless func em `/api/generate-cv` injetando no System Prompt (Gemini API) OS DADOS REAIS E VERÍDICOS DE JULIO.
+- AC4: O prompt do backend **deve ter Zero-Shot Tolerance** para Invenções (formação na UNINOVE e Descomplica, e links oficiais do GitHub).
+
+### Story 6.2: Refinamento de Dados Perfil e Outputs
+**Status:** Done ✅
+
+Como usuário administrador do perfil,
+Eu quero que a separação dos arquivos seja pura e absoluta,
+Para baixar individualmente o .doc sem títulos gerados pela I.A e sem erros de Instituição de Ensino.
+
+**Acceptance Criteria:**
+- AC1: O perfil embutido no Backend NÃO PODE conter `USP/Esalq` e `FIAP`. DEVE refletir estritamente o `assets/data/curriculo-default/Curriculo_JULIO_OKUDA.md`.
+- AC2: Os Projetos Principais listados no prompt do CV devem conter a URL obrigatória vinculada a base `assets/data/projects.json`.
+- AC3: O frontend deve realizar um `Split` rigoroso em três botões: `Baixar Relatório`, `Baixar Currículo`, `Baixar Carta`, todos no modelo *.DOC* de estrutura limpa sem injeção de `# Títulos de Seção` provenientes da IA.
+
+---
+
 ## Verification Plan
 
 ### Automated Tests
