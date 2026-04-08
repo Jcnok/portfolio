@@ -91,7 +91,7 @@ async function generateFallbackImage(repoName, category, tags) {
     RETORNE APENAS O CÓDIGO DO SVG (pode vir no bloco \`\`\`xml) e NADA MAIS.`;
 
     try {
-        const response = await fetch(
+        const response = await fetchWithRetry(
             `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: 'POST',
@@ -250,8 +250,28 @@ function extractCoverImage(readme, repoName, defaultBranch) {
     return null;
 }
 
+async function fetchWithRetry(url, options, retries = 3, delayMs = 15000) {
+    for (let i = 0; i < retries; i++) {
+        const response = await fetch(url, options);
+        if (response.ok) return response;
+
+        const err = await response.json();
+        const code = err?.error?.code || response.status;
+        if (code !== 429 && code !== 503) {
+            throw new Error(err?.error?.message || 'Erro desconhecido da API');
+        }
+
+        if (i < retries - 1) {
+            console.log(`   ⏳ API ocupada (Erro ${code}). Tentando novamente em ${delayMs / 1000}s...`);
+            await new Promise(r => setTimeout(r, delayMs));
+        } else {
+            throw new Error(`Falha persistente após ${retries} tentativas: ${err?.error?.message}`);
+        }
+    }
+}
+
 // ---------------------------------------------------------------------------
-// 4. Gemini 2.5 Flash — Análise criativa em batch
+// 4. Gemini — Análise criativa em batch
 // ---------------------------------------------------------------------------
 async function enrichWithGemini(repos) {
     if (!GEMINI_API_KEY) {
@@ -259,7 +279,7 @@ async function enrichWithGemini(repos) {
         return null;
     }
 
-    console.log('🤖 Chamando Gemini 2.5 Flash para análise criativa...');
+    console.log(`🤖 Chamando ${GEMINI_MODEL} para análise criativa...`);
 
     const repoSummaries = repos.map((r) => ({
         name: r.name,
@@ -287,7 +307,7 @@ REGRAS:
 - Resumos devem ser profissionais e impressionar recrutadores`;
 
     try {
-        const response = await fetch(
+        const response = await fetchWithRetry(
             `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: 'POST',
