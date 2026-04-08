@@ -370,12 +370,24 @@
       </div>
       <div class="modal-body">
         <div id="cv-step-1">
-          <p style="margin-bottom: 10px;">Cole a descrição da vaga. A IA analisará a compatibilidade e moldará meu
-            currículo aos seus requisitos.</p>
-          <textarea id="job-description-input" rows="8"
-            placeholder="Ex: Engenheiro de Machine Learning para trabalhar com Python, Modelos LLM e RAG..."></textarea>
-          <button id="cv-generate-btn" class="btn primary-btn" style="width: 100%;"><i class="fas fa-cogs"></i> Analisar
-            Vaga & Gerar CV</button>
+          <div style="margin-bottom: 15px; color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+            <p style="margin-bottom: 8px;"><strong>Recrutador, sei que seu tempo é extremamente valioso.</strong> Em vez
+              de submeter um documento estático e genérico, desenvolvi este Agente de Integração como demonstração
+              direta do meu trabalho.</p>
+            <p style="margin-bottom: 8px;">Forneça abaixo o <strong>Link da Vaga</strong>, a <strong>Descrição de
+                Requisitos</strong>, ou ambos. Imediatamente, minha IA fará uma leitura profunda da sua oportunidade,
+              cruzando as demandas exclusivamente com meus <strong>dados, código e experiências 100% reais</strong>.</p>
+            <p>O resultado será entregue na sua mão em segundos:
+              <br>📊 Um <strong>Relatório de Compatibilidade</strong> transparente (mostrando forças e lacunas reais)
+              <br>📄 Um <strong>Currículo Otimizado (ATS)</strong> desenhado para os seus desafios
+              <br>✉️ Uma <strong>Carta de Apresentação</strong> cirúrgica.
+            </p>
+          </div>
+          <textarea id="job-description-input" rows="6"
+            placeholder="Cole aqui o Link da vaga e/ou todo o texto de Requisitos e Responsabilidades..."></textarea>
+          <button id="cv-generate-btn" class="btn primary-btn"
+            style="width: 100%; padding: 12px; font-size: 1.05rem;"><i class="fas fa-magic"></i> Analisar Vaga & Gerar
+            Dossiê Inteligente</button>
         </div>
         <div id="cv-loading" style="display: none; text-align: center; margin: 40px 0;">
           <div class="typing-indicator" style="display: flex; justify-content: center; margin-bottom: 20px;">
