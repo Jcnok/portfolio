@@ -221,13 +221,11 @@ Para que as descrições, categorias e resumos dos projetos sejam profissionais 
 - AC4: Se a API Gemini falhar, utilizar fallback: `description` original como `summary`, `language` como `category` base, e `topics` como `highlightTags`.
 - AC5: O agente deve ser instruído para retornar as respostas em formato JSON parseable, não em markdown.
 
-**Dev Notes:**
-- Reutilizar a env var `GEMINI_API_KEY` já existente no Vercel.
-- O prompt deve incluir instruções claras:
-  - "Você é um consultor de portfólio focado em Data Science e AI."
-  - "Crie resumos que impressionem recrutadores técnicos."
-  - "Responda APENAS em JSON válido, sem markdown."
-- Rate limiting: processar todos os repos em uma única chamada batch (1 prompt com todos os repos) para economizar quota.
+**Dev Notes (Resiliência & Ops):**
+- Reutilizar a env var `GEMINI_API_KEY` (Obrigatório ser persistida como `Repository Secret` no GitHub Configs, evitando isolamento de `Environment Secrets`).
+- Devido às falhas crônicas de limite RPM no Free-Tier (Rate Limiting e *Error 503 HTTP: Spikes in High Demand*), todo o bloco isolado de consumo REST para os modelos do Gemini DEVE possuir uma barreira impenetrável de retentativas. Foi imposto um Wrapper `fetchWithRetry` em JavaScript aplicando um *Exponential Backoff* e delays de "Sleep" (Ex: `sleep(15000)` entre rejeições) evitando Crash de CI.
+- O modelo primário ideal para manter consistência sem Timeout de geração é o `gemini-3.1-flash-lite-preview` que apresenta um JSON object-array nativo sem falhas. 
+- O prompt deve incluir instruções claras (ex: "Você é um consultor...", "Responda APENAS em JSON").
 
 ---
 
