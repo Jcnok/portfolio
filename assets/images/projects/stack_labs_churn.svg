@@ -1,0 +1,29 @@
+<svg width="800" height="280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c026d3;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="280" fill="#0f172a"/>
+  <rect width="800" height="280" fill="url(#grid)"/>
+  
+  <text x="400" y="130" font-family="sans-serif" font-size="55" font-weight="bold" fill="url(#grad)" text-anchor="middle" filter="url(#glow)">Stack Labs Churn</text>
+  
+  <text x="400" y="180" font-family="sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">
+    <tspan x="400" dy="0">Scikit-learn | Pandas | Machine-Learning | EDA</tspan>
+  </text>
+  
+  <line x1="250" y1="200" x2="550" y2="200" stroke="#4f46e5" stroke-width="2" stroke-opacity="0.5"/>
+</svg>

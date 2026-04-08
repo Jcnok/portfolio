@@ -1,0 +1,31 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.1"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad)" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+  
+  <text x="400" y="130" font-family="Roboto, sans-serif" font-size="50" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#glow)">
+    Central Atendimento Azure
+  </text>
+  
+  <text x="400" y="180" font-family="Roboto, sans-serif" font-size="22" fill="#60a5fa" text-anchor="middle">
+    <tspan>RAG | Azure-OpenAI | PostgreSQL | FastAPI</tspan>
+  </text>
+  
+  <path d="M 250 200 L 550 200" stroke="#8b5cf6" stroke-width="2" stroke-opacity="0.5" />
+</svg>

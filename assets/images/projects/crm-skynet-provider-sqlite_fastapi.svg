@@ -1,0 +1,25 @@
+<svg width="800" height="280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c026d3;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e1b4b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="280" fill="#0f172a"/>
+  <rect width="800" height="280" fill="url(#grid)"/>
+
+  <text x="400" y="120" font-family="Roboto, sans-serif" font-size="36" font-weight="bold" fill="url(#glow)" text-anchor="middle" filter="drop-shadow(0 0 8px #4f46e5)">
+    CRM Skynet Provider SQLite FastAPI
+  </text>
+
+  <text x="400" y="170" font-family="Roboto, sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">
+    <tspan x="400" dy="0">FastAPI | SQLite | API-REST</tspan>
+    <tspan x="400" dy="30">Data-Engineering</tspan>
+  </text>
+  
+  <line x1="250" y1="140" x2="550" y2="140" stroke="#c026d3" stroke-width="2" opacity="0.5" />
+</svg>

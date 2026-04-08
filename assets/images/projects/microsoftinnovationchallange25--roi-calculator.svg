@@ -1,0 +1,32 @@
+<svg width="800" height="280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0b2e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="280" fill="url(#grad)" />
+  
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2d2d44" stroke-width="0.5"/>
+  </pattern>
+  <rect width="800" height="280" fill="url(#grid)" />
+
+  <text x="400" y="130" font-family="Roboto, sans-serif" font-size="27px" font-weight="bold" fill="#00e5ff" text-anchor="middle" filter="url(#glow)" style="text-transform: uppercase; letter-spacing: 1px;">
+    MicrosoftInnovationChallange25 ROI Calculator
+  </text>
+  
+  <text x="400" y="180" font-family="Roboto, sans-serif" font-size="22px" fill="#e0e0e0" text-anchor="middle">
+    <tspan x="400" dy="0">Azure-OpenAI | Streamlit | Python | Docker</tspan>
+  </text>
+
+  <rect x="250" y="210" width="300" height="2" fill="#7b2cbf" />
+</svg>
