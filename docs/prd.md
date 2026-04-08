@@ -98,35 +98,49 @@ Para garantir que o deploy na Vercel seja precedido de validação de qualidade.
 
 **Objetivo:** Tornar a seção de projetos 100% autônoma e dinâmica. O portfólio deve refletir automaticamente os repositórios pinados do GitHub, eliminando a necessidade de atualização manual do `projects.json`. Um agente Gemini analisa cada repositório e gera conteúdo estratégico e criativo para maximizar o impacto visual e informativo.
 
-### Arquitetura Proposta
+### Seleção de Modelos de IA (Free Tier)
+
+| Caso de Uso | Modelo | RPM | RPD | Justificativa |
+|-------------|--------|-----|-----|---------------|
+| **Chat Widget** | `gemini-3.1-flash-lite` | 15 | 500 | Baixa latência, quota generosa para interação com visitantes |
+| **Agente Criativo** | `gemini-2.5-flash` | 5 | 20 | Modelo mais capaz, 250K TPM para processar READMEs em batch. Roda apenas 1-2x/dia no Actions |
+| **Capas Fallback** | `imagen-4-ultra-generate` | - | 25 | Qualidade máxima, latência irrelevante (build-time) |
+
+### Arquitetura — Build-time via GitHub Actions
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     FLUXO AUTÔNOMO                              │
+│              FLUXO AUTÔNOMO (GitHub Actions)                    │
 │                                                                 │
-│  GitHub Pinned Repos                                            │
+│  Trigger: cron diário (06:00 UTC) + workflow_dispatch           │
 │        │                                                        │
 │        ▼                                                        │
-│  Vercel Serverless: /api/projects                               │
+│  scripts/generate-projects.mjs                                  │
 │        │                                                        │
 │        ├─► GitHub GraphQL API → repos pinados (metadata)        │
-│        │     - id, name, description, url, language             │
-│        │     - topics, homepageUrl, openGraphImageUrl            │
+│        │     - name, description, url, language, topics          │
+│        │     - homepageUrl, openGraphImageUrl                    │
 │        │                                                        │
 │        ├─► GitHub REST API → README.md de cada repo             │
-│        │     - Extrair primeira imagem (gif/png/jpg) → capa     │
-│        │     - Se não encontrar → fallback para OG image        │
-│        │     - Se não encontrar → capa padrão por linguagem     │
+│        │     - Extrair primeira imagem real (não badges)         │
+│        │     - Converter paths relativos → URLs absolutas        │
+│        │     - Fallback: openGraphImageUrl → null                │
 │        │                                                        │
-│        ├─► Gemini API → Agente de Análise Criativa              │
-│        │     - Input: name, description, topics, README          │
-│        │     - Output: resumo estratégico (hover tooltip)        │
-│        │     - Output: categoria sugerida para filtro            │
+│        ├─► Gemini 2.5 Flash → Agente de Análise Criativa        │
+│        │     - Input: batch de todos os repos + READMEs          │
+│        │     - Output: summary, category, highlightTags          │
+│        │                                                        │
+│        ├─► Imagen 4 Ultra → Capas para repos sem imagem         │
+│        │     (apenas se coverImage === null)                     │
 │        │                                                        │
 │        ▼                                                        │
-│  Response JSON → Frontend renderiza dinamicamente               │
+│  assets/data/projects.json (commit + push se houve mudanças)    │
+│        │                                                        │
+│        ▼                                                        │
+│  Vercel auto-deploy → Frontend renderiza via fetch estático     │
 └─────────────────────────────────────────────────────────────────┘
 ```
+
 
 ---
 

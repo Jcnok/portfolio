@@ -1,92 +1,99 @@
 [
   {
     "id": 1,
-    "title": "Bootcamp Rocketseat - NLW #17 Pocket JS",
-    "description": "Aplicação completa desenvolvida durante o bootcamp da Rocketseat, utilizando tecnologias modernas de JavaScript para criação de uma pocket application.",
-    "image": "assets/images/projects/nlw-pocket-js.png",
-    "category": "web-development",
+    "title": "Desafio Langflow",
+    "description": "Desenvolveu uma plataforma de atendimento ao cliente \"Rote.IA\" utilizando IA generativa para roteamento semântico, substituindo chatbots tradicionais por um sistema fluído e inteligente. O projeto demonstra proficiência em orquestração de LLMs com Langflow, integração de APIs (CRM-Skynet) e containerização Docker para escalabilidade, resultando em interações humanizadas e resolução eficiente de consultas.",
+    "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
+    "category": "ai-automation",
     "tags": [
-      "JavaScript",
-      "Node.js",
-      "Rocketseat",
-      "NLW"
+      "LLM Orchestration",
+      "Semantic Routing",
+      "Langflow",
+      "Docker",
+      "Customer Service AI"
     ],
-    "codeUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-JS",
-    "demoUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-JS"
+    "codeUrl": "https://github.com/Jcnok/Desafio-Langflow",
+    "demoUrl": "https://github.com/Jcnok/Desafio-Langflow"
   },
   {
     "id": 2,
-    "title": "Bootcamp Rocketseat - NLW #17 Pocket Python",
-    "description": "Projeto desenvolvido no bootcamp da Rocketseat focado em Python, explorando as melhores práticas e ferramentas do ecossistema Python moderno.",
-    "image": "assets/images/projects/nlw-pocket-python.png",
+    "title": "Crm System",
+    "description": "Implementou um pipeline de dados end-to-end para análise de vendas em um CRM, integrando Streamlit para dashboards interativos e LangChain com Gemini-1.5-flash para consultas em linguagem natural. A arquitetura robusta inclui dbt para transformação de dados em camadas (bronze, silver, gold) e FastAPI para disponibilização de KPIs em tempo real, evidenciando expertise em engenharia de dados e LLM-powered analytics.",
+    "image": "https://raw.githubusercontent.com/Jcnok/crm-system/main/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
-      "Python",
-      "Backend",
-      "Rocketseat",
-      "NLW"
+      "Data Engineering",
+      "dbt",
+      "LangChain",
+      "LLM Integration",
+      "Streamlit"
     ],
-    "codeUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-Python",
-    "demoUrl": "https://github.com/Jcnok/Bootcamp-Rocketseat-NLW-17-Pocket-Python"
+    "codeUrl": "https://github.com/Jcnok/crm-system",
+    "demoUrl": "https://crm-system.streamlit.app/"
   },
   {
     "id": 3,
-    "title": "Microsoft Innovation Challenge ROI Calculator",
-    "description": "Calculadora de ROI desenvolvida para o Microsoft Innovation Challenge, permitindo análise de retorno sobre investimento com interface intuitiva e cálculos precisos.",
-    "image": "assets/images/projects/microsoft-roi.png",
-    "category": "data-analysis",
+    "title": "MicrosoftInnovationChallange25  ROI Calculator",
+    "description": "Desenvolveu o \"ROI Vision\", uma ferramenta inteligente para análise e comparação de projetos utilizando Azure OpenAI e Streamlit. O projeto, criado em um hackathon, demonstra a aplicação ágil de IA generativa em cenários de negócios e a capacidade de deploy via Docker.",
+    "image": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png",
+    "category": "ai-automation",
     "tags": [
-      "Python",
-      "Analytics",
-      "ROI",
-      "Microsoft"
+      "Azure OpenAI",
+      "Generative AI",
+      "Streamlit",
+      "ROI Analysis",
+      "Docker"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
   },
   {
     "id": 4,
-    "title": "Análise de Churn - Stack Labs",
-    "description": "Projeto desenvolvido no Stack Labs para análise e predição de churn de clientes utilizando técnicas avançadas de machine learning.",
-    "image": "assets/images/projects/stack-labs-churn.png",
+    "title": "Stack Labs Churn",
+    "description": "Construiu um modelo de Machine Learning para prever o churn de clientes, alcançando 84% de acurácia e F1-score de 0.76, visando a retenção proativa. O projeto abrange desde Análise Exploratória de Dados (EDA) até a modelagem com Scikit-learn, e menciona Streamlit para deploy, demonstrando um ciclo completo de desenvolvimento de solução preditiva.",
+    "image": "assets/images/projects/default-project.png",
     "category": "machine-learning",
     "tags": [
+      "Churn Prediction",
       "Machine Learning",
-      "Churn Analysis",
-      "Python",
-      "Stack Labs"
+      "Scikit-learn",
+      "Data Analysis",
+      "Predictive Modeling"
     ],
     "codeUrl": "https://github.com/Jcnok/Stack_Labs_Churn",
     "demoUrl": "https://github.com/Jcnok/Stack_Labs_Churn"
   },
   {
     "id": 5,
-    "title": "CRM Skynet Provider - FastAPI",
-    "description": "Sistema CRM completo para provedor de internet usando SQLite, FastAPI e interface moderna para gestão de clientes e serviços.",
-    "image": "assets/images/projects/crm-skynet.png",
-    "category": "cloud",
+    "title": "CRM Skynet Provider SQLite FastAPI",
+    "description": "Desenvolveu um sistema CRM robusto para gerenciamento de clientes, planos e contratos, utilizando FastAPI para uma API RESTful de alta performance e SQLite para persistência de dados. O projeto demonstra proficiência em engenharia de backend, containerização com Docker e a criação de endpoints eficientes para manipulação de dados em tempo real.",
+    "image": "assets/images/projects/default-project.png",
+    "category": "web-development",
     "tags": [
       "FastAPI",
-      "SQLite",
-      "CRM",
-      "Python"
+      "REST API",
+      "Docker",
+      "Backend Development",
+      "SQL"
     ],
     "codeUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
-    "demoUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI"
+    "demoUrl": "https://jcnok-skynet.hf.space/docs#/"
   },
   {
     "id": 6,
-    "title": "Portfólio Profissional",
-    "description": "Site portfólio responsivo desenvolvido com HTML5, CSS3 e JavaScript vanilla, apresentando projetos e habilidades em data science.",
-    "image": "assets/images/projects/portfolio-professional.png",
-    "category": "web-development",
+    "title": "Central Atendimento Azure",
+    "description": "Liderou o desenvolvimento de uma Central de Atendimento Inteligente em hackathon, utilizando Azure OpenAI (GPT-4o) para orquestração de agentes autônomos especializados e RAG com PostgreSQL (pgvector). A solução integra FastAPI para o backend e React para o frontend, demonstrando expertise em arquitetura de IA generativa escalável e microsserviços em ambiente Azure.",
+    "image": "assets/images/projects/default-project.png",
+    "category": "ai-automation",
     "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Portfólio"
+      "Azure OpenAI",
+      "Generative AI",
+      "RAG",
+      "Autonomous Agents",
+      "FastAPI",
+      "Microservices"
     ],
-    "codeUrl": "https://github.com/Jcnok/portfolio",
-    "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
+    "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
+    "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
   }
 ]
