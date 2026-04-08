@@ -6,6 +6,13 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch:
     # Permite disparar manualmente (ao pinar/despinar repos)
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/generate-projects.mjs'
+      - 'scripts/generate-skills.mjs'
+      - '.github/workflows/update-projects.yml'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
