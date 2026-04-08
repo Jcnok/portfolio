@@ -57,12 +57,18 @@ async function generateFallbackImage(repoName, category, tags) {
     const title = formatTitle(repoName);
     const tagsStr = tags && tags.length > 0 ? tags.join(' | ') : category;
 
+    // Calcula tamanho ideal da fonte para não estourar a viewBox (800px)
+    // Assumimos que cada caractere ocupa aprox 60% do font-size.
+    const titleSize = Math.max(20, Math.min(55, Math.floor(750 / (title.length * 0.6))));
+    const tagsSize = Math.max(14, Math.min(22, Math.floor(750 / (tagsStr.length * 0.5))));
+
     const prompt = `Gere APENAS um código SVG válido e extremamente estético (tamanho 800x280) representando o projeto de tecnologia chamado "${title}".
     O SVG deve usar tema "Dark Mode" (fundos escuros, azul/roxo vibrante, cyberpunk, gradients), efeitos de brilho (glowing effects), malha/grid no fundo.
-    Centralize o título "${title}" com muito destaque (tamanho da fonte máximo 55px, para caber com folga horizontal). 
-    Abaixo do título, inclua os textos: "${tagsStr}" (tamanho da fonte na faixa de 20-25px, texto claro).
-    Garanta que NADA do texto fique cortado nas laterais, utilize "text-anchor='middle'".
+    Centralize o título "${title}" com muito destaque (tamanho da fonte EXATAMENTE ${titleSize}px). 
+    Abaixo do título, inclua os textos: "${tagsStr}" (tamanho da fonte EXATAMENTE ${tagsSize}px, texto claro).
+    Garanta que NADA do texto fique cortado nas laterais, utilize OBRIGATORIAMENTE "text-anchor='middle'" no SVG.
     Use uma fonte limpa "sans-serif" ou "Roboto".
+    Faça uso de quebra de linhas no SVG (<tspan>) se achar que a string das linguagens ficou comprida demais.
     RETORNE APENAS O CÓDIGO DO SVG (pode vir no bloco \`\`\`xml) e NADA MAIS.`;
 
     try {
@@ -386,6 +392,8 @@ async function main() {
 
         let coverImg = repo.coverImage;
         if (!coverImg) {
+            // Aguarda 5 segundos entre as requisições de geração de imagem para evitar Quota Limit do Gemini
+            await new Promise(r => setTimeout(r, 5000));
             coverImg = await generateFallbackImage(repo.name, gemini.category || 'tech', gemini.highlightTags || repo.topics.slice(0, 5));
         }
 
