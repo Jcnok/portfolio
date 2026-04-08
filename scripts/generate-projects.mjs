@@ -40,10 +40,10 @@ function formatTitle(name) {
 }
 
 // ---------------------------------------------------------------------------
-// 6.5 Generative AI Image Fallback (Pollinations.ai)
+// 6.5 Generative AI Image Fallback (Gemini SVG Gen)
 // ---------------------------------------------------------------------------
-async function generateFallbackImage(repoName, category) {
-    const filename = `${repoName.toLowerCase()}.jpg`;
+async function generateFallbackImage(repoName, category, tags) {
+    const filename = `${repoName.toLowerCase()}.svg`;
     const filepath = join(IMAGES_DIR, filename);
     const localUrl = `assets/images/projects/${filename}`;
 
@@ -52,24 +52,53 @@ async function generateFallbackImage(repoName, category) {
         return localUrl;
     }
 
-    console.log(`   🎨 Gerando capa AI via Pollinations para: ${repoName}...`);
+    console.log(`   🎨 Gerando SVG via Gemini para: ${repoName}...`);
 
-    const prompt = encodeURIComponent(
-        `High quality professional futuristic abstract geometric IT technology concept art for a project named ${formatTitle(repoName)}, theme: ${category}, dark futuristic glowing colors, neon glassmorphism`
-    );
+    const title = formatTitle(repoName);
+    const tagsStr = tags && tags.length > 0 ? tags.join(' | ') : category;
+
+    const prompt = `Gere APENAS um código SVG válido e extremamente estético (tamanho 800x280) representando o projeto de tecnologia chamado "${title}".
+    O SVG deve usar tema "Dark Mode" (fundos escuros, azul/roxo vibrante, cyberpunk, gradients), efeitos de brilho (glowing effects), malha/grid no fundo, e centralizar o título "${title}" com muito destaque. 
+    Abaixo do título centralizado, inclua os textos em menor escala: "${tagsStr}".
+    Use uma fonte limpa "sans-serif" ou "Roboto".
+    RETORNE APENAS O CÓDIGO DO SVG (pode vir no bloco \`\`\`xml) e NADA MAIS.`;
 
     try {
-        const response = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=800&height=450&nologo=true&seed=${Math.floor(Math.random() * 1000)}`);
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+                    generationConfig: { temperature: 0.7 },
+                }),
+            }
+        );
 
-        if (!response.ok) throw new Error('Pollinations request failed');
+        if (!response.ok) {
+            console.error('   ❌ Falha na API Gemini para gerar SVG.');
+            return 'assets/images/projects/default-project.png';
+        }
 
-        const arrayBuffer = await response.arrayBuffer();
-        writeFileSync(filepath, Buffer.from(arrayBuffer));
-        console.log(`   ✅ Capa gerada e salva: ${filename}`);
+        const data = await response.json();
+        const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
-        return localUrl;
+        if (!text) {
+            return 'assets/images/projects/default-project.png';
+        }
+
+        // Extrair o SVG verdadeiro ignorando formatação extra
+        const match = text.match(/<svg[\s\S]*?<\/svg>/i);
+        if (match) {
+            writeFileSync(filepath, match[0]);
+            console.log(`   ✅ Capa SVG gerada e salva: ${filename}`);
+            return localUrl;
+        }
+
+        return 'assets/images/projects/default-project.png';
     } catch (error) {
-        console.error('   ❌ Falha ao gerar imagem AI:', error.message);
+        console.error('   ❌ Falha ao gerar SVG:', error.message);
         return 'assets/images/projects/default-project.png';
     }
 }
@@ -351,7 +380,7 @@ async function main() {
 
         let coverImg = repo.coverImage;
         if (!coverImg) {
-            coverImg = await generateFallbackImage(repo.name, gemini.category || 'tech');
+            coverImg = await generateFallbackImage(repo.name, gemini.category || 'tech', gemini.highlightTags || repo.topics.slice(0, 5));
         }
 
         projects.push({

@@ -1,9 +1,9 @@
 {
-  "n8n / Workflows": 90,
-  "Python Scripts": 80,
-  "Prompt Engineering": 85,
-  "Azure Fundamentals": 70,
-  "SQL": 65,
-  "Docker (Básico)": 50,
-  "JavaScript": 40
+  "n8n / Workflows": 80,
+  "Python (Dados e Automação)": 75,
+  "Prompt Engineering": 80,
+  "Azure (Fundamentos e IA)": 75,
+  "SQL (Consultas e Modelagem Básica)": 60,
+  "Docker (Básico)": 60,
+  "JavaScript / TypeScript (Projetos Next.js e Integrações)": 45
 }

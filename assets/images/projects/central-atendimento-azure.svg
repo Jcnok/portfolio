@@ -1,0 +1,54 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0C0C1E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A0A2A;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Overlay Gradient for cyberpunk feel -->
+    <radialGradient id="cyberGradient" cx="50%" cy="50%" r="75%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#00e7ff;stop-opacity:0.15" />
+      <stop offset="50%" style="stop-color:#ff00e7;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#0C0C1E;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a4a" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Simple Glow Filter (Gaussian Blur) -->
+    <filter id="glowBlurOnly">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+    </filter>
+
+    <!-- Title Text Gradient -->
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e7ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a000ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff00e7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Rectangle with Gradient -->
+  <rect x="0" y="0" width="800" height="280" fill="url(#bgGradient)" />
+
+  <!-- Grid Overlay -->
+  <rect x="0" y="0" width="800" height="280" fill="url(#gridPattern)" />
+
+  <!-- Cyberpunk Overlay Gradient -->
+  <rect x="0" y="0" width="800" height="280" fill="url(#cyberGradient)" />
+
+  <!-- Main Title - Glow effect (duplicate text, one blurred, one sharp) -->
+  <!-- Glow Layer -->
+  <text x="400" y="110" font-family="Roboto, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#00e7ff" filter="url(#glowBlurOnly)" opacity="0.7">Central Atendimento Azure</text>
+  <!-- Main Text Layer -->
+  <text x="400" y="110" font-family="Roboto, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="url(#titleGradient)">Central Atendimento Azure</text>
+
+  <!-- Subtitle/Keywords - with a subtle glow -->
+  <!-- Glow Layer for subtitle -->
+  <text x="400" y="170" font-family="Roboto, sans-serif" font-size="20" text-anchor="middle" fill="#99FFFF" filter="url(#glowBlurOnly)" opacity="0.4">Azure OpenAI | Agentes Autônomos | RAG | FastAPI | Docker</text>
+  <!-- Main Subtitle Layer -->
+  <text x="400" y="170" font-family="Roboto, sans-serif" font-size="20" text-anchor="middle" fill="#99FFFF">Azure OpenAI | Agentes Autônomos | RAG | FastAPI | Docker</text>
+</svg>

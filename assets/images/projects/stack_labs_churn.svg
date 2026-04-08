@@ -1,0 +1,53 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Padrão de grade para o fundo Dark Mode -->
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 L 0 25" fill="none" stroke="#2A0F4A" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Gradiente vibrante estilo Cyberpunk para sobreposição -->
+    <radialGradient id="cyberGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#8A2BE2" stop-opacity="0.25"/> <!-- Roxo vibrante -->
+      <stop offset="50%" stop-color="#00F0FF" stop-opacity="0.15"/> <!-- Azul ciano vibrante -->
+      <stop offset="100%" stop-color="#0D071A" stop-opacity="0"/> <!-- Fundo escuro para transição suave -->
+    </radialGradient>
+
+    <!-- Filtro de brilho intenso para o título principal -->
+    <filter id="main-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#00F0FF" flood-opacity="0.9" result="flood"/>
+      <feComposite in="flood" in2="blur" operator="in" result="glowEffect"/>
+      <feMerge>
+        <feMergeNode in="glowEffect"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Filtro de brilho sutil para os textos menores -->
+    <filter id="subtle-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#E0BBE4" flood-opacity="0.7" result="flood"/>
+      <feComposite in="flood" in2="blur" operator="in" result="glowEffect"/>
+      <feMerge>
+        <feMergeNode in="glowEffect"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fundo base escuro -->
+  <rect width="800" height="280" fill="#0D071A"/>
+
+  <!-- Camada de grade de fundo -->
+  <rect width="800" height="280" fill="url(#grid)"/>
+
+  <!-- Camada de sobreposição de gradiente cyberpunk -->
+  <rect width="800" height="280" fill="url(#cyberGradient)"/>
+
+  <!-- Título Principal: "Stack Labs Churn" -->
+  <text x="400" y="130" font-family="Roboto, sans-serif" font-size="65" font-weight="bold" fill="#00F0FF" text-anchor="middle" filter="url(#main-glow)">Stack Labs Churn</text>
+
+  <!-- Textos menores abaixo do título -->
+  <text x="400" y="190" font-family="Roboto, sans-serif" font-size="22" fill="#E0BBE4" text-anchor="middle" filter="url(#subtle-glow)">Churn Prediction | Machine Learning | Scikit-learn | EDA</text>
+
+</svg>
