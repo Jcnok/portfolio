@@ -1,20 +1,20 @@
 [
   {
     "company": "Projetos Pessoais & Freelance",
-    "role": "Desenvolvedor de Automação com IA (Em Transição)",
+    "role": "Automação com IA e Dados (Transição de Carreira)",
     "period": "2023 - Presente",
-    "description": "Foco prático na construção de agentes autônomos e automação de fluxos de trabalho. Desenvolvimento de soluções integrando n8n, OpenAI API e Python para otimização de processos. Criação de projetos de portfólio focados em RAG e Assistentes Virtuais."
+    "description": "Foco prático em automações com LLMs e dados, construindo projetos de portfólio em Python, n8n e APIs para otimização de processos. Desenvolvimento de soluções simples de RAG e assistentes virtuais baseados em projetos como neo-vision, central-atendimento-azure e crm-system, usados para ganhar experiência real sem vínculo CLT."
   },
   {
     "company": "Estudos & Bootcamps",
-    "role": "Engenharia de Dados e IA",
+    "role": "Formação em Data, Cloud e IA",
     "period": "2023 - Presente",
-    "description": "Dedicação intensiva a cursos e bootcamps (DIO, Microsoft Learn) focados em Azure, Python e Machine Learning. Conquista de certificações fundamentais (AI-900, DP-900) para validar a migração de carreira."
+    "description": "Dedicação intensiva a cursos e bootcamps (DIO, Microsoft Learn e outros) com foco em Python para dados, SQL, análise de dados, Azure e fundamentos de Machine Learning. Conclusão de MBAs em Data Science, Gestão em Cloud Computing e Matemática Financeira e Estatística, reforçando a transição para dados, cloud e automação com IA."
   },
   {
-    "company": "Experiência Anterior",
+    "company": "Experiência Anterior em TI",
     "role": "Analista de Suporte / Infraestrutura",
     "period": "2018 - 2023",
-    "description": "Atuação na sustentação de ambientes de TI, resolução de incidentes e administração de servidores. Base técnica sólida em sistemas operacionais e redes que facilita o aprendizado atual em Cloud e DevOps."
+    "description": "Atuação na sustentação de ambientes de TI e suporte a usuários, com resolução de incidentes e administração básica de sistemas operacionais e redes. Essa base técnica em infraestrutura facilita o aprendizado atual em cloud, DevOps e automação de processos com scripts e APIs."
   }
 ]
