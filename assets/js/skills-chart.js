@@ -65,11 +65,8 @@
           .sort(([, a], [, b]) => b - a)
           .slice(0, 6);
 
-        const maxVal = sortedData[0][1];
         labels = sortedData.map(([key]) => key);
-        values = sortedData.map(([, val]) =>
-          Math.round((val / maxVal) * 100)
-        );
+        values = sortedData.map(([, val]) => val);
       } else {
         throw new Error('Failed to load');
       }
