@@ -143,8 +143,8 @@ async function main() {
         process.exit(1);
     }
     if (!GEMINI_API_KEY) {
-        console.error('❌ GEMINI_API_KEY não configurada!');
-        process.exit(1);
+        console.error('⚠️ GEMINI_API_KEY não configurada no repositório! Pulando geração de Skills...');
+        return;
     }
 
     // Step 1: Extrair
