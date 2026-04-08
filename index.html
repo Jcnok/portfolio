@@ -377,18 +377,21 @@
           <button id="cv-generate-btn" class="btn primary-btn" style="width: 100%;"><i class="fas fa-cogs"></i> Analisar
             Vaga & Gerar CV</button>
         </div>
-        <div id="cv-loading" class="hidden" style="text-align: center; margin: 40px 0;">
+        <div id="cv-loading" style="display: none; text-align: center; margin: 40px 0;">
           <div class="typing-indicator" style="display: flex; justify-content: center; margin-bottom: 20px;">
             <span style="font-size:3rem">.</span><span style="font-size:3rem">.</span><span
               style="font-size:3rem">.</span>
           </div>
           <p>Processando requisitos e montando currículo ATS (aprox. 15s)...</p>
         </div>
-        <div id="cv-result" class="hidden">
+        <div id="cv-result" style="display: none;">
           <div class="cv-output-markdown content-formatted" id="cv-output-content"></div>
           <div class="cv-actions">
-            <button id="cv-download-btn" class="btn primary-btn"><i class="fas fa-download"></i> Baixar Análise e CV
-              (.md)</button>
+            <button id="cv-download-relatorio-btn" class="btn secondary-btn"><i class="fas fa-file-alt"></i>
+              Relatório</button>
+            <button id="cv-download-cv-btn" class="btn primary-btn"><i class="fas fa-file-word"></i> Currículo</button>
+            <button id="cv-download-carta-btn" class="btn secondary-btn"><i class="fas fa-envelope-open-text"></i>
+              Carta</button>
             <button id="cv-cancel-btn" class="btn secondary-btn">Nova Vaga</button>
           </div>
         </div>

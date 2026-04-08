@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('cv-modal-close');
     const generateBtn = document.getElementById('cv-generate-btn');
     const cancelBtn = document.getElementById('cv-cancel-btn');
-    const downloadBtn = document.getElementById('cv-download-btn');
+    const downloadRelatorioBtn = document.getElementById('cv-download-relatorio-btn');
+    const downloadCvBtn = document.getElementById('cv-download-cv-btn');
+    const downloadCartaBtn = document.getElementById('cv-download-carta-btn');
 
     const step1 = document.getElementById('cv-step-1');
     const loading = document.getElementById('cv-loading');
@@ -13,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const jobInput = document.getElementById('job-description-input');
     const outputContent = document.getElementById('cv-output-content');
 
-    let rawMarkdown = '';
+    let relatorioMarkdown = '';
+    let currículoMarkdown = '';
+    let cartaMarkdown = '';
 
     // Show Modal
     navLink.addEventListener('click', (e) => {
@@ -38,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        step1.classList.add('hidden');
-        loading.classList.remove('hidden');
+        step1.style.display = 'none';
+        loading.style.display = 'block';
 
         try {
             const res = await fetch('/api/generate-cv', {
@@ -54,17 +58,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(data.error || "Erro ao conectar com a IA");
             }
 
-            rawMarkdown = data.reply;
+            const rawMarkdown = data.reply;
 
-            // Render markdown to HTML
+            // Split sections: ---RELATORIO---, ---CURRICULO---, ---CARTA---
+            const relatorioSplit = rawMarkdown.split('---RELATORIO---');
+            const relatorioAndRest = relatorioSplit.length > 1 ? relatorioSplit[1] : '';
+
+            const currículoSplit = relatorioAndRest.split('---CURRICULO---');
+            relatorioMarkdown = currículoSplit[0].trim();
+            const currículoAndRest = currículoSplit.length > 1 ? currículoSplit[1] : '';
+
+            const cartaSplit = currículoAndRest.split('---CARTA---');
+            currículoMarkdown = cartaSplit[0].trim();
+            cartaMarkdown = cartaSplit.length > 1 ? cartaSplit[1].trim() : '';
+
+            // Render combined markdown to HTML for visual preview
+            let visualPreview = '';
+            visualPreview += '# Relatório de Compatibilidade\n' + relatorioMarkdown + '\n\n';
+            visualPreview += '# Currículo Personalizado\n' + currículoMarkdown + '\n\n';
+            visualPreview += '# Carta de Apresentação\n' + cartaMarkdown + '\n\n';
+
             if (typeof marked !== 'undefined') {
-                outputContent.innerHTML = marked.parse(rawMarkdown);
+                outputContent.innerHTML = marked.parse(visualPreview);
             } else {
-                outputContent.innerText = rawMarkdown;
+                outputContent.innerText = visualPreview;
             }
 
-            loading.classList.add('hidden');
-            result.classList.remove('hidden');
+            loading.style.display = 'none';
+            result.style.display = 'block';
 
         } catch (err) {
             console.error(err);
@@ -76,28 +97,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset Modal
     function resetModal() {
         jobInput.value = '';
-        rawMarkdown = '';
-        step1.classList.remove('hidden');
-        loading.classList.add('hidden');
-        result.classList.add('hidden');
+        relatorioMarkdown = '';
+        currículoMarkdown = '';
+        cartaMarkdown = '';
+        step1.style.display = 'block';
+        loading.style.display = 'none';
+        result.style.display = 'none';
     }
 
     // Cancel / New Job
     cancelBtn.addEventListener('click', resetModal);
 
-    // Download MD
-    downloadBtn.addEventListener('click', () => {
-        if (!rawMarkdown) return;
+    // Helpers to download Document format
+    function downloadDocFile(contentHTML, filename) {
+        const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Document</title></head><body>";
+        const footer = "</body></html>";
+        const sourceHTML = header + contentHTML + footer;
 
-        const blob = new Blob([rawMarkdown], { type: 'text/markdown;charset=utf-8' });
+        const blob = new Blob(['\\ufeff', sourceHTML], { type: 'application/msword' });
         const url = URL.createObjectURL(blob);
-
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'julio_okuda_cv_analise.md';
+        a.download = filename + '.doc';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+    }
+
+    // Download Actions
+    downloadRelatorioBtn.addEventListener('click', () => {
+        if (!relatorioMarkdown) return;
+        const html = typeof marked !== 'undefined' ? marked.parse(relatorioMarkdown) : relatorioMarkdown;
+        downloadDocFile(html, 'Relatorio_ATS_Julio_Okuda');
+    });
+
+    downloadCvBtn.addEventListener('click', () => {
+        if (!currículoMarkdown) return;
+        const html = typeof marked !== 'undefined' ? marked.parse(currículoMarkdown) : currículoMarkdown;
+        downloadDocFile(html, 'Curriculo_ATS_Julio_Okuda');
+    });
+
+    downloadCartaBtn.addEventListener('click', () => {
+        if (!cartaMarkdown) return;
+        const html = typeof marked !== 'undefined' ? marked.parse(cartaMarkdown) : cartaMarkdown;
+        downloadDocFile(html, 'Carta_ATS_Julio_Okuda');
     });
 });
