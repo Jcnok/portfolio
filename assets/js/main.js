@@ -21,7 +21,7 @@ const Portfolio = {
   /**
    * Loads professional experience from JSON
    */
-  loadExperience: async function() {
+  loadExperience: async function () {
     const timelineContainer = document.querySelector('.experience-timeline');
     if (!timelineContainer) return;
 
@@ -43,9 +43,9 @@ const Portfolio = {
         `;
       });
       timelineContainer.innerHTML = html;
-      
+
       if (this.setupScrollAnimation) this.setupScrollAnimation();
-      
+
     } catch (error) {
       console.error('Erro ao carregar experiência:', error);
       timelineContainer.innerHTML = '<p class="error-message">Não foi possível carregar as informações de experiência.</p>';
@@ -126,14 +126,31 @@ const Portfolio = {
       const email = document.getElementById("email").value
       const message = document.getElementById("message").value
 
-      // Aqui você normalmente enviaria os dados para um servidor
-      console.log("Formulário enviado:", { name, email, message })
-
-      // Mostrar mensagem de sucesso
-      this.showFormSuccess()
-
-      // Resetar formulário
-      contactForm.reset()
+      // Enviar os dados via AJAX usando FormSubmit
+      fetch("https://formsubmit.co/ajax/julio.okuda@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: "Novo contato via Portfólio!"
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Mostrar mensagem de sucesso
+          this.showFormSuccess()
+          // Resetar formulário
+          contactForm.reset()
+        })
+        .catch(error => {
+          console.error("Erro ao enviar formulário:", error)
+          alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde ou contate via email.")
+        })
     })
   },
 

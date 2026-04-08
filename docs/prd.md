@@ -321,6 +321,7 @@ Para garantir que o código seja seguro (prevenção de XSS), acessível, e refl
 - AC4: Ajustar consistência de nomenclature e UI, como a sigla de transição e nome do Chat Widget (PT-BR).
 - AC5: Adicionar suporte para navegação por teclado (`skip-to-content` link).
 - AC6: Limpar arquivos de exemplo (`.env.example`) mantendo apénas as dependências necessárias para a pipeline local.
+- AC7: Integrar o formulário de contato com envio real de e-mails via `formsubmit.co` usando AJAX, substituindo o console.log (Fake form).
 
 ---
 
