@@ -8,12 +8,13 @@
  * @version 1.0.0 (Story 3.1)
  */
 
-import { writeFileSync, readFileSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
+import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECTS_JSON_PATH = resolve(__dirname, '../assets/data/projects.json');
+const IMAGES_DIR = resolve(__dirname, '../assets/images/projects');
 
 // ---------------------------------------------------------------------------
 // Config
@@ -23,6 +24,55 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-2.5-flash';
 const MAX_README_CHARS = 2000;
+
+// Create images dir if not exists
+if (!existsSync(IMAGES_DIR)) {
+    mkdirSync(IMAGES_DIR, { recursive: true });
+}
+
+// ---------------------------------------------------------------------------
+// 6. Formatar nome do repo: kebab-case → Title Case
+// ---------------------------------------------------------------------------
+function formatTitle(name) {
+    return name
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// ---------------------------------------------------------------------------
+// 6.5 Generative AI Image Fallback (Pollinations.ai)
+// ---------------------------------------------------------------------------
+async function generateFallbackImage(repoName, category) {
+    const filename = `${repoName.toLowerCase()}.jpg`;
+    const filepath = join(IMAGES_DIR, filename);
+    const localUrl = `assets/images/projects/${filename}`;
+
+    // Avoid regenerating if we already generated it previously
+    if (existsSync(filepath)) {
+        return localUrl;
+    }
+
+    console.log(`   🎨 Gerando capa AI via Pollinations para: ${repoName}...`);
+
+    const prompt = encodeURIComponent(
+        `High quality professional futuristic abstract geometric IT technology concept art for a project named ${formatTitle(repoName)}, theme: ${category}, dark futuristic glowing colors, neon glassmorphism`
+    );
+
+    try {
+        const response = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=800&height=450&nologo=true&seed=${Math.floor(Math.random() * 1000)}`);
+
+        if (!response.ok) throw new Error('Pollinations request failed');
+
+        const arrayBuffer = await response.arrayBuffer();
+        writeFileSync(filepath, Buffer.from(arrayBuffer));
+        console.log(`   ✅ Capa gerada e salva: ${filename}`);
+
+        return localUrl;
+    } catch (error) {
+        console.error('   ❌ Falha ao gerar imagem AI:', error.message);
+        return 'assets/images/projects/default-project.png';
+    }
+}
 
 // ---------------------------------------------------------------------------
 // 1. GitHub GraphQL — Fetch Pinned Repos
@@ -239,14 +289,7 @@ function fallbackEnrich(repo) {
     };
 }
 
-// ---------------------------------------------------------------------------
-// 6. Formatar nome do repo: kebab-case → Title Case
-// ---------------------------------------------------------------------------
-function formatTitle(name) {
-    return name
-        .replace(/[-_]/g, ' ')
-        .replace(/\b\w/g, (c) => c.toUpperCase());
-}
+
 
 // ---------------------------------------------------------------------------
 // 7. Main Pipeline
@@ -296,25 +339,33 @@ async function main() {
 
     // Step 4: Build final projects.json
     console.log('\n📦 Gerando projects.json...');
-    const projects = enrichedRepos.map((repo, index) => {
+    const projects = [];
+
+    for (let index = 0; index < enrichedRepos.length; index++) {
+        const repo = enrichedRepos[index];
         // Encontrar dados do Gemini para este repo
         const gemini = geminiResults?.find((r) => r.name === repo.name) || fallbackEnrich(repo);
 
         // Limita a descrição natural do github se não existir
         const nativeDesc = repo.description || `Projeto de código aberto: ${formatTitle(repo.name)}`;
 
-        return {
+        let coverImg = repo.coverImage;
+        if (!coverImg) {
+            coverImg = await generateFallbackImage(repo.name, gemini.category || 'tech');
+        }
+
+        projects.push({
             id: index + 1,
             title: formatTitle(repo.name),
             description: nativeDesc,
             resume: gemini.summary || nativeDesc,
-            image: repo.coverImage || 'assets/images/projects/default-project.png',
+            image: coverImg,
             category: gemini.category || 'web-development',
             tags: gemini.highlightTags || repo.topics.slice(0, 5),
             codeUrl: repo.url,
             demoUrl: repo.homepageUrl || repo.url,
-        };
-    });
+        });
+    }
 
     // Step 5: Comparar com o JSON existente e salvar se mudou
     let existingJson = '';
