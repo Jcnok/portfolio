@@ -17,6 +17,25 @@ const PROJECTS_JSON_PATH = resolve(__dirname, '../assets/data/projects.json');
 const IMAGES_DIR = resolve(__dirname, '../assets/images/projects');
 
 // ---------------------------------------------------------------------------
+// Load .env fallback for local execution
+// ---------------------------------------------------------------------------
+const envPath = resolve(__dirname, '../.env');
+if (existsSync(envPath)) {
+    const envFile = readFileSync(envPath, 'utf8');
+    for (const line of envFile.split('\n')) {
+        const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+        if (match) {
+            const key = match[1];
+            let value = match[2] || '';
+            value = value.replace(/^(['"])(.*)\1$/, '$2').trim();
+            if (process.env[key] === undefined) {
+                process.env[key] = value;
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
 const GITHUB_USER = 'Jcnok';
