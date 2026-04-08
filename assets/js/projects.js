@@ -62,10 +62,15 @@ class ProjectManager {
     card.innerHTML = `
       <div class="project-image">
         <img src="${project.image}" alt="${project.title}" loading="lazy" />
+        <div class="ai-tooltip">
+          <i class="fas fa-robot"></i>
+          <strong>AI Analysis:</strong>
+          <p>${project.description}</p>
+        </div>
       </div>
       <div class="project-info">
         <h3 class="project-title">${project.title}</h3>
-        <p class="project-description">${project.description}</p>
+        <p class="project-description line-clamp-2">${project.description}</p>
         <div class="project-tags">
           ${project.tags
         .map(tag => `<span class="project-tag">${tag}</span>`)
