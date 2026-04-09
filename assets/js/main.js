@@ -89,28 +89,33 @@ const Portfolio = {
   setupSmoothScrolling: () => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
-        e.preventDefault()
+        const targetId = this.getAttribute("href");
 
-        const targetId = this.getAttribute("href")
-        const targetElement = document.querySelector(targetId)
+        // Se o link foi alterado dinamicamente para uma URL externa, não faz scroll suave
+        if (!targetId.startsWith('#') || targetId === '#') {
+          return;
+        }
+
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
           window.scrollTo({
             top: targetElement.offsetTop - 80, // Ajuste para altura do cabeçalho
             behavior: "smooth",
-          })
+          });
 
           // Fechar menu mobile se estiver aberto
-          const nav = document.querySelector(".nav-links")
-          const burger = document.querySelector(".burger")
+          const nav = document.querySelector(".nav-links");
+          const burger = document.querySelector(".burger");
 
           if (nav && nav.classList.contains("nav-active")) {
-            nav.classList.remove("nav-active")
-            burger.classList.remove("toggle")
+            nav.classList.remove("nav-active");
+            burger.classList.remove("toggle");
           }
         }
-      })
-    })
+      });
+    });
   },
 
   /**
