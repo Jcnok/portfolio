@@ -36,7 +36,7 @@
 - [Stack Tecnológico](#-stack-tecnológico)
 - [Estrutura de Arquivos](#-estrutura-de-arquivos)
 - [Como Executar Localmente](#-como-executar-localmente)
-- [Deploy na Vercel](#️-deploy-na-vercel)
+- [Qualidade e Testes](#-qualidade-e-testes)
 - [Pipeline de Automação](#-pipeline-de-automação)
 - [Padrões de Engenharia](#-padrões-de-engenharia)
 - [Roadmap](#-roadmap)
@@ -47,7 +47,7 @@
 
 ## 💡 A História por Trás
 
-> *A maioria dos portfólios são vitrines. Este é uma fábrica.*
+> *A maioria dos portfólios são vitrines. Este é uma plataforma de engenharia viva.*
 
 Eu poderia ter feito o que todo mundo faz: uma página bonita com cards de projetos e um botão "Baixar CV". Mas isso não reflete quem eu sou.
 
@@ -58,8 +58,9 @@ A resposta está na própria experiência de navegação:
 - O **Chat com IA** responde perguntas sobre mim usando a API do Gemini — com sanitização contra XSS e Rate Limiting.
 - O **Gráfico de Habilidades** é gerado automaticamente a partir dos meus repositórios do GitHub via pipeline diária.
 - O **Gerador de Currículo ATS** analisa vagas em tempo real e monta um dossiê personalizado cruzando com meus dados reais.
+- **Engenharia de Conversão**: O site monitora engajamento (Vercel Analytics) e facilita o agendamento direto via Calendly/WhatsApp.
 
-Cada feature deste site é uma **demonstração técnica viva** das habilidades que eu listo no meu currículo. Não é buzzword — é código em produção.
+Cada feature deste site é uma **demonstração técnica viva** das habilidades que eu listo no meu currículo. Não é buzzword — é código em produção, testado e monitorado.
 
 ---
 
@@ -67,22 +68,22 @@ Cada feature deste site é uma **demonstração técnica viva** das habilidades 
 
 | Feature | Descrição | Tech |
 |---|---|---|
-| 🌗 **Tema Dark/Light** | Alternância com persistência via `localStorage` e `MutationObserver` no Chart.js | CSS Variables, JS |
-| 💬 **Chat com IA** | Assistente que responde sobre meu perfil usando Gemini API com sanitização DOM | Gemini API, Vercel Functions |
-| 📊 **Skills Dinâmicas** | Gráfico radar gerado automaticamente via pipeline GitHub Actions + Gemini | Chart.js, GitHub API |
-| 🎯 **Filtro de Projetos** | Filtragem por categorias (`ai-automation`, `data-analysis`, `ml`, `web-dev`) | Vanilla JS, JSON |
 | 🤖 **Gerador de CV ATS** | Analisa vagas e gera Relatório + Currículo + Carta em `.doc` | Gemini 2.5 Flash + Fallback |
-| 📱 **Mobile-First** | 100% responsivo com breakpoints otimizados (320px → 1200px+) | CSS Grid, Flexbox |
-| ♿ **Acessibilidade** | Skip-to-content, ARIA labels, contraste WCAG AA | HTML5 Semântico |
-| 📬 **Formulário Real** | Envio de mensagens via FormSubmit.co (AJAX, sem backend) | REST API |
+| 📊 **Skills Dinâmicas** | Gráfico radar gerado via pipeline GitHub Actions + Gemini | Chart.js, GitHub API |
+| 💬 **Chat com IA** | Assistente que responde sobre meu perfil usando Gemini API | Gemini API, Vercel Functions |
+| 📈 **Telemetria de Leads** | Monitoramento de cliques e conversão em tempo real | Vercel Analytics |
+| 🎯 **CTA de Conversão** | Agendamento via Calendly e WhatsApp integrados | Headless JSON Config |
+| ✨ **UX Nudges** | Micro-animações (Pulse) que ativam após scroll estratégico | JS Interaction Observer |
+| 📱 **Mobile-First** | 100% responsivo com tipografia fluida (`clamp`) | CSS Grid, Clamp Logic |
+| 🧪 **Blindagem Técnica** | Testes Unitários (Jest) e End-to-End (Playwright) | Jest, Playwright |
 
 ---
 
 ## 🤖 Destaque: Gerador de Currículo IA (ATS)
 
-> *"Recrutador, sei que seu tempo é valioso. Em vez de entregar um PDF genérico, construí um agente que monta o currículo sob medida para a SUA vaga."*
+> *"Recrutador, em vez de entregar um PDF genérico, construí um agente que monta o currículo sob medida para a SUA vaga."*
 
-Esta é a feature que diferencia este portfólio de qualquer outro. O sistema funciona assim:
+Esta é a feature que diferencia este portfólio. O sistema funciona assim:
 
 ```
 ┌──────────────┐     ┌──────────────────┐     ┌──────────────────────┐
@@ -90,25 +91,24 @@ Esta é a feature que diferencia este portfólio de qualquer outro. O sistema fu
 │  (Browser)   │     │  Modal do Site   │     │  (Temperature = 0)   │
 └──────────────┘     └──────────────────┘     └──────────┬───────────┘
                                                          │
-                                              ┌──────────▼───────────┐
-                                              │  Fallback Automático │
-                                              │  Gemini 3.1 Lite     │
-                                              └──────────┬───────────┘
+                                               ┌──────────▼───────────┐
+                                               │  Fallback Automático │
+                                               │  Gemini 3.1 Lite     │
+                                               └──────────┬───────────┘
                                                          │
-                     ┌───────────────────────────────────▼─┐
-                     │         3 Outputs Separados          │
-                     │                                      │
-                     │  📊 Relatório de Compatibilidade     │
-                     │  📄 Currículo ATS (.doc)             │
-                     │  ✉️  Carta de Apresentação (.doc)     │
-                     └──────────────────────────────────────┘
+                      ┌───────────────────────────────────▼─┐
+                      │         3 Outputs Separados          │
+                      │                                      │
+                      │  📊 Relatório de Compatibilidade     │
+                      │  📄 Currículo ATS (.doc)             │
+                      │  ✉️  Carta de Apresentação (.doc)     │
+                      └──────────────────────────────────────┘
 ```
 
 ### Características Técnicas:
-- **Zero-Hallucination Grounding**: O perfil é embutido estaticamente no System Prompt. A IA nunca inventa dados.
-- **Dual-Model Fallback**: Se o Gemini 2.5 Flash atingir o Rate Limit (20 RPD), o sistema migra automaticamente para o Gemini 3.1 Flash Lite (500 RPD).
-- **Humanized Error State**: Se ambos os modelos estiverem indisponíveis, o recrutador recebe uma mensagem amigável com links diretos de contato — nunca um `alert()` seco.
-- **Exportação .doc**: Os arquivos são gerados via Blob com wrapper `xmlns:w` do MS Office, abrindo formatados nativamente no Word.
+- **Zero-Hallucination**: Perfil embutido estaticamente no System Prompt.
+- **Dual-Model Fallback**: Migração automática entre modelos se atingir Rate Limits.
+- **Exportação Nativa**: Arquivos `.doc` gerados via Blob com wrapper XML do MS Office.
 
 ---
 
@@ -116,31 +116,20 @@ Esta é a feature que diferencia este portfólio de qualquer outro. O sistema fu
 
 ```mermaid
 graph TD;
-    A["index.html"]-->B["styles.css"]
-    A-->C["main.js"]
-    A-->D["theme-toggle.js"]
-    A-->E["projects.js"]
-    A-->F["skills-chart.js"]
-    A-->G["chat.js"]
-    A-->H["cv-generator.js"]
+    A["index.html"]-->B["styles.css (Design System)"]
+    A-->C["main.js (UX Logic)"]
+    A-->H["cv-generator.js (AI logic)"]
 
-    I["Vercel Serverless"]-->J["/api/chat.js"]
-    I-->K["/api/generate-cv.js"]
+    I["Vercel Functions"]-->K["/api/generate-cv.js"]
+    K-->P["Gemini API (Primary/Fallback)"]
 
-    L["GitHub Actions"]-->M["update-projects.yml"]
-    M-->N["generate-skills.mjs"]
-    N-->O["languages.json"]
-    O-->F
+    L["GitHub Actions"]-->M["update-projects.yml (Daily Data)"]
+    M-->O["config.json / projects.json / languages.json"]
+    O-->A
 
-    K-->P["Gemini 2.5 Flash"]
-    K-->Q["Gemini 3.1 Lite (Fallback)"]
+    R["Playwright CI"]-->A
+    S["Vercel Analytics"]-->A
 ```
-
-O projeto segue uma arquitetura **modular e data-driven**:
-
-1. **Frontend**: HTML5 semântico + CSS com Design Tokens (variáveis) + JS modular (1 arquivo por feature)
-2. **Backend**: Vercel Serverless Functions (API de Chat + Gerador de CV)
-3. **Pipeline**: GitHub Actions diário que atualiza projetos e habilidades via GitHub API + Gemini
 
 ---
 
@@ -148,124 +137,50 @@ O projeto segue uma arquitetura **modular e data-driven**:
 
 | Camada | Tecnologias |
 |---|---|
-| **Frontend** | HTML5, CSS3 (Vanilla), JavaScript ES6+ |
-| **Visualização** | Chart.js (Radar Chart) |
-| **IA / LLM** | Google Gemini 2.5 Flash + 3.1 Flash Lite |
-| **Backend** | Vercel Serverless Functions (Node.js) |
-| **CI/CD** | GitHub Actions (Pipeline diário de dados) |
-| **Hosting** | Vercel (Deploy automático via Git) |
-| **Formulário** | FormSubmit.co (AJAX) |
+| **Frontend** | HTML5 Semântico, Vanilla CSS (Design Tokens), Vanilla JS ES6+ |
+| **Inteligência** | Google Gemini (Multi-model), Vercel Serverless Functions |
+| **Qualidade** | Playwright (E2E), Jest (Unit), GitHub Actions (CI) |
+| **Observabilidade** | Vercel Analytics (Event Tracking) |
+| **Automação** | JavaScript (Scripts de Enriquecimento de Dados), n8n (External) |
 
 ---
 
-## 📁 Estrutura de Arquivos
+## 📁 Estrutura de Arquivos Principal
 
-```
-portfolio/
-├── api/
-│   ├── chat.js                      # Endpoint IA do Chat (Gemini)
-│   └── generate-cv.js               # Endpoint Gerador de CV ATS (Dual-Model)
-├── assets/
-│   ├── css/
-│   │   └── styles.css               # Design System (variáveis + componentes)
-│   ├── data/
-│   │   ├── projects.json            # Dados dos projetos (fonte única de verdade)
-│   │   ├── languages.json           # Skills geradas via pipeline GitHub
-│   │   └── curriculo-default/       # Currículo base para grounding da IA
-│   │       └── Curriculo_JULIO_OKUDA.md
-│   ├── js/
-│   │   ├── main.js                  # Navegação, formulário, animações
-│   │   ├── theme-toggle.js          # Dark/Light mode
-│   │   ├── projects.js              # Fetch + filtro de projetos
-│   │   ├── skills-chart.js          # Radar chart dinâmico
-│   │   ├── chat.js                  # Widget de chat com IA
-│   │   └── cv-generator.js          # Modal + split + download .doc
-│   └── images/                      # Badges, profile, project covers
-├── scripts/
-│   └── generate-skills.mjs          # Script de pipeline (GitHub API → Gemini → JSON)
-├── docs/
-│   └── prd.md                       # PRD completo com 6 Epics e 15+ Stories
-├── tests/
-│   └── projects.test.js             # Testes unitários (Jest)
-├── index.html                       # Página principal
-├── 404.html                         # Página de erro customizada
-└── README.md                        # Você está aqui 📍
-```
+- `api/`: Funções serverless para Chat e Geração de CV.
+- `assets/data/`: **Headless CMS** (todos os dados do site em JSON).
+- `assets/js/`: Módulos independentes por funcionalidade.
+- `docs/`: Documentação de PRD, Design System e Epics.
+- `tests/`: Suíte de testes automatizados.
 
 ---
 
 ## 🚀 Como Executar Localmente
 
-### Pré-requisitos
-- **Node.js** (v18+)
-- **Chave de API do Gemini** ([Obter aqui](https://aistudio.google.com/apikey))
-
-### Passo a Passo
-
+### Testando o Frontend
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/Jcnok/portfolio.git
-cd portfolio
-
-# 2. Instale as dependências
 npm install
-
-# 3. Configure o ambiente
-cp .env.example .env
-# Edite o .env e adicione sua GEMINI_API_KEY
-
-# 4. Execute com Vercel CLI (recomendado, para testar APIs)
-npx vercel dev
-
-# 5. Ou apenas o frontend estático
 npx serve .
 ```
 
-### Rodando os Testes
+### Rodando o Ambiente de Testes
 ```bash
+# Testes Unitários (Lógica de Dados)
 npm test
+
+# Testes E2E (Fluxo de Conversão no Browser)
+npx playwright install
+npx playwright test
 ```
 
 ---
 
-## ☁️ Deploy na Vercel
+## 🧪 Qualidade e Testes (Quality Gates)
 
-> ⚠️ Este projeto **requer** a Vercel (ou host com suporte a Serverless Functions) para que o Chat e o Gerador de CV funcionem.
-
-1. Crie uma conta na [Vercel](https://vercel.com)
-2. Importe este repositório
-3. Adicione a variável de ambiente:
-   - `GEMINI_API_KEY`: Sua chave da API do Google Gemini
-4. Deploy automático a cada push na `main` ✅
-
----
-
-## ⚙️ Pipeline de Automação
-
-O portfólio possui um **GitHub Actions Workflow** (`update-projects.yml`) que executa diariamente:
-
-```
-GitHub API  →  Fetch Repos  →  Gemini API  →  Categorização  →  projects.json + languages.json
-```
-
-- Busca repositórios públicos e pinados do perfil `Jcnok`
-- Extrai linguagens e estatísticas de uso
-- Usa Gemini para categorizar projetos e gerar resumos
-- Atualiza os JSONs e faz auto-commit
-
----
-
-## 🧩 Padrões de Engenharia
-
-| Padrão | Aplicação |
-|---|---|
-| **Module Pattern** | Cada JS encapsula uma funcionalidade |
-| **Singleton** | `ThemeManager`, `ProjectManager` |
-| **Observer** | `MutationObserver` para troca de tema no Chart.js |
-| **Factory** | Criação dinâmica de cards de projeto |
-| **Data-Driven** | Projetos e skills vêm de JSON, não de HTML hardcoded |
-| **Fallback Strategy** | Multi-model LLM com degradação graciosa |
-| **Defensive Coding** | Sanitização XSS, fallbacks de campo, rate limiting |
+Para garantir que a experiência do recrutador seja sempre perfeita, implementamos:
+1. **Jest**: Valida a lógica de filtragem de projetos e manipulação de dados JSON.
+2. **Playwright**: Simula um usuário real navegando no site, abrindo o modal de IA e clicando nos CTAs de contato.
+3. **CI Pipeline**: Bloqueia o deploy caso qualquer teste quebre, mantendo a integridade 100% do tempo.
 
 ---
 
@@ -274,13 +189,12 @@ GitHub API  →  Fetch Repos  →  Gemini API  →  Categorização  →  projec
 - [x] Chat com IA (Gemini)
 - [x] Pipeline automática de Skills (GitHub Actions)
 - [x] Gerador de Currículo ATS com Dual-LLM
-- [x] Exportação .doc (Word-compatible)
-- [x] Formulário de contato real (FormSubmit)
-- [x] Testes automatizados (Jest)
-- [ ] PWA (Progressive Web App)
-- [ ] Blog com artigos técnicos
-- [ ] Internacionalização (PT-BR / EN)
-- [ ] WCAG 2.1 AAA compliance
+- [x] Engenharia de Conversão (Analytics + CTAs links)
+- [x] Testes E2E (Playwright)
+- [x] Headless Config (Centralizado em JSON)
+- [ ] Blog integrado com IA
+- [ ] Internacionalização (EN/PT)
+- [ ] Progressive Web App (PWA)
 
 ---
 
@@ -290,25 +204,19 @@ GitHub API  →  Fetch Repos  →  Gemini API  →  Categorização  →  projec
 
 | Canal | Link |
 |---|---|
-| 🐙 **GitHub** | [github.com/Jcnok](https://github.com/Jcnok) |
 | 💼 **LinkedIn** | [linkedin.com/in/juliookuda](https://linkedin.com/in/juliookuda) |
+| 📅 **Agendar Café** | [Calendly](https://calendly.com/jcnok) |
 | 📧 **Email** | [julio.okuda@gmail.com](mailto:julio.okuda@gmail.com) |
-| 🌐 **Portfólio** | [portfolio-jcnok.vercel.app](https://portfolio-jcnok.vercel.app/) |
+| 🌐 **Vivo** | [portfolio-jcnok.vercel.app](https://portfolio-jcnok.vercel.app/) |
 
 </div>
 
 ---
 
-## 📄 Licença
-
-Este projeto está licenciado sob a **MIT License** — veja o arquivo [LICENSE](LICENSE) para detalhes.
-
----
-
 <div align="center">
 
-**Desenvolvido com ❤️, Python e muita IA por [Julio Cesar Okuda](https://github.com/Jcnok)**
+**Desenvolvido com ❤️ e IA por [Julio Cesar Okuda](https://github.com/Jcnok)**
 
-*"Este portfólio não é apenas sobre o que eu fiz. É sobre o que eu posso construir para você."*
+*"Não é apenas um portfólio. É a prova de conceito do seu próximo projeto."*
 
 </div>
