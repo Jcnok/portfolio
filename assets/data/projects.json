@@ -3,14 +3,14 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus rígidos por roteamento semântico avançado. O sistema integra Langflow e OpenAI com APIs de CRM, utilizando Docker para garantir escalabilidade e uma experiência de usuário humanizada.",
+    "resume": "Plataforma de atendimento ao cliente de alta performance que substitui menus tradicionais por roteamento semântico avançado. Integra Langflow e OpenAI via Docker para orquestrar fluxos de IA conversacional com integração direta em CRMs via API.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
       "Langflow",
       "Semantic-Router",
-      "Docker",
-      "LLM-Integration"
+      "OpenAI",
+      "Docker"
     ],
     "codeUrl": "https://github.com/Jcnok/Desafio-Langflow",
     "demoUrl": "https://github.com/Jcnok/Desafio-Langflow"
@@ -19,14 +19,15 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline de dados robusto que integra transformação de dados via dbt com uma interface Streamlit interativa. O projeto utiliza LangChain e modelos Gemini para permitir consultas em linguagem natural a bancos de dados SQL, otimizando a análise de KPIs.",
+    "resume": "Pipeline de dados robusto que integra engenharia de dados moderna com LLMs para análise de vendas. Utiliza dbt para modelagem em camadas, PostgreSQL para persistência e LangChain para viabilizar consultas em linguagem natural sobre KPIs.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
       "dbt",
-      "Langchain",
+      "LangChain",
+      "PostgreSQL",
       "Streamlit",
-      "PostgreSQL"
+      "Gemini"
     ],
     "codeUrl": "https://github.com/Jcnok/crm-system",
     "demoUrl": "https://crm-system.streamlit.app/"
@@ -35,13 +36,13 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta de análise preditiva para avaliação comparativa de ROI em projetos, potencializada por IA generativa. Desenvolvida para alta performance e portabilidade, utiliza arquitetura conteinerizada e integração com serviços Azure OpenAI.",
+    "resume": "Ferramenta de análise comparativa de projetos potencializada por IA, desenvolvida para o Microsoft Innovation Challenge. Focada em automação de ROI, utiliza arquitetura em contêineres e integração com Azure OpenAI para inteligência de negócios.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
-      "Azure-OpenAI",
-      "Streamlit",
+      "Azure OpenAI",
       "Python",
+      "Streamlit",
       "Docker"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
@@ -51,13 +52,13 @@
     "id": 4,
     "title": "Stack Labs Churn",
     "description": "Projeto de código aberto: Stack Labs Churn",
-    "resume": "Modelo preditivo de Machine Learning para retenção de clientes, atingindo alta acurácia na identificação de churn. O projeto demonstra proficiência em todo o ciclo de vida de dados, desde a análise exploratória (EDA) até o deploy de modelos preditivos.",
+    "resume": "Projeto de ciência de dados focado em retenção de clientes através de modelos preditivos de machine learning. Abrange todo o ciclo de vida do projeto, desde a análise exploratória (EDA) até o deploy de modelos de classificação com alta acurácia.",
     "image": "assets/images/projects/stack_labs_churn.svg",
     "category": "machine-learning",
     "tags": [
       "Scikit-learn",
       "Pandas",
-      "Machine-Learning",
+      "Machine Learning",
       "EDA"
     ],
     "codeUrl": "https://github.com/Jcnok/Stack_Labs_Churn",
@@ -67,14 +68,14 @@
     "id": 5,
     "title": "CRM Skynet Provider SQLite FastAPI",
     "description": "Sistema CRM para Skynet Provider usando SQLite e FastAPI",
-    "resume": "Sistema de CRM escalável desenvolvido com arquitetura RESTful via FastAPI e persistência em SQLite. Focado em engenharia de dados, o projeto inclui scripts de automação para carga de dados e geração de views analíticas.",
+    "resume": "Sistema de CRM escalável desenvolvido com FastAPI e SQLite, otimizado para gestão de contratos e chamados em tempo real. Demonstra competência em design de APIs RESTful, estruturação de bancos de dados e automação de processos de backend.",
     "image": "assets/images/projects/crm-skynet-provider-sqlite_fastapi.svg",
     "category": "web-development",
     "tags": [
       "FastAPI",
       "SQLite",
-      "API-REST",
-      "Data-Engineering"
+      "REST API",
+      "Docker"
     ],
     "codeUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
     "demoUrl": "https://jcnok-skynet.hf.space/docs#/"
@@ -83,14 +84,15 @@
     "id": 6,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Orquestrador avançado de atendimento utilizando agentes autônomos especializados e arquitetura RAG (Retrieval-Augmented Generation). A solução combina o poder do GPT-4o com bancos vetoriais PostgreSQL (pgvector) para resolver problemas complexos com precisão.",
+    "resume": "Orquestrador de atendimento inteligente baseado em agentes autônomos e RAG, projetado para otimização de Customer Experience. Utiliza arquitetura de microsserviços com Azure OpenAI e pgvector para processamento de linguagem natural em larga escala.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
+      "Azure OpenAI",
       "RAG",
-      "Azure-OpenAI",
+      "FastAPI",
       "PostgreSQL",
-      "FastAPI"
+      "React"
     ],
     "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
     "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
