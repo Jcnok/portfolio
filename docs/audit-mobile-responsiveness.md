@@ -55,6 +55,22 @@
 - **Causa:** Os stats ficam em 3 colunas implícitas. Em mobile estreito, o texto "Transição IA" empurra os demais.
 - **Solução:** Adicionar `gap: 15px` e `justify-content: center` em media query mobile.
 
+### Problema 11: Stats Cards — Escalonamento desproporcional
+- **Causa:** Valores fixos de `2rem`.
+- **Solução:** Implementação de `clamp(1.2rem, 3vw, 1.8rem)` para manter proporção em qualquer tela.
+
+### Problema 12: Gráfico de Habilidades — Corte de labels longas
+- **Causa:** Nomes de tecnologias extensas encostam no limite do canvas.
+- **Solução:** Interceptor JS no `skills-chart.js` para quebrar strings longas em Arrays (multiline) dinamicamente.
+
+### Problema 13: Filtro de Projetos — Desalinhamento mobile
+- **Causa:** Mistura de botões `inline-flex` com larguras variadas.
+- **Solução:** Grid de 1 coluna vertical forçado em `< 576px`.
+
+### Problema 14: Descrição de Projetos — Overflow vertical no overlay
+- **Causa:** Textos longos ultrapassam o card em mobile.
+- **Solução:** Implementação de `line-clamp: 4` para clipping elegante com reticências.
+
 ---
 
 ## 2. Overview e Recomendações

@@ -405,6 +405,8 @@ Para que eu consiga ler todo o conteúdo sem arrastar a tela lateralmente.
 - AC2: `.skills-content` deve usar container responsivo sem estourar 320px.
 - AC3: `.projects-grid` deve quebrar para 1 coluna em ≤ 768px.
 - AC4: Aspect-ratio/altura de imagens de cards e gráficos da página devem ser fluidos.
+- AC5: O gráfico radar deve quebrar labels longas em múltiplas linhas para evitar corte visual.
+- AC6: Cards de Stats ("15+", etc) devem usar tipografia escalável (clamp) para evitar desalinhamento.
 
 ### Story 7.2: Correção de Navegação e Chat Mobile
 **Status:** Done ✅
@@ -416,6 +418,7 @@ Eu quero navegar nos menus com clareza e abrir o chat e o CV Generator confortav
 - AC1: O breakpoint do nav-burger deve ser ajustado para `< 992px`.
 - AC2: Retirar a restrição de largura máxima absoluta ao abrir o chat em dispositivos estreitos, trocando p/ viewport base (100vw).
 - AC3: O Modal "Gerar CV ATS" deve ser Fullscreen no mobile para facilitar input.
+- AC4: O filtro de categorias de projeto deve transicionar para lista vertical centralizada em viewports muito estreitas (< 576px).
 
 ### Story 7.3: Otimizações de SEO & Performance
 **Status:** Done ✅
@@ -426,6 +429,7 @@ Quero otimizar métricas base (CWV) para evitar queda no Mobile-First Indexing.
 **Acceptance Criteria:**
 - AC1: Inserir `font-display: swap` nas fontes Web e setar limites escaláveis (Clamp) em cabeçalhos (H1/H2).
 - AC2: Garantir que imagens usem `loading="lazy"`.
+- AC3: Implementar `line-clamp` nas descrições de projetos para evitar quebra de layout por parágrafos longos.
 
 ---
 
