@@ -18,6 +18,7 @@ const Portfolio = {
     this.loadExperience()
     this.setupCTANudges()
     this.setupAnalyticsTracking()
+    this.loadConfig()
   },
 
   /**
@@ -246,6 +247,33 @@ const Portfolio = {
 
     trackClick('hero-cta-calendly', 'calendly_click_hero');
     trackClick('contact-whatsapp', 'whatsapp_click_contact');
+  },
+
+  /**
+   * Carrega configurações e links dinâmicos
+   */
+  loadConfig: async function () {
+    try {
+      const response = await fetch('assets/data/config.json');
+      if (!response.ok) throw new Error('Falha ao carregar config');
+      const data = await response.json();
+
+      const { contact } = data;
+
+      // Hero e Contact CTAs
+      const calendlyLinks = document.querySelectorAll('[id*="calendly"]');
+      calendlyLinks.forEach(el => {
+        if (contact.calendly) el.href = contact.calendly;
+      });
+
+      const whatsappLink = document.getElementById('contact-whatsapp');
+      if (whatsappLink && contact.whatsapp) {
+        whatsappLink.href = `https://wa.me/${contact.whatsapp.replace(/\D/g, '')}`;
+      }
+
+    } catch (error) {
+      console.error('Erro ao carregar configurações:', error);
+    }
   }
 }
 
