@@ -16,5 +16,9 @@
         "roots": [
             "<rootDir>/tests"
         ]
+    },
+    "dependencies": {
+        "pdf-parse": "^2.4.5",
+        "pdfreader": "^3.0.8"
     }
 }
