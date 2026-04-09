@@ -354,6 +354,18 @@ Para baixar individualmente o .doc sem títulos gerados pela I.A e sem erros de 
 - AC2: Os Projetos Principais listados no prompt do CV devem conter a URL obrigatória vinculada a base `assets/data/projects.json`.
 - AC3: O frontend deve realizar um `Split` rigoroso em três botões: `Baixar Relatório`, `Baixar Currículo`, `Baixar Carta`, todos no modelo *.DOC* de estrutura limpa sem injeção de `# Títulos de Seção` provenientes da IA.
 
+### Story 6.3: Arquitetura de Fallback Multi-Modelo e Humanização de Erros
+**Status:** Done ✅
+
+Como Engenheiro de IA,
+Eu quero aplicar Redundância de Modelos devido às cotas agressivas do Free Tier,
+Para que o recrutador não se depare com falhas secas e o sistema continue operacional utilizando APIs menores.
+
+**Acceptance Criteria:**
+- AC1: O Worker backend deve injetar as requisições primariamente no `gemini-2.5-flash` (3 RPM / 20 RPD).
+- AC2: Se o Flash principal acusar cota excedida (Status `!= 200`), executar *Fallback On-The-Fly* migrando a carga para o `gemini-3.1-flash-lite-preview` (3 RPM / 500 RPD).
+- AC3: Em estado de Exaustão Total (Ambos Off), o endpoint **nunca deve cuspir HTTP 500 via alert()**, mas sim retornar um HTML estilizado e humano empacotado sob o marcador `---RELATORIO---`, convidando o recrutador a acessar o e-mail ou o LinkedIn via links acessíveis.
+
 ---
 
 ## Verification Plan
