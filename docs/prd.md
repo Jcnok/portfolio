@@ -433,19 +433,61 @@ Quero otimizar métricas base (CWV) para evitar queda no Mobile-First Indexing.
 
 ---
 
-## Verification Plan
+## Epic 8: Otimização de Conversão & Escala (Product Evolution)
+
+**Objetivo:** Elevar o portfólio de um "Showcase" para uma "Máquina de Conversão", automatizando a qualidade e monitorando o sucesso com foco em Recrutadores.
+
+### Story 8.1: Monitoramento e Conversão de Leads
+**Status:** Done ✅
+
+Como o portfólio é meu agente de vendas,
+Eu quero medir o engajamento e facilitar o agendamento direto,
+Para converter visitantes em entrevistas reais.
+
+**Acceptance Criteria:**
+- AC1: Integrar **Vercel Analytics** no `index.html` para monitorar Page Views e Eventos.
+- AC2: Implementar rastreamento de clique no botão (Evento: `generate_cv_clicked`).
+- AC3: Adicionar CTAs de conversão direta: Link para **Calendly** ("Agendar Café") e **WhatsApp** na seção de contato e após a geração do CV.
+- AC4: Implementar micro-animação de **Pulse** no botão "Gerar CV" após o scroll da seção de projetos (UX Nudge).
+
+### Story 8.2: Quality Gates e Testes Automatizados (E2E)
+**Status:** Done ✅
+
+Como administrador do site,
+Quero garantir que nenhuma alteração de CSS ou Dados quebre o fluxo de geração de CV,
+Para manter a credibilidade técnica absoluta.
+
+**Acceptance Criteria:**
+- AC1: Instalar e configurar **Playwright** no projeto (`package.json`).
+- AC2: Criar teste E2E que valide o fluxo: Abrir Modal → Colar Vaga → Gerar Resultado → Verificar Botões de Download.
+- AC3: Integrar os testes de Playwright ao pipeline de CI (`ci.yml`) para rodar em cada Pull Request.
+- AC4: Gerar relatório de cobertura de testes automatizados.
+
+### Story 8.3: Consistência Visual e Acessibilidade (Polimento)
+**Status:** Done ✅
+
+Como um especialista em UX,
+Quero garantir que o site seja inclusivo e visualmente perfeito em qualquer estado,
+Para demonstrar atenção aos detalhes (Attention to Detail).
+
+**Acceptance Criteria:**
+- AC1: Realizar auditoria formal de acessibilidade (**WCAG 2.1 AA**) e corrigir contrastes no radar chart labels (Dark Mode).
+- AC2: Adicionar suporte a **Empty States** com ilustrações IA para filtros de projetos sem resultados.
+- AC3: Converter imagens estáticas remanescentes (perfil e badges) para formato **WebP** com fallback.
+- AC4: Criar um documento de `design-system-lite.md` documentando os tokens de tipografia (clamp) e cores unificadas.
+
+---
+
+## Verification Plan (v1.2)
 
 ### Automated Tests
-- Run `npm test` to validate data fetching, filtering logic, and error handling in `projects.js`.
-- Testes unitários para a lógica de extração de imagem do README (regex).
-- Testes unitários para o mapeamento de dados da API para o formato do `ProjectManager`.
+- Run `npm test` para Jest (Lógica).
+- Run `npx playwright test` para E2E (Fluxos críticos).
+- Check GitHub Actions status for daily data updates.
 
 ### Manual Verification
-- Deploy to Vercel preview environments.
-- Verify the chat widget responds accurately to queries in both Light and Dark modes.
-- Verify project filtering works seamlessly with the new JSON data source.
-- Pinar/despinar um repositório no GitHub e verificar que o portfólio reflete a mudança após o cache expirar (15 min).
-- Verificar que os resumos gerados pelo Gemini são profissionais e estratégicos.
-- Verificar que capas são extraídas do README corretamente, com fallback para OG image e placeholder.
-- Testar em dispositivos móveis (responsive) que tooltips/hovers do summary funcionam (tap to show em mobile).
+- Verificar Vercel Dashboard para métricas de Analytics.
+- Testar CTAs (Calendly/WhatsApp) em diferentes navegadores.
+- Validar contraste de cores usando Chrome DevTools (Aria/A11y).
+- Pinar repositórios e verificar o log da Action `update-projects.yml`.
 

@@ -105,17 +105,42 @@ class ProjectManager {
   /** Filtra projetos por categoria */
   filterProjects(filter) {
     const projectCards = this.projectsGrid.querySelectorAll('.project-card');
+    let visibleCount = 0;
+
+    // Remover mensagem de empty state anterior se existir
+    const existingEmptyState = this.projectsGrid.querySelector('.empty-state');
+    if (existingEmptyState) existingEmptyState.remove();
 
     projectCards.forEach((card, index) => {
       const shouldShow = filter === 'all' || card.classList.contains(filter);
       if (shouldShow) {
         card.style.display = 'block';
         card.style.opacity = '0';
-        card.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1}s`;
+        card.style.animation = `fadeIn 0.5s ease forwards ${visibleCount * 0.1}s`;
+        visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
+
+    // Se nenhum projeto for visível, exibir mensagem amigável (Empty State)
+    if (visibleCount === 0) {
+      const emptyState = document.createElement('div');
+      emptyState.className = 'empty-state animate-on-scroll animate';
+      emptyState.style.gridColumn = '1 / -1';
+      emptyState.style.textAlign = 'center';
+      emptyState.style.padding = '40px 20px';
+
+      emptyState.innerHTML = `
+        <i class="fas fa-search" style="font-size: 3rem; color: var(--text-tertiary); margin-bottom: 20px; display: block;"></i>
+        <h3 style="color: var(--text-primary);">Nenhum projeto encontrado nesta categoria</h3>
+        <p style="color: var(--text-secondary);">O Julio está trabalhando em novas automações. Tente selecionar "Todos" para ver outros projetos!</p>
+        <button class="btn secondary-btn" onclick="document.querySelector('.filter-btn[data-filter=\\'all\\']').click()" style="margin-top: 15px;">
+          Ver Todos os Projetos
+        </button>
+      `;
+      this.projectsGrid.appendChild(emptyState);
+    }
   }
 
   /** Atualiza o filtro ativo */

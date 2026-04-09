@@ -43,6 +43,12 @@
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Vercel Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -91,9 +97,9 @@
               <i class="fas fa-project-diagram"></i>
               Ver Projetos
             </a>
-            <a href="#contact" class="btn secondary-btn">
-              <i class="fas fa-envelope"></i>
-              Contato
+            <a href="https://calendly.com/jcnok" target="_blank" class="btn secondary-btn" id="hero-cta-calendly">
+              <i class="fas fa-calendar-alt"></i>
+              Agendar Café
             </a>
           </div>
         </div>
@@ -309,7 +315,14 @@
             <a href="https://github.com/Jcnok" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/juliookuda" target="_blank" aria-label="LinkedIn"><i
                 class="fab fa-linkedin"></i></a>
-            <a href="https://dio.me/users/juliookuda" target="_blank" aria-label="DIO"><i class="fas fa-globe"></i></a>
+            <a href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp" id="contact-whatsapp"><i
+                class="fab fa-whatsapp"></i></a>
+          </div>
+          <div class="cta-conversion-group" style="margin-top: 25px;">
+            <a href="https://calendly.com/jcnok" target="_blank" class="btn primary-btn"
+              style="width: 100%; text-align: center;">
+              <i class="fas fa-calendar-check"></i> Agendar Entrevista Técnico/Comercial
+            </a>
           </div>
         </div>
         <div class="contact-form">

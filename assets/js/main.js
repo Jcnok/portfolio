@@ -16,6 +16,8 @@ const Portfolio = {
     this.setupContactForm()
     this.setupScrollAnimation()
     this.loadExperience()
+    this.setupCTANudges()
+    this.setupAnalyticsTracking()
   },
 
   /**
@@ -205,6 +207,46 @@ const Portfolio = {
     // Verificar ao rolar
     window.addEventListener("scroll", checkScroll)
   },
+
+  /**
+   * Configura CTAs inteligentes (Nudges)
+   */
+  setupCTANudges: function () {
+    const cvNavBtn = document.getElementById('nav-cv-generator');
+    const projectsSection = document.getElementById('projects');
+
+    if (!cvNavBtn || !projectsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Se a seção de projetos saiu da vista (usuário desceu), ativa o pulse no CTA de CV
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          cvNavBtn.classList.add('pulse-active');
+        } else {
+          cvNavBtn.classList.remove('pulse-active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(projectsSection);
+  },
+
+  /**
+   * Rastreia cliques em links de conversão
+   */
+  setupAnalyticsTracking: function () {
+    const trackClick = (id, name) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', () => {
+          if (window.va) window.va('track', { name: name });
+        });
+      }
+    };
+
+    trackClick('hero-cta-calendly', 'calendly_click_hero');
+    trackClick('contact-whatsapp', 'whatsapp_click_contact');
+  }
 }
 
 // Inicializar quando o DOM estiver carregado

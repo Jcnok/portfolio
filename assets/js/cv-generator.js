@@ -55,9 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await res.json();
 
             if (!res.ok) {
+                if (window.va) window.va('track', { name: 'cv_generation_failed', data: { error: data.error } });
                 throw new Error(data.error || "Erro ao conectar com a IA");
             }
 
+            if (window.va) window.va('track', { name: 'cv_generated' });
             const rawMarkdown = data.reply;
 
             // Split sections: ---RELATORIO---, ---CURRICULO---, ---CARTA---
@@ -128,12 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Download Actions
     downloadRelatorioBtn.addEventListener('click', () => {
         if (!relatorioMarkdown) return;
+        if (window.va) window.va('track', { name: 'download_relatorio' });
         const html = typeof marked !== 'undefined' ? marked.parse(relatorioMarkdown) : relatorioMarkdown;
         downloadDocFile(html, 'Relatorio_ATS_Julio_Okuda');
     });
 
     downloadCvBtn.addEventListener('click', () => {
         if (!currículoMarkdown) return;
+        if (window.va) window.va('track', { name: 'download_cv' });
         const html = typeof marked !== 'undefined' ? marked.parse(currículoMarkdown) : currículoMarkdown;
         downloadDocFile(html, 'Curriculo_ATS_Julio_Okuda');
     });
