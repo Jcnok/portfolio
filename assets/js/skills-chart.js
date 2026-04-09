@@ -65,14 +65,24 @@
           .sort(([, a], [, b]) => b - a)
           .slice(0, 6);
 
-        labels = sortedData.map(([key]) => key);
+        const formatLabel = (str) => {
+          // If the label is long and has spaces, split it into two lines
+          if (str.length > 12 && str.includes(' ')) {
+            const words = str.split(' ');
+            const mid = Math.ceil(words.length / 2);
+            return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+          }
+          return str;
+        };
+
+        labels = sortedData.map(([key]) => formatLabel(key));
         values = sortedData.map(([, val]) => val);
       } else {
         throw new Error('Failed to load');
       }
     } catch (e) {
       console.warn('Using fallback skills data');
-      labels = ['Python', 'SQL', 'Data Analysis', 'ML', 'Azure', 'Power BI'];
+      labels = ['Python', 'SQL', ['Data', 'Analysis'], 'ML', 'Azure', 'Power BI'];
       values = [90, 80, 85, 75, 70, 85];
     }
 

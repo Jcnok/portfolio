@@ -479,12 +479,12 @@ section {
 .stat-item {
   text-align: center;
   flex: 1;
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .stat-value {
   display: block;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-weight: 700;
   color: var(--accent-primary);
   background: var(--gradient-primary);
@@ -494,7 +494,7 @@ section {
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
   color: var(--text-secondary);
 }
 
@@ -1112,12 +1112,31 @@ footer .container {
   }
 
   .github-stats {
+    width: 100%;
     justify-content: center;
     gap: 15px;
   }
 }
 
 @media screen and (max-width: 576px) {
+  .projects-filter {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+
+  .project-overlay p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .section-title {
     font-size: 2rem;
   }
