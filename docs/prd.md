@@ -394,7 +394,7 @@ Para impressionar o recrutador antes mesmo da geração do arquivo, garantindo q
 - RR5: Touch targets (botões, toggles) devem ser ≥ 44x44px.
 
 ### Story 7.1: Empilhamento de Seções em Mobile
-**Status:** To Do 📋
+**Status:** Done ✅
 
 Como visitante acessando pelo celular,
 Eu quero que as seções "Sobre", "Skills" e "Projetos" empilhem verticalmente,
@@ -407,7 +407,7 @@ Para que eu consiga ler todo o conteúdo sem arrastar a tela lateralmente.
 - AC4: Aspect-ratio/altura de imagens de cards e gráficos da página devem ser fluidos.
 
 ### Story 7.2: Correção de Navegação e Chat Mobile
-**Status:** To Do 📋
+**Status:** Done ✅
 
 Como visitante mobile,
 Eu quero navegar nos menus com clareza e abrir o chat e o CV Generator confortavelmente.
@@ -418,7 +418,7 @@ Eu quero navegar nos menus com clareza e abrir o chat e o CV Generator confortav
 - AC3: O Modal "Gerar CV ATS" deve ser Fullscreen no mobile para facilitar input.
 
 ### Story 7.3: Otimizações de SEO & Performance
-**Status:** To Do 📋
+**Status:** Done ✅
 
 Como administrador do site,
 Quero otimizar métricas base (CWV) para evitar queda no Mobile-First Indexing.
