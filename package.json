@@ -18,6 +18,10 @@
         "testEnvironment": "jsdom",
         "roots": [
             "<rootDir>/tests"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/tests/e2e/"
         ]
     },
     "dependencies": {
