@@ -382,6 +382,53 @@ Para impressionar o recrutador antes mesmo da geração do arquivo, garantindo q
 
 ---
 
+## Epic 7: Correção de Responsividade Mobile e UX/SEO
+
+**Objetivo:** Eliminar todos os problemas de overflow horizontal, layout quebrado e elementos inacessíveis em dispositivos móveis, garantindo conformidade com Core Web Vitals e WCAG 2.1 AA.
+
+### Requisitos Globais de Responsividade Mobile (v1.1)
+- RR1: Em viewports ≤ 768px, TODAS as seções de conteúdo devem empilhar em coluna única (`grid-template-columns: 1fr`).
+- RR2: Nenhum elemento deve causar rolagem horizontal (`overflow-x`) em nenhum breakpoint.
+- RR3: O menu hamburger deve ativar em ≤ 992px (pois ≤ 768px é insuficiente para 7 itens no nav).
+- RR4: O widget de chat deve ser acessível e não sobrepor tela/botões em telas estreitas.
+- RR5: Touch targets (botões, toggles) devem ser ≥ 44x44px.
+
+### Story 7.1: Empilhamento de Seções em Mobile
+**Status:** To Do 📋
+
+Como visitante acessando pelo celular,
+Eu quero que as seções "Sobre", "Skills" e "Projetos" empilhem verticalmente,
+Para que eu consiga ler todo o conteúdo sem arrastar a tela lateralmente.
+
+**Acceptance Criteria:**
+- AC1: `.about-grid` deve usar `grid-template-columns: 1fr` em ≤ 768px.
+- AC2: `.skills-content` deve usar container responsivo sem estourar 320px.
+- AC3: `.projects-grid` deve quebrar para 1 coluna em ≤ 768px.
+- AC4: Aspect-ratio/altura de imagens de cards e gráficos da página devem ser fluidos.
+
+### Story 7.2: Correção de Navegação e Chat Mobile
+**Status:** To Do 📋
+
+Como visitante mobile,
+Eu quero navegar nos menus com clareza e abrir o chat e o CV Generator confortavelmente.
+
+**Acceptance Criteria:**
+- AC1: O breakpoint do nav-burger deve ser ajustado para `< 992px`.
+- AC2: Retirar a restrição de largura máxima absoluta ao abrir o chat em dispositivos estreitos, trocando p/ viewport base (100vw).
+- AC3: O Modal "Gerar CV ATS" deve ser Fullscreen no mobile para facilitar input.
+
+### Story 7.3: Otimizações de SEO & Performance
+**Status:** To Do 📋
+
+Como administrador do site,
+Quero otimizar métricas base (CWV) para evitar queda no Mobile-First Indexing.
+
+**Acceptance Criteria:**
+- AC1: Inserir `font-display: swap` nas fontes Web e setar limites escaláveis (Clamp) em cabeçalhos (H1/H2).
+- AC2: Garantir que imagens usem `loading="lazy"`.
+
+---
+
 ## Verification Plan
 
 ### Automated Tests
