@@ -366,6 +366,20 @@ Para que o recrutador não se depare com falhas secas e o sistema continue opera
 - AC2: Se o Flash principal acusar cota excedida (Status `!= 200`), executar *Fallback On-The-Fly* migrando a carga para o `gemini-3.1-flash-lite-preview` (3 RPM / 500 RPD).
 - AC3: Em estado de Exaustão Total (Ambos Off), o endpoint **nunca deve cuspir HTTP 500 via alert()**, mas sim retornar um HTML estilizado e humano empacotado sob o marcador `---RELATORIO---`, convidando o recrutador a acessar o e-mail ou o LinkedIn via links acessíveis.
 
+### Story 6.4: Storytelling para Recrutadores e Exportação Profissional (.doc)
+**Status:** Done ✅
+
+Como Candidato de Alta Performance,
+Eu quero que o formulário do gerador venda meu potencial através de copywriting estratégico (storytelling),
+Para impressionar o recrutador antes mesmo da geração do arquivo, garantindo que ele sinta o valor do meu trabalho como integrador de IA.
+
+**Acceptance Criteria:**
+- AC1: O texto inicial do Modal deve usar técnicas de storytelling/copywriting, explicando que o sistema é uma "demonstração viva" de automação.
+- AC2: Informar claramente que aceita Links de Vagas e Descrições de Requisitos (ou ambos).
+- AC3: Configurar o Backend com `Temperature = 0` para garantir que fatos (Universidades UNINOVE/Descomplica) sejam imutáveis.
+- AC4: Implementar o download via Blob `application/msword` usando o wrapper HTML (`xmlns:w=urn:schemas-microsoft-com:office:word`) para garantir que o arquivo abra formatado no MS Word (.doc).
+- AC5: Garantir que o Dossiê contenha Relatório (com métricas), Currículo e Carta, sem títulos redundantes que sujem o documento profissional.
+
 ---
 
 ## Verification Plan
