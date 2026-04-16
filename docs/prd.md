@@ -478,7 +478,54 @@ Para demonstrar atenção aos detalhes (Attention to Detail).
 
 ---
 
-## Verification Plan (v1.2)
+## Epic 9: AI Knowledge Engine (Serverless RAG)
+
+**Objetivo:** Evoluir o Chat Widget para uma arquitetura RAG (Retrieval-Augmented Generation) 100% Serverless. Vetorizar os READMEs e os Certificados extraídos do Google Drive via GitHub Actions, garantindo precisão absoluta sem alucinações e com zero-ops (sem custos de infraestrutura contínuos).
+
+### Story 9.1: Ingestão de Certificados via Google Drive API
+**Status:** Done ✅
+
+Como administrador do portfólio,
+Eu quero que uma GitHub Action varre minha pasta do Google Drive em busca de novos certificados em PDF, transcrevendo-os via Gemini 1.5 Flash Vision,
+Para que meus conhecimentos comprovados virem dados legíveis para a I.A. sem eu precisar digitar nada.
+
+**Acceptance Criteria:**
+- AC1: Criar um script `scripts/ingest-certificates.mjs`.
+- AC2: Autenticar na Google Drive API usando variáveis de ambiente do GitHub Actions.
+- AC3: Identificar novos PDFs na pasta designada.
+- AC4: Enviar cada novo PDF para a API do Gemini (Vision) para extrair: Título, Instituição, Carga Horária e Skills adquiridas.
+- AC5: Salvar transcrições base num arquivo `.json` incremental.
+
+### Story 9.2: Geração de Embeddings e Banco Vetorial Zero-Ops
+**Status:** Done ✅
+
+Como Engenheiro de Dados,
+Eu quero transformar os textos dos Readmes e dos Certificados transcritos em vetores matemáticos usando `gemini-embedding-001`,
+Para que possamos buscar similaridade semântica (cosine similarity) sem banco de dados externo.
+
+**Acceptance Criteria:**
+- AC1: Criar/modificar step na CI do Actions para processar Arrays brutos (Projetos + Certificados).
+- AC2: Disparar requisições em batch à API de Embeddings do Gemini.
+- AC3: Salvar matriz vetorial resultante em `assets/data/vectors.json`.
+- AC4: Garantir commit autônomo (Push) de volta para `main` atualizando build da Vercel.
+
+### Story 9.3: Endpoint RAG e Injeção de Contexto no Chat
+**Status:** Done ✅
+
+Como recrutador usando o Chat Widget,
+Eu quero perguntar sobre habilidades específicas e receber respostas fundamentadas estritamente em fatos (Readmes/Certificados reais),
+Para ter confiança na exatidão técnica do profissional.
+
+**Acceptance Criteria:**
+- AC1: Modificar `api/chat.js` (ou análogo) para receber embedding da prompt do User.
+- AC2: Calcular *Cosine Similarity* local (Edge/Serverless) rodando contra `vectors.json`.
+- AC3: Obter top-K mais próximos (ex: Top 3~5 registros).
+- AC4: Injetar `Context: ...` limpo no System Prompt base do Agente.
+- AC5: Validar ausência de respostas alucinatórias.
+
+---
+
+## Verification Plan (v1.3)
 
 ### Automated Tests
 - Run `npm test` para Jest (Lógica).

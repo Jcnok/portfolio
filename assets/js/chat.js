@@ -83,6 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 addMessage(data.reply, 'bot-message', true);
+
+                // RAG: Exibir fontes verificadas se disponíveis
+                if (data.sources && data.sources.length > 0) {
+                    const sourceLabels = data.sources.map(s => {
+                        const icon = s.type === 'certificate' ? '🎓' : '📂';
+                        return `${icon} ${s.title} (${s.score}%)`;
+                    }).join(' · ');
+                    addMessage(`📎 Fontes: ${sourceLabels}`, 'bot-message sources-tag', false);
+                }
             } else {
                 addMessage(getFriendlyError(data), 'bot-message', true);
             }

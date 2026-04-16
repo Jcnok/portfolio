@@ -1315,6 +1315,18 @@ footer .container {
   border-bottom-left-radius: 2px;
 }
 
+.sources-tag {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  padding: 4px 10px;
+  border: 1px dashed var(--accent-primary);
+  background: transparent;
+  max-width: 95%;
+  margin-top: -6px;
+  border-radius: 0 0 8px 8px;
+  color: var(--text-secondary);
+}
+
 .user-message {
   align-self: flex-end;
   background: var(--gradient-primary);

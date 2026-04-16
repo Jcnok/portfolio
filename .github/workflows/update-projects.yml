@@ -12,6 +12,8 @@ on:
     paths:
       - 'scripts/generate-projects.mjs'
       - 'scripts/generate-skills.mjs'
+      - 'scripts/ingest-certificates.mjs'
+      - 'scripts/generate-embeddings.mjs'
       - '.github/workflows/update-projects.yml'
 
 env:
@@ -47,6 +49,22 @@ jobs:
         run: |
           sleep 25
           node scripts/generate-skills.mjs
+
+      - name: Ingest certificates from Google Drive 🎓
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          sleep 30
+          node scripts/ingest-certificates.mjs
+
+      - name: Generate RAG Embeddings (Zero-Ops) 🧠
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          sleep 10
+          node scripts/generate-embeddings.mjs
 
       - name: Check for changes
         id: changes
