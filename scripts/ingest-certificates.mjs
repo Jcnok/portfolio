@@ -49,7 +49,7 @@ if (existsSync(envPath)) {
 // Config
 // ---------------------------------------------------------------------------
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-1.5-flash';
+const GEMINI_MODEL = 'gemini-2.5-flash'; // Modelo Vision com suporte a PDF nativo (Free Tier)
 const GOOGLE_DRIVE_FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID;
 
 // Service Account JSON key (stored as env var or GitHub Secret)
