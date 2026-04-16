@@ -525,7 +525,7 @@ Para ter confiança na exatidão técnica do profissional.
 
 ---
 
-## Verification Plan (v1.3)
+## Verification Plan (v1.4)
 
 ### Automated Tests
 - Run `npm test` para Jest (Lógica).
@@ -537,4 +537,11 @@ Para ter confiança na exatidão técnica do profissional.
 - Testar CTAs (Calendly/WhatsApp) em diferentes navegadores.
 - Validar contraste de cores usando Chrome DevTools (Aria/A11y).
 - Pinar repositórios e verificar o log da Action `update-projects.yml`.
+
+### RAG Verification (Epic 9)
+- Confirmar que `vectors.json` é gerado pela Action com todos os repos públicos.
+- Confirmar que `certificates.json` contém certificados transcritos do Google Drive.
+- Testar chat no portfólio com perguntas técnicas específicas (ex: "Quais projetos usam Python?").
+- Validar que respostas incluem links clicáveis para repositórios GitHub.
+- Validar graceful degradation: chat funciona normalmente se `vectors.json` não existir.
 

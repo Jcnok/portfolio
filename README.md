@@ -31,13 +31,15 @@
 
 - [A História por Trás](#-a-história-por-trás)
 - [Funcionalidades](#-funcionalidades)
+- [Destaque: Chat RAG Inteligente](#-destaque-chat-rag-inteligente)
 - [Destaque: Gerador de Currículo IA (ATS)](#-destaque-gerador-de-currículo-ia-ats)
 - [Arquitetura do Projeto](#️-arquitetura-do-projeto)
 - [Stack Tecnológico](#-stack-tecnológico)
+- [Pipeline de Automação](#-pipeline-de-automação)
 - [Estrutura de Arquivos](#-estrutura-de-arquivos)
 - [Como Executar Localmente](#-como-executar-localmente)
+- [Variáveis de Ambiente](#-variáveis-de-ambiente)
 - [Qualidade e Testes](#-qualidade-e-testes)
-- [Pipeline de Automação](#-pipeline-de-automação)
 - [Padrões de Engenharia](#-padrões-de-engenharia)
 - [Roadmap](#-roadmap)
 - [Contato](#-contato)
@@ -55,7 +57,7 @@ Sou um profissional em **transição de carreira para IA e Automação**, e meu 
 
 A resposta está na própria experiência de navegação:
 
-- O **Chat com IA** responde perguntas sobre mim usando a API do Gemini — com sanitização contra XSS e Rate Limiting.
+- O **Chat com RAG** responde perguntas sobre mim usando Retrieval-Augmented Generation — buscando provas reais nos meus 56+ repositórios e certificados.
 - O **Gráfico de Habilidades** é gerado automaticamente a partir dos meus repositórios do GitHub via pipeline diária.
 - O **Gerador de Currículo ATS** analisa vagas em tempo real e monta um dossiê personalizado cruzando com meus dados reais.
 - **Engenharia de Conversão**: O site monitora engajamento (Vercel Analytics) e facilita o agendamento direto via Calendly/WhatsApp.
@@ -68,14 +70,48 @@ Cada feature deste site é uma **demonstração técnica viva** das habilidades 
 
 | Feature | Descrição | Tech |
 |---|---|---|
+| 🧠 **Chat RAG** | Assistente com Retrieval-Augmented Generation — busca em 56+ repos e certificados para respostas com fontes verificáveis | Gemini Embedding, Cosine Similarity, Vercel Functions |
 | 🤖 **Gerador de CV ATS** | Analisa vagas e gera Relatório + Currículo + Carta em `.doc` | Gemini 2.5 Flash + Fallback |
-| 📊 **Skills Dinâmicas** | Gráfico radar gerado via pipeline GitHub Actions + Gemini | Chart.js, GitHub API |
-| 💬 **Chat com IA** | Assistente que responde sobre meu perfil usando Gemini API | Gemini API, Vercel Functions |
+| 📊 **Skills Dinâmicas** | Gráfico radar gerado via pipeline GitHub Actions + Gemini | Chart.js, GitHub GraphQL API |
+| 🎓 **Ingestão de Certificados** | PDFs do Google Drive → transcrição automática via Gemini Vision | Google Drive API, Gemini Vision |
 | 📈 **Telemetria de Leads** | Monitoramento de cliques e conversão em tempo real | Vercel Analytics |
 | 🎯 **CTA de Conversão** | Agendamento via Calendly e WhatsApp integrados | Headless JSON Config |
-| ✨ **UX Nudges** | Micro-animações (Pulse) que ativam após scroll estratégico | JS Interaction Observer |
+| ✨ **UX Nudges** | Micro-animações (Pulse) que ativam após scroll estratégico | JS Intersection Observer |
 | 📱 **Mobile-First** | 100% responsivo com tipografia fluida (`clamp`) | CSS Grid, Clamp Logic |
 | 🧪 **Blindagem Técnica** | Testes Unitários (Jest) e End-to-End (Playwright) | Jest, Playwright |
+
+---
+
+## 🧠 Destaque: Chat RAG Inteligente
+
+> *"O chat não inventa. Ele busca provas nos seus projetos reais antes de responder."*
+
+O sistema de chat implementa uma arquitetura **RAG (Retrieval-Augmented Generation)** completa, 100% serverless e sem custos de infraestrutura:
+
+```
+┌──────────────────────────────────────────────────────────────────────────┐
+│  PIPELINE DIÁRIA (GitHub Actions — 06:00 UTC)                          │
+│                                                                        │
+│  1. 📂 Busca 56+ repositórios públicos (GraphQL) + READMEs (REST)     │
+│  2. 🎓 Ingestão de certificados do Google Drive (Gemini Vision)       │
+│  3. 🧠 Gera embeddings com gemini-embedding-001 → vectors.json       │
+│  4. 🚀 Commit automático → Vercel auto-deploy                         │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│  RUNTIME (Vercel Serverless — cada pergunta do recrutador)             │
+│                                                                        │
+│  Pergunta → Embedding da query → Cosine Similarity vs vectors.json    │
+│  → Top-5 documentos relevantes → Injeção de contexto no System Prompt │
+│  → Gemini responde com fontes verificáveis e links clicáveis          │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+### Características Técnicas:
+- **Zero-Hallucination**: O LLM só responde com informações presentes nos documentos recuperados.
+- **Fontes Clicáveis**: Cada resposta inclui links diretos para os repositórios GitHub citados.
+- **Graceful Degradation**: Se o banco vetorial não existir, o chat funciona normalmente sem RAG.
+- **Zero-Ops**: Sem banco de dados externo — o `vectors.json` (~4MB) é servido como asset estático.
 
 ---
 
@@ -120,12 +156,21 @@ graph TD;
     A-->C["main.js (UX Logic)"]
     A-->H["cv-generator.js (AI logic)"]
 
-    I["Vercel Functions"]-->K["/api/generate-cv.js"]
+    I["Vercel Functions"]-->J["/api/chat.js (RAG Engine)"]
+    I-->K["/api/generate-cv.js"]
+    J-->VEC["vectors.json (Semantic Search)"]
+    J-->EMB["gemini-embedding-001"]
+    J-->LLM["Gemini 3.1 Flash Lite"]
     K-->P["Gemini API (Primary/Fallback)"]
 
-    L["GitHub Actions"]-->M["update-projects.yml (Daily Data)"]
-    M-->O["config.json / projects.json / languages.json"]
-    O-->A
+    L["GitHub Actions (Daily)"]-->M1["generate-projects.mjs"]
+    L-->M2["generate-skills.mjs"]
+    L-->M3["ingest-certificates.mjs"]
+    L-->M4["generate-embeddings.mjs"]
+    M1-->O1["projects.json"]
+    M2-->O2["languages.json"]
+    M3-->O3["certificates.json"]
+    M4-->O4["vectors.json"]
 
     R["Playwright CI"]-->A
     S["Vercel Analytics"]-->A
@@ -138,40 +183,112 @@ graph TD;
 | Camada | Tecnologias |
 |---|---|
 | **Frontend** | HTML5 Semântico, Vanilla CSS (Design Tokens), Vanilla JS ES6+ |
-| **Inteligência** | Google Gemini (Multi-model), Vercel Serverless Functions |
+| **Inteligência** | Google Gemini (Multi-model), RAG (Embeddings + Cosine Similarity), Vercel Serverless |
+| **Dados** | Google Drive API (Certificados), GitHub GraphQL + REST API (Repositórios) |
 | **Qualidade** | Playwright (E2E), Jest (Unit), GitHub Actions (CI) |
 | **Observabilidade** | Vercel Analytics (Event Tracking) |
-| **Automação** | JavaScript (Scripts de Enriquecimento de Dados), n8n (External) |
+| **Automação** | 4 scripts Node.js autônomos (Daily Pipeline), GitHub Actions |
 
 ---
 
-## 📁 Estrutura de Arquivos Principal
+## ⚙️ Pipeline de Automação
 
-- `api/`: Funções serverless para Chat e Geração de CV.
-- `assets/data/`: **Headless CMS** (todos os dados do site em JSON).
-- `assets/js/`: Módulos independentes por funcionalidade.
-- `docs/`: Documentação de PRD, Design System e Epics.
-- `tests/`: Suíte de testes automatizados.
+A pipeline diária roda automaticamente às 06:00 UTC via GitHub Actions:
+
+| Step | Script | Output | Descrição |
+|------|--------|--------|-----------|
+| 1 | `generate-projects.mjs` | `projects.json` | Busca repos pinados + enriquecimento Gemini |
+| 2 | `generate-skills.mjs` | `languages.json` | Analisa bytes de código + gera radar de skills |
+| 3 | `ingest-certificates.mjs` | `certificates.json` | Transcreve PDFs do Google Drive via Gemini Vision |
+| 4 | `generate-embeddings.mjs` | `vectors.json` | Gera embeddings de 56+ repos + certificados |
+| 5 | Auto-commit | `git push` | Vercel auto-deploy com dados atualizados |
+
+---
+
+## 📁 Estrutura de Arquivos
+
+```
+portfolio/
+├── api/                          # Vercel Serverless Functions
+│   ├── chat.js                   # Chat RAG Engine (v3.0)
+│   └── generate-cv.js            # Gerador de CV ATS
+├── assets/
+│   ├── css/styles.css            # Design System completo
+│   ├── data/                     # Headless CMS (JSON)
+│   │   ├── config.json           # Configuração centralizada (Calendly, WhatsApp)
+│   │   ├── projects.json         # Projetos pinados (auto-generated)
+│   │   ├── languages.json        # Skills radar (auto-generated)
+│   │   ├── certificates.json     # Certificados transcritos (auto-generated)
+│   │   ├── vectors.json          # Banco vetorial RAG (auto-generated)
+│   │   └── experience.json       # Experiência profissional
+│   └── js/                       # Módulos JavaScript
+│       ├── main.js               # UX, animações, navegação
+│       ├── chat.js               # Chat widget (RAG sources UI)
+│       ├── cv-generator.js       # Lógica do gerador de CV
+│       ├── projects.js           # Renderização de cards
+│       └── skills-chart.js       # Gráfico radar (Chart.js)
+├── scripts/                      # Pipelines autônomos
+│   ├── generate-projects.mjs     # GitHub Pinned → projects.json
+│   ├── generate-skills.mjs       # GitHub Languages → languages.json
+│   ├── ingest-certificates.mjs   # Google Drive PDFs → certificates.json
+│   └── generate-embeddings.mjs   # All Repos + Certs → vectors.json
+├── docs/                         # Documentação AIOX
+│   ├── prd.md                    # Product Requirements Document
+│   ├── stories/                  # User Stories por Epic
+│   └── design-system-lite.md     # Design tokens e guidelines
+├── tests/                        # Testes automatizados
+│   ├── unit/                     # Jest (lógica de dados)
+│   └── e2e/                      # Playwright (fluxo de conversão)
+├── .github/workflows/            # CI/CD
+│   ├── ci.yml                    # Build + Testes no PR/Push
+│   └── update-projects.yml       # Pipeline diária (Daily Data)
+└── index.html                    # Entry point
+```
 
 ---
 
 ## 🚀 Como Executar Localmente
 
-### Testando o Frontend
+### 1. Clone e instale
 ```bash
+git clone https://github.com/Jcnok/portfolio.git
+cd portfolio
 npm install
+```
+
+### 2. Configure as variáveis de ambiente
+```bash
+cp .env.example .env
+# Preencha as variáveis necessárias (ver seção abaixo)
+```
+
+### 3. Inicie o servidor
+```bash
 npx serve .
 ```
 
-### Rodando o Ambiente de Testes
+### 4. Rode os testes
 ```bash
-# Testes Unitários (Lógica de Dados)
+# Testes Unitários
 npm test
 
-# Testes E2E (Fluxo de Conversão no Browser)
+# Testes E2E
 npx playwright install
 npx playwright test
 ```
+
+---
+
+## 🔐 Variáveis de Ambiente
+
+| Variável | Obrigatória | Descrição |
+|----------|:-----------:|-----------|
+| `GEMINI_API_KEY` | ✅ | Chave da API Google AI Studio ([obter aqui](https://aistudio.google.com/apikey)) |
+| `GITHUB_TOKEN` | ✅ | Token GitHub com escopo `public_repo` ([criar aqui](https://github.com/settings/tokens)) |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | 📋 Pipeline | JSON da Service Account do Google Cloud |
+| `GOOGLE_DRIVE_FOLDER_ID` | 📋 Pipeline | ID da pasta do Drive com certificados em PDF |
+
+> As variáveis 📋 são necessárias apenas para a pipeline de ingestão (GitHub Actions).
 
 ---
 
@@ -184,14 +301,28 @@ Para garantir que a experiência do recrutador seja sempre perfeita, implementam
 
 ---
 
+## 📐 Padrões de Engenharia
+
+- **Story-Driven Development**: Cada feature segue o ciclo PRD → Epic → Story → Implementation → Done.
+- **Headless CMS**: Todos os dados dinâmicos vivem em `assets/data/*.json`, sem CMS externo.
+- **Zero-Ops**: Nenhuma infraestrutura paga — Google Free Tier + Vercel Free + GitHub Actions.
+- **Graceful Degradation**: Features de IA falham silenciosamente sem afetar a navegação base.
+- **Conventional Commits**: Mensagens semânticas (`feat:`, `fix:`, `docs:`, `chore:`).
+- **AIOX Framework**: Documentação e desenvolvimento orientados por agentes especializados.
+
+---
+
 ## 🔮 Roadmap
 
 - [x] Chat com IA (Gemini)
 - [x] Pipeline automática de Skills (GitHub Actions)
 - [x] Gerador de Currículo ATS com Dual-LLM
-- [x] Engenharia de Conversão (Analytics + CTAs links)
-- [x] Testes E2E (Playwright)
+- [x] Engenharia de Conversão (Analytics + CTAs)
+- [x] Testes E2E (Playwright) + CI/CD
 - [x] Headless Config (Centralizado em JSON)
+- [x] **RAG Engine — Chat com busca vetorial em 56+ repos e certificados**
+- [x] **Ingestão automática de certificados do Google Drive**
+- [x] **Embeddings com `gemini-embedding-001` (Zero-Ops)**
 - [ ] Blog integrado com IA
 - [ ] Internacionalização (EN/PT)
 - [ ] Progressive Web App (PWA)
@@ -207,9 +338,15 @@ Para garantir que a experiência do recrutador seja sempre perfeita, implementam
 | 💼 **LinkedIn** | [linkedin.com/in/juliookuda](https://linkedin.com/in/juliookuda) |
 | 📅 **Agendar Café** | [Calendly](https://calendly.com/jcnok) |
 | 📧 **Email** | [julio.okuda@gmail.com](mailto:julio.okuda@gmail.com) |
-| 🌐 **Vivo** | [portfolio-jcnok.vercel.app](https://portfolio-jcnok.vercel.app/) |
+| 🌐 **Portfólio** | [portfolio-jcnok.vercel.app](https://portfolio-jcnok.vercel.app/) |
 
 </div>
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT).
 
 ---
 
