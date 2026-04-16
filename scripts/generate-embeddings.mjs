@@ -19,7 +19,6 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const PROJECTS_JSON_PATH = resolve(__dirname, '../assets/data/projects.json');
 const CERTS_JSON_PATH = resolve(__dirname, '../assets/data/certificates.json');
 const VECTORS_JSON_PATH = resolve(__dirname, '../assets/data/vectors.json');
 
@@ -212,36 +211,7 @@ async function main() {
     const docsToEmbed = [];
 
     // =========================================================================
-    // FONTE 1: Projetos Pinados (dados enriquecidos pelo Gemini — projects.json)
-    // =========================================================================
-    const pinnedNames = new Set();
-    if (existsSync(PROJECTS_JSON_PATH)) {
-        const projects = JSON.parse(readFileSync(PROJECTS_JSON_PATH, 'utf-8'));
-        projects.forEach(p => {
-            // Marcar como pinado para não duplicar quando varrermos todos os repos
-            pinnedNames.add(p.title.toLowerCase().replace(/\s+/g, '-'));
-            // ID format: project_{title_kebab} para ser estável entre runs
-            const stableId = `project_pinned_${p.title.toLowerCase().replace(/\s+/g, '-')}`;
-            const textContent = [
-                `PROJETO PINADO: ${p.title}`,
-                `CATEGORIA: ${p.category}`,
-                `SKILLS: ${p.tags?.join(', ')}`,
-                `DESCRIÇÃO: ${p.description}`,
-                `RESUMO GEMINI: ${p.resume}`,
-            ].join('\n');
-            docsToEmbed.push({
-                id: stableId,
-                type: 'project',
-                title: `⭐ ${p.title}`,
-                content: textContent,
-                link: p.codeUrl || '#'
-            });
-        });
-        console.log(`⭐ ${projects.length} projetos pinados carregados de projects.json`);
-    }
-
-    // =========================================================================
-    // FONTE 2: TODOS os Repos Públicos (GitHub GraphQL + README)
+    // FONTE 1: TODOS os Repos Públicos (GitHub GraphQL + README)
     // =========================================================================
     if (GITHUB_TOKEN) {
         const allRepos = await fetchAllPublicRepos();
@@ -250,11 +220,6 @@ async function main() {
         let readmeCount = 0;
 
         for (const repo of allRepos) {
-            // Pular repos que já foram indexados como pinados (evita duplicata)
-            if (pinnedNames.has(repo.name.toLowerCase())) {
-                continue;
-            }
-
             const readme = await fetchReadme(repo.name);
             const topics = repo.repositoryTopics?.nodes?.map(n => n.topic.name) || [];
             const language = repo.primaryLanguage?.name || 'N/A';
@@ -279,9 +244,9 @@ async function main() {
             if (readme) readmeCount++;
         }
 
-        console.log(`   ✅ ${allRepos.length - pinnedNames.size} repos adicionais processados (${readmeCount} com README)`);
+        console.log(`   ✅ ${allRepos.length} repos processados (${readmeCount} com README)`);
     } else {
-        console.warn('⚠️ GITHUB_TOKEN não configurado. Pulando ingestão de repos completos.');
+        console.warn('⚠️ GITHUB_TOKEN não configurado. Pulando ingestão de repos.');
     }
 
     // =========================================================================
