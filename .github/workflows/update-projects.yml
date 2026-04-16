@@ -59,9 +59,10 @@ jobs:
           sleep 30
           node scripts/ingest-certificates.mjs
 
-      - name: Generate RAG Embeddings (Zero-Ops) 🧠
+      - name: Generate RAG Embeddings (All Repos + Certs) 🧠
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           sleep 10
           node scripts/generate-embeddings.mjs
