@@ -165,16 +165,15 @@ function retrieveTopK(queryVector, store, k = TOP_K) {
 function buildRAGContext(relevantDocs) {
   if (!relevantDocs || relevantDocs.length === 0) return '';
 
-  const contextBlocks = relevantDocs.map((doc, i) => {
-    // Remover o vetor do content summary para não poluir o prompt
+  const contextBlocks = relevantDocs.map((doc) => {
     const content = doc.contentSummary || '';
-    const typeLabel = doc.type === 'certificate' ? '🎓 Certificado' : '📂 Projeto';
-    return `[FONTE ${i + 1} — ${typeLabel}]: ${doc.title}\n${content}`;
+    const typeLabel = doc.type === 'certificate' ? '🎓 Certificado' : '📂 Repositório';
+    const linkInfo = doc.link && doc.link !== '#' ? `LINK: ${doc.link}` : '';
+    return `[${typeLabel}: ${doc.title}]\n${content}\n${linkInfo}`.trim();
   });
 
   return `\n\n<contexto_verificado>
-As seguintes informações foram recuperadas da base de conhecimento real e verificada do Julio.
-Use APENAS estas fontes para fundamentar sua resposta. Cite a fonte quando usar informações específicas.
+As informações abaixo são reais e verificadas, extraídas do GitHub e certificados do Julio.
 
 ${contextBlocks.join('\n\n')}
 </contexto_verificado>`;
@@ -259,6 +258,7 @@ export default async function handler(req, res) {
         sources = relevantDocs.map(doc => ({
           title: doc.title,
           type: doc.type,
+          link: doc.link || '#',
           score: Math.round(doc.score * 100),
         }));
 
@@ -286,7 +286,10 @@ RULES:
 - Be helpful, humble, and enthusiastic about technology.
 - When answering about specific skills, certifications, or projects, use ONLY the verified context above. Do NOT invent or hallucinate information.
 - If the context doesn't contain enough information to answer, say so honestly.
-- When you use information from the verified context, mention the source naturally (e.g., "De acordo com o certificado X..." or "No projeto Y...").
+- NÃO use referências numéricas como [FONTE 1] ou [FONTE 2, 4]. Isso confunde o usuário.
+- Quando mencionar um projeto, inclua o link em Markdown para o repositório. Exemplo: [Nome do Projeto](https://github.com/...).
+- Quando o contexto incluir um LINK, use-o na resposta como hyperlink Markdown clicável.
+- Seja natural e fluido, mencionando projetos ou certificados pelo nome.
 
 User question: ${sanitizedMessage}`;
 

@@ -86,11 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // RAG: Exibir fontes verificadas se disponíveis
                 if (data.sources && data.sources.length > 0) {
-                    const sourceLabels = data.sources.map(s => {
+                    const sourceLinks = data.sources.map(s => {
                         const icon = s.type === 'certificate' ? '🎓' : '📂';
-                        return `${icon} ${s.title} (${s.score}%)`;
+                        if (s.link && s.link !== '#') {
+                            return `${icon} <a href="${s.link}" target="_blank" rel="noopener noreferrer">${s.title}</a>`;
+                        }
+                        return `${icon} ${s.title}`;
                     }).join(' · ');
-                    addMessage(`📎 Fontes: ${sourceLabels}`, 'bot-message sources-tag', false);
+                    addMessage(`📎 ${sourceLinks}`, 'bot-message sources-tag', false, true);
                 }
             } else {
                 addMessage(getFriendlyError(data), 'bot-message', true);
@@ -140,11 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------------------------------------
     // UI Helpers
     // -----------------------------------------------------------------------
-    function addMessage(text, className, isMarkdown = false) {
+    function addMessage(text, className, isMarkdown = false, isHTML = false) {
         const div = document.createElement('div');
         div.className = `message ${className}`;
 
-        if (isMarkdown && typeof marked !== 'undefined') {
+        if (isHTML) {
+            div.innerHTML = sanitizeHTML(text);
+        } else if (isMarkdown && typeof marked !== 'undefined') {
             div.innerHTML = sanitizeHTML(marked.parse(text));
         } else {
             div.innerText = text;

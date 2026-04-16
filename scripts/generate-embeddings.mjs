@@ -208,6 +208,18 @@ async function main() {
     const vectorMap = new Map();
     existingVectors.forEach(v => vectorMap.set(v.id, v));
 
+    // Cleanup: remover vetores legados do formato antigo (project_pinned_* e project_*)
+    let purgedCount = 0;
+    for (const [id] of vectorMap) {
+        if (id.startsWith('project_')) {
+            vectorMap.delete(id);
+            purgedCount++;
+        }
+    }
+    if (purgedCount > 0) {
+        console.log(`🧹 ${purgedCount} vetores legados removidos (formato antigo project_*)`);
+    }
+
     const docsToEmbed = [];
 
     // =========================================================================

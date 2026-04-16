@@ -1327,6 +1327,16 @@ footer .container {
   color: var(--text-secondary);
 }
 
+.sources-tag a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sources-tag a:hover {
+  text-decoration: underline;
+}
+
 .user-message {
   align-self: flex-end;
   background: var(--gradient-primary);
