@@ -28,3 +28,7 @@ Thumbs.db
 .aiox-core/local/
 .claude/settings.local.json
 .aiox/install-log.txt
+
+# Playwright
+playwright-report/
+test-results/
