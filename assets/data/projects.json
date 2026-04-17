@@ -3,13 +3,13 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus tradicionais por roteamento semântico avançado. Integra Langflow e Open-WebUI para orquestrar fluxos de IA com acesso a dados em tempo real via CRM.",
+    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow e OpenAI para orquestração de fluxos e CRM via FastAPI, demonstrando alta capacidade em automação de processos de negócio.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
       "Langflow",
       "Semantic-Router",
-      "LLM",
+      "Python",
       "Docker"
     ],
     "codeUrl": "https://github.com/Jcnok/Desafio-Langflow",
@@ -19,7 +19,7 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline de dados robusto que integra DBT para transformação em camadas e LangChain para consultas em linguagem natural. Oferece uma solução completa de BI com visualização interativa via Streamlit.",
+    "resume": "Pipeline de dados robusto que integra análise de vendas com LLMs para consultas em linguagem natural. Utiliza dbt para modelagem de dados e Streamlit para dashboards interativos, entregando uma solução completa de ponta a ponta.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
@@ -35,14 +35,14 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta de análise comparativa de projetos baseada em IA generativa para otimização de ROI. Utiliza Azure OpenAI para extrair insights estratégicos com deployment containerizado.",
+    "resume": "Ferramenta estratégica de análise de ROI comparativa impulsionada por IA, desenvolvida para ambientes Azure. Foca em decisões de negócio baseadas em dados com arquitetura escalável e pronta para produção.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
       "Azure OpenAI",
       "Python",
       "Streamlit",
-      "Docker"
+      "Cloud"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
@@ -51,48 +51,49 @@
     "id": 4,
     "title": "Stack Labs Churn",
     "description": "Projeto de código aberto: Stack Labs Churn",
-    "resume": "Projeto de modelagem preditiva focado em retenção de clientes, com pipeline completo desde análise exploratória até o deploy. Alcançou métricas de alta performance para identificação proativa de cancelamentos.",
+    "resume": "Modelo preditivo de churn com foco em retenção de clientes, alcançando alta performance em métricas de classificação. Demonstra domínio em todo o ciclo de vida de ML, da análise exploratória ao deploy de soluções estratégicas.",
     "image": "assets/images/projects/stack_labs_churn.svg",
     "category": "machine-learning",
     "tags": [
       "Scikit-learn",
       "Pandas",
-      "Data-Science",
-      "Predictive-Modeling"
+      "Machine Learning",
+      "EDA"
     ],
     "codeUrl": "https://github.com/Jcnok/Stack_Labs_Churn",
     "demoUrl": "https://github.com/Jcnok/Stack_Labs_Churn"
   },
   {
     "id": 5,
-    "title": "CRM Skynet Provider SQLite FastAPI",
-    "description": "Sistema CRM para Skynet Provider usando SQLite e FastAPI",
-    "resume": "API RESTful de alta performance desenvolvida com FastAPI para gestão de CRM, utilizando SQLite para persistência estruturada. Implementa automação de dados e arquitetura escalável para sistemas de atendimento.",
-    "image": "assets/images/projects/crm-skynet-provider-sqlite_fastapi.svg",
-    "category": "web-development",
-    "tags": [
-      "FastAPI",
-      "SQLite",
-      "API-REST",
-      "Python"
-    ],
-    "codeUrl": "https://github.com/Jcnok/CRM-Skynet-Provider-SQLite_FastAPI",
-    "demoUrl": "https://jcnok-skynet.hf.space/docs#/"
-  },
-  {
-    "id": 6,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Sistema avançado de atendimento utilizando arquitetura de agentes autônomos e RAG para resolução inteligente de demandas. Integra Azure OpenAI e PostgreSQL (pgvector) para uma experiência de suporte escalável e responsiva.",
+    "resume": "Arquitetura de agentes autônomos para atendimento escalável utilizando RAG e Azure OpenAI. Solução enterprise que otimiza a experiência do cliente através de orquestração inteligente e integração de sistemas complexos.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
-      "Azure-OpenAI",
       "RAG",
+      "Azure OpenAI",
       "FastAPI",
+      "React",
       "PostgreSQL"
     ],
     "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
     "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
+  },
+  {
+    "id": 6,
+    "title": "Portfolio",
+    "description": "Modelo de site para portifólio, desenvolvido com (HTML5, CSS, JavaScript)",
+    "resume": "Portfólio interativo com integração de RAG e automação de currículos via IA. Demonstra a capacidade de aplicar engenharia de software moderna e IA generativa para criar experiências web altamente personalizadas.",
+    "image": "assets/images/projects/portfolio.svg",
+    "category": "web-development",
+    "tags": [
+      "JavaScript",
+      "RAG",
+      "Gemini AI",
+      "Web Development"
+    ],
+    "codeUrl": "https://github.com/Jcnok/portfolio",
+    "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
   }
 ]

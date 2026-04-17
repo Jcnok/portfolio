@@ -1,0 +1,23 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="280" fill="#0f172a"/>
+  <rect width="800" height="280" fill="url(#grid)"/>
+
+  <text x="400" y="130" font-family="sans-serif" font-size="55" font-weight="bold" fill="url(#glow)" text-anchor="middle" style="filter: drop-shadow(0 0 10px #6366f1);">Portfolio</text>
+  
+  <text x="400" y="180" font-family="sans-serif" font-size="22" fill="#e2e8f0" text-anchor="middle">
+    <tspan x="400" dy="0">JavaScript | RAG | Gemini AI</tspan>
+    <tspan x="400" dy="30">Web Development</tspan>
+  </text>
+  
+  <rect x="300" y="220" width="200" height="2" fill="url(#glow)" />
+</svg>
