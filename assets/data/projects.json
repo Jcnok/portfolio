@@ -3,14 +3,15 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow e OpenAI para orquestração de fluxos e CRM via FastAPI, demonstrando alta capacidade em automação de processos de negócio.",
+    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos tradicionais por roteamento semântico avançado. Integra Langflow, OpenAI e APIs de CRM para proporcionar uma experiência de conversação fluida e automatizada, encapsulada em arquitetura Docker escalável.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
       "Langflow",
       "Semantic-Router",
-      "Python",
-      "Docker"
+      "Docker",
+      "LLM",
+      "FastAPI"
     ],
     "codeUrl": "https://github.com/Jcnok/Desafio-Langflow",
     "demoUrl": "https://github.com/Jcnok/Desafio-Langflow"
@@ -19,14 +20,15 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline de dados robusto que integra análise de vendas com LLMs para consultas em linguagem natural. Utiliza dbt para modelagem de dados e Streamlit para dashboards interativos, entregando uma solução completa de ponta a ponta.",
+    "resume": "Pipeline de dados robusto que integra transformação via dbt com uma interface Streamlit interativa para análise de vendas. Implementa consultas em linguagem natural utilizando LangChain e modelos Gemini, garantindo governança de dados e insights acionáveis em tempo real.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
       "dbt",
       "LangChain",
       "Streamlit",
-      "PostgreSQL"
+      "PostgreSQL",
+      "Gemini-AI"
     ],
     "codeUrl": "https://github.com/Jcnok/crm-system",
     "demoUrl": "https://crm-system.streamlit.app/"
@@ -35,14 +37,14 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta estratégica de análise de ROI comparativa impulsionada por IA, desenvolvida para ambientes Azure. Foca em decisões de negócio baseadas em dados com arquitetura escalável e pronta para produção.",
+    "resume": "Ferramenta de análise comparativa de projetos impulsionada por IA, projetada para otimizar a tomada de decisão estratégica. Utiliza Azure OpenAI para processamento inteligente e oferece uma arquitetura containerizada pronta para ambientes de nuvem corporativos.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
-      "Azure OpenAI",
-      "Python",
+      "Azure-OpenAI",
       "Streamlit",
-      "Cloud"
+      "Docker",
+      "ROI-Analysis"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
@@ -51,14 +53,15 @@
     "id": 4,
     "title": "Stack Labs Churn",
     "description": "Projeto de código aberto: Stack Labs Churn",
-    "resume": "Modelo preditivo de churn com foco em retenção de clientes, alcançando alta performance em métricas de classificação. Demonstra domínio em todo o ciclo de vida de ML, da análise exploratória ao deploy de soluções estratégicas.",
+    "resume": "Projeto focado em ciência de dados aplicada à retenção de clientes, abrangendo desde a análise exploratória (EDA) até a modelagem preditiva. Demonstra proficiência em algoritmos de Machine Learning com foco em métricas de performance como F1-Score e Recall para mitigar churn.",
     "image": "assets/images/projects/stack_labs_churn.svg",
     "category": "machine-learning",
     "tags": [
-      "Scikit-learn",
+      "Scikit-Learn",
       "Pandas",
-      "Machine Learning",
-      "EDA"
+      "Machine-Learning",
+      "EDA",
+      "Churn-Prediction"
     ],
     "codeUrl": "https://github.com/Jcnok/Stack_Labs_Churn",
     "demoUrl": "https://github.com/Jcnok/Stack_Labs_Churn"
@@ -67,15 +70,15 @@
     "id": 5,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Arquitetura de agentes autônomos para atendimento escalável utilizando RAG e Azure OpenAI. Solução enterprise que otimiza a experiência do cliente através de orquestração inteligente e integração de sistemas complexos.",
+    "resume": "Arquitetura de atendimento ao cliente baseada em agentes autônomos e RAG, utilizando o ecossistema Azure. O sistema orquestra fluxos complexos com FastAPI e React, empregando bancos vetoriais (pgvector) para entregas de IA de alta precisão e baixa latência.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
       "RAG",
-      "Azure OpenAI",
+      "Azure-OpenAI",
       "FastAPI",
       "React",
-      "PostgreSQL"
+      "pgvector"
     ],
     "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
     "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
@@ -84,14 +87,14 @@
     "id": 6,
     "title": "Portfolio",
     "description": "Modelo de site para portifólio, desenvolvido com (HTML5, CSS, JavaScript)",
-    "resume": "Portfólio interativo com integração de RAG e automação de currículos via IA. Demonstra a capacidade de aplicar engenharia de software moderna e IA generativa para criar experiências web altamente personalizadas.",
+    "resume": "Portfólio profissional moderno com integração de IA, demonstrando habilidades em desenvolvimento web e automação. Inclui um Chat RAG inteligente e gerador de currículos otimizado para sistemas ATS, refletindo domínio técnico em tecnologias de interface e integração com modelos de linguagem.",
     "image": "assets/images/projects/portfolio.svg",
     "category": "web-development",
     "tags": [
       "JavaScript",
       "RAG",
-      "Gemini AI",
-      "Web Development"
+      "ATS-Optimization",
+      "Gemini-AI"
     ],
     "codeUrl": "https://github.com/Jcnok/portfolio",
     "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
