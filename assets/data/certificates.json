@@ -18,5 +18,44 @@
     "category": "programming",
     "description": "Este certificado atesta a conclusão do curso Mundo Web com HTML5, com carga horária de 20 horas, focado em desenvolvimento web.",
     "ingestedAt": "2026-04-16T04:58:26.993Z"
+  },
+  {
+    "id": 2,
+    "driveFileId": "1Bj04SAy8sOd7RatTSRJkWoQiPNkf2dB-",
+    "fileName": "certificate-sqnspdfmfpx3-1776475866.pdf",
+    "title": "Claude 101",
+    "institution": "Anthropic",
+    "hours": null,
+    "completionDate": null,
+    "skills": [
+      "Inteligência Artificial",
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Processamento de Linguagem Natural (PLN)",
+      "IA Generativa",
+      "Machine Learning"
+    ],
+    "category": "ai-ml",
+    "description": "Este certificado atesta a conclusão do curso Claude 101, que oferece uma introdução fundamental ao modelo de inteligência artificial Claude e suas aplicações básicas.",
+    "ingestedAt": "2026-04-18T07:22:30.731Z"
+  },
+  {
+    "id": 3,
+    "driveFileId": "15njRplZ3E88gQoyslTHolFTQSlpfgEhi",
+    "fileName": "certificate-ssz7badjgeh2-1776479388.pdf",
+    "title": "Claude Code 101",
+    "institution": "ANTHROPIC",
+    "hours": null,
+    "completionDate": null,
+    "skills": [
+      "Programação de IA",
+      "Modelos de Linguagem Grandes (LLMs)",
+      "Desenvolvimento de Software",
+      "Engenharia de Prompt",
+      "Codificação"
+    ],
+    "category": "ai-ml",
+    "description": "Este certificado atesta que Julio Cesar Okuda completou o curso Claude Code 101, focado em programação e uso do modelo de inteligência artificial Claude.",
+    "ingestedAt": "2026-04-18T07:22:41.765Z"
   }
 ]
