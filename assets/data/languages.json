@@ -1,8 +1,9 @@
 {
-  "Data Science & Analytics (Python/Jupyter)": 95,
-  "AI Engineering & LLMs (LangChain/Agents)": 82,
-  "Cloud & DevOps (Azure/Docker/CI-CD)": 75,
-  "Full Stack Development (JS/TS/HTML/CSS)": 68,
-  "Data Engineering & Pipelines (ETL/SQL)": 60,
-  "Automation & Scripting (Shell/CLI)": 55
+  "Data Analysis & Python Ecosystem": 95,
+  "AI, LLMs & Agentic Workflows": 85,
+  "Cloud Infrastructure & Azure": 75,
+  "DevOps & Containerization": 70,
+  "Full Stack Web Development": 65,
+  "Database Engineering & SQL": 60,
+  "Automation & Scripting": 55
 }

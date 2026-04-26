@@ -1,0 +1,26 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="280" fill="#0f172a"/>
+  <rect width="800" height="280" fill="url(#grid)"/>
+
+  <text x="400" y="130" font-family="sans-serif" font-size="55px" font-weight="bold" fill="url(#glow)" text-anchor="middle" filter="drop-shadow(0 0 10px #6366f1)">
+    DubAI
+  </text>
+
+  <text x="400" y="180" font-family="sans-serif" font-size="22px" fill="#e2e8f0" text-anchor="middle">
+    <tspan x="400" dy="0">TypeScript | Chrome Extension | Gemini API</tspan>
+  </text>
+
+  <circle cx="200" cy="50" r="2" fill="#818cf8" opacity="0.6"/>
+  <circle cx="600" cy="220" r="3" fill="#c084fc" opacity="0.6"/>
+  <circle cx="700" cy="80" r="1.5" fill="#ffffff" opacity="0.3"/>
+</svg>
