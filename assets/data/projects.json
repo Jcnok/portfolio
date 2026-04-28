@@ -3,13 +3,14 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado utilizando Langflow e OpenAI. A solução demonstra proficiência em orquestração de fluxos de IA e integração robusta com APIs de CRM via Docker.",
+    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow, Open-WebUI e APIs de CRM para criar fluxos de conversação fluidos, escaláveis e containerizados com Docker.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
       "Langflow",
       "Semantic-Router",
-      "Docker"
+      "Docker",
+      "LLMs"
     ],
     "codeUrl": "https://github.com/Jcnok/Desafio-Langflow",
     "demoUrl": "https://github.com/Jcnok/Desafio-Langflow"
@@ -18,13 +19,14 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline de dados de ponta a ponta que integra dbt para modelagem em camadas, PostgreSQL para armazenamento e LLMs para consultas em linguagem natural. O projeto destaca a capacidade de construir sistemas analíticos escaláveis com interfaces interativas em Streamlit.",
+    "resume": "Pipeline de dados robusto com modelagem de dados via DBT e análise inteligente de KPIs. Utiliza LangChain com o modelo Gemini para permitir consultas em linguagem natural diretamente sobre o banco de dados PostgreSQL.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
       "dbt",
       "LangChain",
-      "PostgreSQL"
+      "PostgreSQL",
+      "Streamlit"
     ],
     "codeUrl": "https://github.com/Jcnok/crm-system",
     "demoUrl": "https://crm-system.streamlit.app/"
@@ -33,13 +35,14 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta analítica de alta performance para avaliação comparativa de ROI utilizando IA generativa via Azure OpenAI. Demonstra foco em soluções cloud-native, aplicando práticas de DevOps e containerização para garantir reprodutibilidade e escalabilidade.",
+    "resume": "Ferramenta de análise comparativa de projetos focada em ROI, utilizando IA Generativa via Azure OpenAI. O projeto demonstra capacidade de integração em nuvem e automação de fluxos de decisão baseados em dados.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
       "Azure OpenAI",
       "Streamlit",
-      "Docker"
+      "Python",
+      "ROI Analysis"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
@@ -48,13 +51,14 @@
     "id": 4,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Arquitetura sofisticada de atendimento ao cliente baseada em agentes autônomos e RAG, utilizando Azure OpenAI e pgvector para busca semântica eficiente. O projeto evidencia expertise em sistemas distribuídos de baixa latência e orquestração de LLMs.",
+    "resume": "Sistema de atendimento ao cliente baseado em agentes autônomos especializados, utilizando arquitetura RAG com PostgreSQL e pgvector. Focado em alta performance e escalabilidade, integrando React e FastAPI para orquestração de experiências.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
       "RAG",
       "Azure OpenAI",
-      "FastAPI"
+      "FastAPI",
+      "PostgreSQL"
     ],
     "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
     "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
@@ -63,13 +67,14 @@
     "id": 5,
     "title": "Portfolio",
     "description": "Modelo de site para portifólio, desenvolvido com (HTML5, CSS, JavaScript)",
-    "resume": "Portfólio interativo de alta performance que demonstra integração prática com IA generativa, incluindo um chat RAG e gerador de currículo ATS. O projeto reflete um perfil técnico capaz de unir desenvolvimento web moderno com automação de IA.",
+    "resume": "Portfólio interativo de alta performance que demonstra proficiência em engenharia de front-end e IA. Inclui funcionalidades avançadas como chat RAG inteligente e gerador de currículos orientado a ATS.",
     "image": "assets/images/projects/portfolio.svg",
     "category": "web-development",
     "tags": [
       "JavaScript",
       "RAG",
-      "Gemini AI"
+      "Frontend",
+      "AI-Integration"
     ],
     "codeUrl": "https://github.com/Jcnok/portfolio",
     "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
@@ -78,13 +83,14 @@
     "id": 6,
     "title": "DubAI",
     "description": "DubAI – Extensão Chrome que dubla vídeos on-line em português brasileiro com voz natural, usando legendas nativas quando disponíveis ou tradução automática via Gemini (Gemma 3 27B) pela cota gratuita da API.",
-    "resume": "Extensão Chrome inovadora que utiliza modelos avançados como Gemma 3 para tradução e síntese de voz em tempo real em plataformas educacionais. Demonstra domínio em desenvolvimento de extensões navegador, processamento de linguagem natural e APIs de IA.",
+    "resume": "Extensão de navegador inovadora que realiza dublagem em tempo real utilizando modelos de linguagem avançados. O projeto demonstra domínio de processamento de áudio, integração com APIs de IA e desenvolvimento para o ecossistema Chrome.",
     "image": "assets/images/projects/dubai.svg",
     "category": "ai-automation",
     "tags": [
-      "TypeScript",
       "Chrome Extension",
-      "Gemini API"
+      "Gemini API",
+      "TypeScript",
+      "Speech-Synthesis"
     ],
     "codeUrl": "https://github.com/Jcnok/DubAI",
     "demoUrl": "https://jcnok.github.io/DubAI/"
