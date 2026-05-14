@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow, Open-WebUI e CRM via FastAPI para criar fluxos de IA conversacional fluidos e escaláveis.",
+    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico baseado em LLMs. Integra Langflow, Open-WebUI e APIs de CRM para entregar uma experiência de suporte humanizada e escalável via Docker.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
@@ -18,7 +18,7 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline de dados robusto com arquitetura medallion (dbt) e integração de LLMs para análise preditiva. Oferece uma interface interativa via Streamlit com consultas em linguagem natural ao PostgreSQL.",
+    "resume": "Pipeline de dados robusto com modelagem em camadas (bronze, silver, gold) utilizando dbt e PostgreSQL para análise de vendas. Implementa uma interface analítica em Streamlit com interface de linguagem natural via LangChain e Gemini.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
@@ -34,7 +34,7 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta estratégica de análise comparativa de projetos utilizando IA generativa para cálculo de ROI. Desenvolvida para ambientes corporativos com foco em escalabilidade via Azure OpenAI e Docker.",
+    "resume": "Ferramenta de análise comparativa de projetos focada em ROI, utilizando IA generativa para extração de insights e tomada de decisão estratégica. Desenvolvida com arquitetura pronta para cloud e containerizada com Docker.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
@@ -49,7 +49,7 @@
     "id": 4,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Sistema de atendimento de alta performance baseado em agentes autônomos e arquitetura RAG. Utiliza PostgreSQL com pgvector e FastAPI para orquestrar jornadas de clientes com IA de última geração.",
+    "resume": "Sistema avançado de atendimento ao cliente baseado em agentes autônomos especializados e arquitetura RAG. Utiliza PostgreSQL com pgvector para busca semântica e FastAPI para orquestração de alta performance.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
@@ -65,7 +65,7 @@
     "id": 5,
     "title": "Portfolio",
     "description": "Modelo de site para portifólio, desenvolvido com (HTML5, CSS, JavaScript)",
-    "resume": "Portfólio técnico de alto impacto com automação via IA, apresentando um Chat RAG inteligente e gerador de currículos ATS. Demonstra domínio em desenvolvimento web moderno integrado a APIs de LLMs.",
+    "resume": "Portfólio interativo de alta performance que demonstra domínio técnico em automação com IA. Integra funcionalidades avançadas como chat RAG e gerador de currículo inteligente para otimização em sistemas ATS.",
     "image": "assets/images/projects/portfolio.svg",
     "category": "web-development",
     "tags": [
@@ -80,13 +80,13 @@
     "id": 6,
     "title": "DubAI",
     "description": "DubAI – Extensão Chrome que dubla vídeos on-line em português brasileiro com voz natural, usando legendas nativas quando disponíveis ou tradução automática via Gemini (Gemma 3 27B) pela cota gratuita da API.",
-    "resume": "Extensão Chrome inovadora que realiza dublagem em tempo real usando modelos de linguagem avançados (Gemma 3/Gemini). Resolve barreiras linguísticas com processamento de legendas e síntese de voz de alta fidelidade.",
+    "resume": "Extensão Chrome inovadora que realiza dublagem em tempo real de conteúdos educacionais usando Gemini/Gemma 3. Aplica técnicas avançadas de processamento de linguagem e síntese de voz para quebrar barreiras linguísticas de forma eficiente.",
     "image": "assets/images/projects/dubai.svg",
     "category": "ai-automation",
     "tags": [
       "Chrome Extension",
-      "Gemini API",
-      "TypeScript"
+      "TypeScript",
+      "Gemini API"
     ],
     "codeUrl": "https://github.com/Jcnok/DubAI",
     "demoUrl": "https://jcnok.github.io/DubAI/"
