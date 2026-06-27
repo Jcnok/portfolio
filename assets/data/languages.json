@@ -1,8 +1,9 @@
 {
-  "Data Science & Python Ecosystem": 95,
+  "Data Analysis & Python Ecosystem": 95,
   "AI, LLMs & Agentic Workflows": 85,
-  "Cloud Infrastructure & Azure": 75,
-  "DevOps & Containerization": 70,
+  "Cloud Infrastructure & DevOps": 75,
   "Full Stack Web Development": 65,
-  "Database Engineering & ETL": 60
+  "Data Engineering & Pipelines": 70,
+  "Database Management & SQL": 60,
+  "Automation & Scripting": 55
 }
