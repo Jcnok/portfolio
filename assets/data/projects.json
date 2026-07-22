@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Desafio Langflow",
     "description": "Projeto de código aberto: Desafio Langflow",
-    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow, Open-WebUI e CRM via FastAPI para criar fluxos de IA conversacional escaláveis e humanizados.",
+    "resume": "Plataforma de atendimento inteligente que substitui menus hierárquicos por roteamento semântico avançado. Integra Langflow, Open-WebUI e CRM via FastAPI para automação de fluxos conversacionais escaláveis com Docker.",
     "image": "https://raw.githubusercontent.com/Jcnok/Desafio-Langflow/main/img/diagrama.png",
     "category": "ai-automation",
     "tags": [
@@ -18,14 +18,14 @@
     "id": 2,
     "title": "Crm System",
     "description": "Pipeline de dados completo para um CRM de vendas, utilizando ferramentas como Python, SQL, dbt, Gemini e Langchain.",
-    "resume": "Pipeline robusto de dados para CRM utilizando dbt para modelagem em camadas e Langchain para consultas em linguagem natural via Gemini. Oferece uma solução ponta a ponta que une engenharia de dados moderna com análise interativa via Streamlit.",
+    "resume": "Pipeline de dados robusto que integra DBT para modelagem e transformação, com interface Streamlit para visualização de KPIs. Utiliza LangChain e modelos Gemini para permitir consultas em linguagem natural diretamente sobre o banco PostgreSQL.",
     "image": "https://raw.githubusercontent.com/Jcnok/crm-system/master/img/diagrama.gif",
     "category": "data-analysis",
     "tags": [
       "dbt",
-      "LangChain",
-      "PostgreSQL",
-      "Streamlit"
+      "Langchain",
+      "Streamlit",
+      "PostgreSQL"
     ],
     "codeUrl": "https://github.com/Jcnok/crm-system",
     "demoUrl": "https://crm-system.streamlit.app/"
@@ -34,13 +34,13 @@
     "id": 3,
     "title": "MicrosoftInnovationChallange25  ROI Calculator",
     "description": "Projeto do hackathon da Microsoft Innovation Challange March 2025 - ROI Calculator",
-    "resume": "Ferramenta de análise comparativa de projetos impulsionada por IA para suporte à decisão estratégica. Implementa arquitetura containerizada com foco em processamento de dados inteligente utilizando Azure OpenAI.",
+    "resume": "Ferramenta de análise comparativa de projetos baseada em IA, otimizada para ecossistemas Azure. Utiliza Streamlit e Azure OpenAI para automatizar a extração de insights financeiros e métricas de ROI de forma inteligente.",
     "image": "assets/images/projects/microsoftinnovationchallange25--roi-calculator.svg",
     "category": "ai-automation",
     "tags": [
-      "Azure OpenAI",
-      "Docker",
-      "Streamlit"
+      "Azure-OpenAI",
+      "Streamlit",
+      "Python"
     ],
     "codeUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator",
     "demoUrl": "https://github.com/Jcnok/MicrosoftInnovationChallange25--ROI-Calculator"
@@ -49,14 +49,14 @@
     "id": 4,
     "title": "Central Atendimento Azure",
     "description": "Central de Atendimento Inteligente - Hackathon Microsoft 2025",
-    "resume": "Sistema de atendimento multicanal baseado em agentes autônomos e arquitetura RAG de alta performance. Utiliza PostgreSQL (pgvector) e Azure OpenAI para orquestrar jornadas de clientes com foco em resolução complexa e eficiência operacional.",
+    "resume": "Arquitetura de atendimento ao cliente escalável utilizando agentes autônomos e RAG em ambiente Azure. Implementa um stack moderno com FastAPI, React e pgvector para processamento de linguagem natural de alta performance.",
     "image": "assets/images/projects/central-atendimento-azure.svg",
     "category": "ai-automation",
     "tags": [
       "RAG",
-      "Azure OpenAI",
+      "Azure-OpenAI",
       "FastAPI",
-      "pgvector"
+      "React"
     ],
     "codeUrl": "https://github.com/Jcnok/central-atendimento-azure",
     "demoUrl": "https://github.com/Jcnok/central-atendimento-azure"
@@ -65,13 +65,13 @@
     "id": 5,
     "title": "Portfolio",
     "description": "Modelo de site para portifólio, desenvolvido com (HTML5, CSS, JavaScript)",
-    "resume": "Portfólio interativo que demonstra domínio técnico através de funcionalidades integradas de IA, incluindo um Chat RAG personalizado. Destaca habilidades em desenvolvimento web moderno e automação com modelos generativos.",
+    "resume": "Portfólio interativo focado em demonstrar competências técnicas através de IA generativa. Inclui ferramentas de RAG e automação de currículos, evidenciando habilidade no desenvolvimento web moderno integrado a LLMs.",
     "image": "assets/images/projects/portfolio.svg",
     "category": "web-development",
     "tags": [
       "JavaScript",
-      "RAG",
-      "Gemini AI"
+      "Gemini-AI",
+      "RAG"
     ],
     "codeUrl": "https://github.com/Jcnok/portfolio",
     "demoUrl": "https://portfolio-jcnoks-projects.vercel.app/"
@@ -80,12 +80,12 @@
     "id": 6,
     "title": "DubAI",
     "description": "DubAI – Extensão Chrome que dubla vídeos on-line em português brasileiro com voz natural, usando legendas nativas quando disponíveis ou tradução automática via Gemini (Gemma 3 27B) pela cota gratuita da API.",
-    "resume": "Extensão Chrome inovadora que realiza dublagem em tempo real utilizando modelos de linguagem avançados como Gemma 3. Resolve problemas complexos de tradução e síntese de áudio, demonstrando proficiência em APIs de IA e desenvolvimento para navegadores.",
+    "resume": "Extensão Chrome inovadora que realiza dublagem em tempo real de conteúdos educacionais usando a API do Google Gemini. Aplica técnicas avançadas de processamento de áudio e tradução para quebrar barreiras linguísticas de forma eficiente.",
     "image": "assets/images/projects/dubai.svg",
     "category": "ai-automation",
     "tags": [
-      "Chrome Extension",
-      "Gemini API",
+      "Chrome-Extension",
+      "Gemini-API",
       "TypeScript"
     ],
     "codeUrl": "https://github.com/Jcnok/DubAI",
